@@ -20,43 +20,37 @@
                             </div>
                             <div class="modal-body">
                                 <form name="icmsProprioForm">
-                                    <div class="form-group row" ng-class="{'has-error':(IcmsProprio.Base <= 0), 'has-success':(IcmsProprio.Base > 0)}">
+                                    <div class="form-group row" ng-class="{'has-error': !validacaoBase(valoresIcmsProprio.base), 'has-success':validacaoBase(valoresIcmsProprio.base)}">
                                         <label for="lbBaseCalculoProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
                                         <div class="col-sm-3 col-xs-3">
-                                           <input type="number" ng-model="IcmsProprio.Base" class="form-control" id="baseIcmsProprio" name="baseIcmsProprio" required/>   
+                                           <input type="number" ng-model="valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>   
                                         </div>
                                         <span class="help-block" ng-show="icmsProprioForm.baseIcmsProprio.$touched">
-                                            <div ng-messages="icmsProprioForm.baseIcmsProprio.$error" role="alert">
-                                                <div ng-message="required">Campo vazio!</div>
-                                                <span ng-show="IcmsProprio.Base <= 0">Valor inválido!</span>
-                                            </div>
+                                                <span ng-show="valoresIcmsProprio.base <= 0">Valor inválido!</span>
                                         </span>    
                                     </div>
                                     <div class="form-group row" ng-class="{'has-error':(IcmsProprio.Aliquota <= 0 || IcmsProprio.Aliquota > 100), 'has-success':(IcmsProprio.Aliquota > 0)}">    
                                         <label for="tbAliquotaIcmsProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota ICMS:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
-                                                <input type="number" ng-model="IcmsProprio.Aliquota" class="form-control" id="aliquotaIcmsProprio" name="aliquotaIcmsProprio" required/>
+                                                <input type="number" ng-model="valoresIcmsProprio.aliquota" class="form-control" name="aliquotaIcmsProprio" required/>
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
                                         </div>
                                         <span class="help-block" ng-show="icmsProprioForm.aliquotaIcmsProprio.$touched">
-                                            <div ng-messages="icmsProprioForm.aliquotaIcmsProprio.$error" role="alert">
-                                                <div ng-message="required">Campo vazio!</div>
                                                 <span ng-show="IcmsProprio.Aliquota <= 0">Valor inválido!</span>
                                                 <span ng-show="IcmsProprio.Aliquota > 100">Valor inválido!</span>
-                                            </div>
                                         </span>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-main btn-block" ng-click="icmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
+                                            <button type="button" class="btn btn-main btn-block" ng-click="resultadoIcmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">    
                                         <label for="tbValorIcmsProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor ICMS:</label>
                                         <div class="col-sm-3 col-xs-3">
-                                            <input type="text" ng-model="IcmsProprio.Valor" class="form-control"  id="valorIcmsProprio" disabled>
+                                            <input type="text" ng-model="valoresIcmsProprio.valor" class="form-control"  id="valorIcmsProprio" disabled>
                                         </div>
                                     </div>
                                     <p></p>
@@ -66,7 +60,7 @@
                                                 <center>
                                                 (Base de calculo) * (Alíquota de ICMS)/100 = (Valor de ICMS) 
                                                 <br></br>
-                                                {{IcmsProprio.Base}} R$ * {{IcmsProprio.Aliquota}}/100 = {{IcmsProprio.ValorDiscriminacao}} R$
+                                                {{valoresIcmsProprio.base}} R$ * {{valoresIcmsProprio.Aliquota}}/100 = {{valoresIcmsProprio.valorDiscriminacao}} R$
                                                 </center>
                                             </div>
                                         </div>

@@ -2,15 +2,32 @@
 
 angular.module('calculoICMS')
 
-    .controller('controladorICMS', function($scope, $location){
+    .factory('IcmsProprio', function(){
 
-        $scope.IcmsProprio = {
-            
-            'Base': $scope.baseIcmsProprio,
-            'Aliquota': $scope.aliquotaIcmsProprio,
-            'Valor': $scope.valorIcmsProprio,
-            'ValorDiscriminacao': $scope.valorIcmsDiscriminacao, 
+        var IcmsProprio = function(base, aliquota){
+            this.base = base;
+            this.aliquota = aliquota;
+            this.valor = null;
+            this.valorDiscriminacao = null;
+            this._calculoProprio();
+        };
+
+        IcmsProprio.prototype._calculoProprio = function(){
+
+            if(!(this.base <= 0 || this.aliquota <= 0 || this.aliquota > 100)){
+
+                var resultado = this.base*this.aliquota/100;
+                this.valor = parseFloat(resultado).toFixed(3);
+                this.valorDiscriminacao = parseFloat(resultado).toFixed(2);       
+            }
         }
+
+        return IcmsProprio;
+    })
+
+    .controller('controladorICMS', function($scope, $location, IcmsProprio){
+
+        $scope.valoresIcmsProprio = {}
 
         $scope.IcmsBaseRed = {
 
@@ -35,19 +52,32 @@ angular.module('calculoICMS')
             'ValorDestinoFcp': $scope.valorDestinoFcp,
         }
 
-        $scope.icmsProprio = function(){
+        $scope.validacaoBase = function(base){
 
-            if($scope.IcmsProprio.Base <= 0 || $scope.IcmsProprio.Aliquota <= 0 || $scope.IcmsProprio.Aliquota > 100){
+                if(base <= 0){
 
-                $scope.IcmsProprio.Valor = null;
-                $scope.IcmsProprio.ValorDiscriminacao = null;
-            }else{
+                    return false;
+                }else{
 
-                var resultado = $scope.IcmsProprio.Base*($scope.IcmsProprio.Aliquota/100);
+                    return true;
+                }
+            }
+
+        $scope.validacaoAliquota = function(aliquota){
             
-                $scope.IcmsProprio.Valor = parseFloat(resultado).toFixed(3); 
-                $scope.IcmsProprio.ValorDiscriminacao = parseFloat(resultado).toFixed(2);
-            }  
+             if(aliquota <= 0 || aliquota > 100){
+
+                    return false;
+                }else{
+
+                    return true;
+                }
+        }
+
+        $scope.resultadoIcmsProprio = function(){
+
+            var valor = new IcmsProprio($scope.valoresIcmsProprio.base, $scope.valoresIcmsProprio.aliquota);
+            $scope.valoresIcmsProprio = valor;
         }
 
         $scope.icmsredbaseICMS =  function(){
@@ -134,15 +164,10 @@ angular.module('calculoICMS')
             }
         }
 
-        $scope.voltar = function(){
-
-            $location.path('/home');
-        }
-
         $scope.limparProprio = function(form){
 
             form.$setUntouched();
-            $scope.IcmsProprio = null;   
+            $scope.valoresIcmsProprio = null;   
         }
 
         $scope.limparRed = function(form){
@@ -155,5 +180,10 @@ angular.module('calculoICMS')
 
             form.$setUntouched();
             $scope.IcmsDifal = null;
+        }
+
+        $scope.voltar = function(){
+
+            $location.path('/home');
         }
 });
