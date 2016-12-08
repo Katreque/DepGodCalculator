@@ -1,0 +1,281 @@
+<body ng-controller="controladorICMS">
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+        <div class="row vertical-center-row">
+            <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#icmsProprioModal">ICMS Próprio</button>
+            <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#icmsRedModal">Redução de Base</button>
+            <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#icmsDifalModal">DIFAL</button>
+            <br>
+            <button type="button" class="btn btn-main-voltar btn-lg btn-block" ng-click="voltar()">Voltar</button>
+        </div>
+    </div>
+
+    <!-- ICMS Próprio Modal Início -->
+            <div class="container-fluid">
+                <div id="icmsProprioModal" class="modal fade" role="dialog" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">ICMS Próprio</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="icmsProprioForm">
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsProprio.Base <= 0), 'has-success':(IcmsProprio.Base > 0)}">
+                                        <label for="lbBaseCalculoProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                           <input type="number" ng-model="IcmsProprio.Base" class="form-control" id="baseIcmsProprio" name="baseIcmsProprio" required/>   
+                                        </div>
+                                        <span class="help-block" ng-show="icmsProprioForm.baseIcmsProprio.$touched">
+                                            <div ng-messages="icmsProprioForm.baseIcmsProprio.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsProprio.Base <= 0">Valor inválido!</span>
+                                            </div>
+                                        </span>    
+                                    </div>
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsProprio.Aliquota <= 0 || IcmsProprio.Aliquota > 100), 'has-success':(IcmsProprio.Aliquota > 0)}">    
+                                        <label for="tbAliquotaIcmsProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota ICMS:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsProprio.Aliquota" class="form-control" id="aliquotaIcmsProprio" name="aliquotaIcmsProprio" required/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                        <span class="help-block" ng-show="icmsProprioForm.aliquotaIcmsProprio.$touched">
+                                            <div ng-messages="icmsProprioForm.aliquotaIcmsProprio.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsProprio.Aliquota <= 0">Valor inválido!</span>
+                                                <span ng-show="IcmsProprio.Aliquota > 100">Valor inválido!</span>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                                            <button type="button" class="btn btn-main btn-block" ng-click="icmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="tbValorIcmsProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor ICMS:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="text" ng-model="IcmsProprio.Valor" class="form-control"  id="valorIcmsProprio" disabled>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Discriminação Calculo:</div>
+                                            <div class="panel-body">
+                                                <center>
+                                                (Base de calculo) * (Alíquota de ICMS)/100 = (Valor de ICMS) 
+                                                <br></br>
+                                                {{IcmsProprio.Base}} R$ * {{IcmsProprio.Aliquota}}/100 = {{IcmsProprio.ValorDiscriminacao}} R$
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-main" ng-click="limparProprio(icmsProprioForm)">Limpar</button>
+                                            <button type="button" class="btn btn-main" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- ICMS Próprio Modal Final -->
+
+    <!-- Red. Base ICMS Modal Início -->
+            <div class="container">
+                <div id="icmsRedModal" class="modal fade" role="dialog" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">ICMS com base Reduzida</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="icmsRedForm">
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsBaseRed.Base <= 0), 'has-success':(IcmsBaseRed.Base > 0)}">
+                                        <label for="lbBaseIcmsRed" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                           <input type="number" ng-model="IcmsBaseRed.Base" class="form-control" id="baseIcmsRed" name="baseIcmsRed"/>         
+                                        </div>
+                                        <span class="help-block" ng-show="icmsRedForm.baseIcmsRed.$touched">
+                                            <div ng-messages="icmsRedForm.baseIcmsRed.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsBaseRed.Base <= 0">Valor inválido!</span>
+                                            </div>
+                                        </span> 
+                                    </div>
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsBaseRed.Aliquota <= 0 || IcmsBaseRed.Aliquota > 100), 'has-success':(IcmsBaseRed.Aliquota > 0)}">    
+                                        <label for="lbAliquotaIcms" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota ICMS:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsBaseRed.Aliquota" class="form-control" id="aliquotaIcms" name="aliquotaIcms"/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                        <span class="help-block" ng-show="icmsRedForm.aliquotaIcms.$touched">
+                                            <div ng-messages="icmsRedForm.aliquotaIcms.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsBaseRed.Aliquota <= 0">Valor inválido!</span>
+                                                <span ng-show="IcmsBaseRed.Aliquota > 100">Valor inválido!</span>
+                                            </div>
+                                        </span> 
+                                    </div>
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsBaseRed.AliquotaRed <= 0 || IcmsBaseRed.AliquotaRed > 100), 'has-success':(IcmsBaseRed.AliquotaRed > 0)}">    
+                                        <label for="lbAliquotaIcmsReduzida" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota de Redução:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsBaseRed.AliquotaRed" class="form-control" id="aliquotaIcmsReduzida" name="aliquotaIcmsReduzida"/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                        <span class="help-block" ng-show="icmsRedForm.aliquotaIcmsReduzida.$touched">
+                                            <div ng-messages="icmsRedForm.aliquotaIcmsReduzida.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsBaseRed.AliquotaRed <= 0">Valor inválido!</span>
+                                                <span ng-show="IcmsBaseRed.AliquotaRed > 100">Valor inválido!</span>
+                                            </div>
+                                        </span> 
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                                            <button type="button" class="btn btn-main btn-block" ng-click="icmsredbaseICMS()">Calcular</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbValorIcmsRed" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor ICMS:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="text" ng-model="IcmsBaseRed.Valor" class="form-control"  id="valorIcmsRed" disabled>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Discriminação Calculo:</div>
+                                            <div class="panel-body">
+                                                <center>
+                                                <h6>(Base de calculo - (Al de redução/100)) * (Alíquota de ICMS)/100 = (Valor do ICMS Red.)<h6>
+                                                <h5>{{IcmsBaseRed.Base}} - ({{IcmsBaseRed.Aliquota}}/100) * {{IcmsBaseRed.AliquotaRed}}/100 = {{IcmsBaseRed.ValorDiscriminacao}} R$<h5>
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-main" ng-click="limparRed(icmsRedForm)">Limpar</button>
+                                            <button type="button" class="btn btn-main" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Red. Base ICMS Modal Final -->
+
+    <!-- ICMS DIFAL Modal Início -->
+        <div class="container">
+            <div id="icmsDifalModal" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">ICMS Difal</h4>   
+                        </div>
+                        <div class="modal-body">
+                            <form name="icmsDifalForm">
+                                    <div class="form-group row">
+                                        <label for="lbAnoIcmsDifal" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Ano da Nota:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                           <input type="number" ng-model="IcmsDifal.Ano" class="form-control" id="anoIcmsDifal" name="anoIcmsDifal" required>         
+                                        </div>
+                                        <span class="help-block" ng-show="icmsDifalForm.anoIcmsDifal.$touched">
+                                            <div ng-messages="icmsDifalForm.anoIcmsDifal.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                            </div>
+                                        </span> 
+                                    </div>                                
+                                    <div class="form-group row" ng-class="{'has-error':(IcmsDifal.Base <= 0), 'has-success':(IcmsDifal.Base > 0)}">
+                                        <label for="lbBaseIcmsDifal" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                           <input type="number"  ng-model="IcmsDifal.Base" class="form-control" id="baseIcmsDifal" name="baseIcmsDifal">       
+                                        </div>
+                                        <span class="help-block" ng-show="icmsRedForm.aliquotaIcmsReduzida.$touched">
+                                            <div ng-messages="icmsRedForm.aliquotaIcmsReduzida.$error" role="alert">
+                                                <div ng-message="required">Campo vazio!</div>
+                                                <span ng-show="IcmsBaseRed.AliquotaRed <= 0">Valor inválido!</span>
+                                                <span ng-show="IcmsBaseRed.AliquotaRed > 100">Valor inválido!</span>
+                                            </div>
+                                        </span> 
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbAliquotaInter" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interna:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsDifal.AliquotaInterna" class="form-control" id="aliquotaIcmsInterna" min='1' max='100'/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbAliquitaInterest" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interes.:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsDifal.AliquotaInterest" class="form-control" id="aliquotaIcmsInterest" min='1' max='100'/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbFcp" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">FCP:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="IcmsDifal.AliquotaFcp" class="form-control" id="aliquotaFcp" min='0' max='100'/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                                            <button type="button" class="btn btn-main btn-block" ng-click="icmsDifal()">Calcular</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="tbValorOrigem" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor Origem:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="text" ng-model="IcmsDifal.ValorOrigem" class="form-control"  id="valorIcmsDifalOrigem" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="tbValorDestino" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor Destino:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="text" ng-model="IcmsDifal.ValorDestino" class="form-control"  id="valorIcmsDifalDestino" disabled>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Discriminação Calculo:</div>
+                                            <div class="panel-body">
+                                                <center>
+                                                <h6>(Base de ICMS) * (Al.Interna - Al.Interestadual)/100 = (Valor Difal)</h6>
+                                                <h5>{{IcmsDifal.Base}} R$ * ({{IcmsDifal.AliquotaInterna}}-{{IcmsDifal.AliquotaInterest}})/100 = {{IcmsDifal.ValorDifal}} R$</h5>
+                                                <br>
+                                                <h6>2016 = [Origem:60%/Destino:40%] 2017 = [Origem:40%/Destino:60%]</h6>
+                                                <h6>2018 = [Origem:20%/Destino:80%] 2019 = [Origem:0%/Destino:100%]</h6>
+                                                <br>FCP soma ao Destino</br>
+                                                <h5>{{IcmsDifal.ValorDestinoFcp}} = {{IcmsDifal.ValorDestino}} + {{IcmsDifal.Fcp}} <h5>
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-main" ng-click="limparDifal(icmsDifalForm)">Limpar</button>
+                                            <button type="button" class="btn btn-main" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- ICMS DIFAL Modal Final -->
+</body>

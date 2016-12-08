@@ -1,0 +1,16 @@
+{
+  "name": "DEPGodCalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "DEPGod.js",
+  "scripts": {
+    "start": "aliv --quiet --host 127.0.0.1 --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aliv": "^1.4.0"
+  }
+}
