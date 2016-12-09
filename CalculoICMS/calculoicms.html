@@ -26,10 +26,10 @@
                                            <input type="number" ng-model="valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>   
                                         </div>
                                         <span class="help-block" ng-show="icmsProprioForm.baseIcmsProprio.$touched">
-                                                <span ng-show="valoresIcmsProprio.base <= 0">Valor inválido!</span>
+                                                <span ng-show="!validacaoBase(valoresIcmsProprio.base)">Valor inválido!</span>
                                         </span>    
                                     </div>
-                                    <div class="form-group row" ng-class="{'has-error':(IcmsProprio.Aliquota <= 0 || IcmsProprio.Aliquota > 100), 'has-success':(IcmsProprio.Aliquota > 0)}">    
+                                    <div class="form-group row" ng-class="{'has-error': !validacaoAliquota(valoresIcmsProprio.aliquota), 'has-success':validacaoAliquota(valoresIcmsProprio.aliquota)}">    
                                         <label for="tbAliquotaIcmsProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota ICMS:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -38,13 +38,12 @@
                                             </div>
                                         </div>
                                         <span class="help-block" ng-show="icmsProprioForm.aliquotaIcmsProprio.$touched">
-                                                <span ng-show="IcmsProprio.Aliquota <= 0">Valor inválido!</span>
-                                                <span ng-show="IcmsProprio.Aliquota > 100">Valor inválido!</span>
+                                                <span ng-show="!validacaoAliquota(valoresIcmsProprio.aliquota)">Valor inválido!</span>
                                         </span>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-main btn-block" ng-click="resultadoIcmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
+                                            <button type="button" class="btn btn-nmain btn-block" ng-click="resultadoIcmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">    
@@ -88,10 +87,10 @@
                             </div>
                             <div class="modal-body">
                                 <form name="icmsRedForm">
-                                    <div class="form-group row" ng-class="{'has-error':(IcmsBaseRed.Base <= 0), 'has-success':(IcmsBaseRed.Base > 0)}">
+                                    <div class="form-group row" ng-class="{'has-error': !validacaoBase(icmsBaseRed.base), 'has-success':validacaoBase(icmsBaseRed.base)}">
                                         <label for="lbBaseIcmsRed" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
                                         <div class="col-sm-3 col-xs-3">
-                                           <input type="number" ng-model="IcmsBaseRed.Base" class="form-control" id="baseIcmsRed" name="baseIcmsRed"/>         
+                                           <input type="number" ng-model="icmsBaseRed.base" class="form-control" id="baseIcmsRed" name="baseIcmsRed"/>         
                                         </div>
                                         <span class="help-block" ng-show="icmsRedForm.baseIcmsRed.$touched">
                                             <div ng-messages="icmsRedForm.baseIcmsRed.$error" role="alert">
@@ -134,7 +133,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-main btn-block" ng-click="icmsredbaseICMS()">Calcular</button>
+                                            <button type="button" class="btn btn-nmain btn-block" ng-click="icmsredbaseICMS()">Calcular</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">    
