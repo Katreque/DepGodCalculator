@@ -68,7 +68,8 @@ angular.module('calculoICMS')
 
         IcmsDifal.prototype._calculoDifal = function(){
 
-            if(!(this.ano <= 0 || this.base <= 0 || this.aliquotaInterna <= 0 || this.aliquotaInterna > 100 || this.aliquotaInterestadual <= 0 || this.aliquotaInterestadual > 100 || this.AliquotaInterna < this.aliquotaInterestadual || this.aliquotaFcp < 0 || this.aliquotaFcp > 100)){
+            if(!(this.ano <= 0 || this.base <= 0 || this.aliquotaInterna <= 0 || this.aliquotaInterna > 100 || this.aliquotaInterestadual <= 0 || this.aliquotaInterestadual > 100 || (this.aliquotaInterna < this.aliquotaInterestadual) || this.aliquotaFcp < 0 || this.aliquotaFcp > 100)){
+
 
             var origem, destino;
 
@@ -149,6 +150,17 @@ angular.module('calculoICMS')
                 }
         }
 
+        $scope.validacaoAliquotaInternaMaiorInterest = function(aliquotaInterna, aliquotaInterestadual){
+
+            if(aliquotaInterna < aliquotaInterestadual){
+
+                return false;
+            }else{
+
+                return true;
+            }
+        }
+
         $scope.resultadoIcmsProprio = function(){
 
             var valor = new IcmsProprio($scope.valoresIcmsProprio.base, $scope.valoresIcmsProprio.aliquota);
@@ -169,20 +181,20 @@ angular.module('calculoICMS')
 
         $scope.limparProprio = function(form){
 
-            form.$setUntouched();
-            $scope.valoresIcmsProprio = null;   
+            $scope.valoresIcmsProprio = null;
+            form.$setUntouched();     
         }
 
         $scope.limparRed = function(form){
 
-            form.$setUntouched();
             $scope.valoresIcmsBaseRed = null; 
+            form.$setUntouched(); 
         }
 
         $scope.limparDifal = function(form){
 
-            form.$setUntouched();
             $scope.valoresIcmsDifal = null;
+            form.$setUntouched();
         }
 
         $scope.voltar = function(){
