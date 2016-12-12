@@ -1,24 +1,33 @@
 .btn-main {
-    background-color: white;
-    color: #011f4b;
+    background-color: #0E497F;
+    opacity: .85;
+    color: white;
     border: 1px solid #011f4b;
     transition-duration: 0.4s;
 }
 
 .btn-main:hover {
-    background-color: #005b96;
+    background-color: #337ab7;
+    opacity: 1;
+    color: white;
+}
+
+.btn-main:focus{
+
     color: white;
 }
 
 .btn-main-voltar {
-    background-color: #337ab7;
-    color: white;
+    background-color: rgba(235,252,255,0.5);
+    opacity: 0.85;
+    color: #011f4b;
     border: 1px solid #011f4b;
     transition-duration: 0.4s;
 }
 
 .btn-main-voltar:hover {
     background-color: #337ab7;
+    opacity: 1;
     color: white;
 }
 
