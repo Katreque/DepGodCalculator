@@ -17,7 +17,7 @@
     color: white;
 }
 
-.btn-main-voltar {
+.btn-main-sub {
     background-color: rgba(235,252,255,0.5);
     opacity: 0.85;
     color: #011f4b;
@@ -25,8 +25,8 @@
     transition-duration: 0.4s;
 }
 
-.btn-main-voltar:hover {
-    background-color: #337ab7;
+.btn-main-sub:hover {
+    background-color: #7794AC;
     opacity: 1;
     color: white;
 }
@@ -79,9 +79,9 @@
 .form-control[disabled]{
 
     cursor: auto;
-    color: #337ab7;
+    color: #257FDB;
     font-weight: bold; 
-    border-color: #337ab7;
+    border-color: #257FDB;
     background-color: #F9FFFF;
 }
 
@@ -100,6 +100,14 @@
     color: #337ab7;
     background-color: #C1E2F7;
     border-color: #337ab7;
+}
+
+.has-success .help-block{
+    color: #337ab7;
+}
+
+.help-block{
+    color: #257FDB;
 }
 
 .has-error .help-block{
@@ -158,6 +166,10 @@
 
 .card:hover{
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+
+.row{
+    text-align: center;
 }
 
 .footer-main{

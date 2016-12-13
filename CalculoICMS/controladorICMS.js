@@ -122,10 +122,9 @@ angular.module('calculoICMS')
                 if(base <= 0){
 
                     return false;
-                }else{
+                }
 
                     return true;
-                }
             }
 
         $scope.validacaoAliquotaNaoAceitaZero = function(aliquota){
@@ -133,10 +132,8 @@ angular.module('calculoICMS')
              if(aliquota <= 0 || aliquota > 100){
 
                     return false;
-                }else{
-
-                    return true;
                 }
+                    return true;
         }
 
         $scope.validacaoAliquotaAceitaZero = function(aliquota){
@@ -144,10 +141,8 @@ angular.module('calculoICMS')
              if(aliquota < 0 || aliquota > 100){
 
                     return false;
-                }else{
-
-                    return true;
                 }
+                    return true;
         }
 
         $scope.validacaoAliquotaInternaMaiorInterest = function(aliquotaInterna, aliquotaInterestadual){
@@ -155,10 +150,8 @@ angular.module('calculoICMS')
             if(aliquotaInterna < aliquotaInterestadual){
 
                 return false;
-            }else{
-
-                return true;
             }
+                return true;
         }
 
         $scope.resultadoIcmsProprio = function(){
