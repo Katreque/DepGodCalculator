@@ -4,13 +4,18 @@
   "description": "",
   "main": "DEPGod.js",
   "scripts": {
-    "start": "aliv --quiet --host 127.0.0.1 --port 8080",
+    "start": "aliv",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "aliv": "^1.4.0"
+    "aliv": "^1.4.1",
+    "bower": "^1.8.0",
+    "jasmine": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0"
   }
 }

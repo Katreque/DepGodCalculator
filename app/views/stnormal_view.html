@@ -1,0 +1,98 @@
+<body>
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+        <div class="row vertical-center-row">
+            <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#STProprioModal">ST Próprio</button>
+            <br>
+            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="voltar()">Voltar</button>
+        </div>
+    </div>
+    <!-- ST Modal Início -->
+        <div class="container">
+            <div id="STProprioModal" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">ST Próprio</h4>   
+                        </div>
+                        <div class="modal-body">
+                            <form>                               
+                                    <div class="form-group row">
+                                        <label for="lbBaseStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                           <input type="number" ng-model="stProprio.Base" class="form-control" id="baseStProprio" min='1'>         
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbAliquotaInternaStPropria" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interna:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="stProprio.AliquotaInterna" class="form-control" id="aliquotaInternaStPropria" min='1' max='100'/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbAliquotaInterestStPropria" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interes.:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="stProprio.AliquotaInterest" class="form-control" id="aliquotaInterestStPropria" min='1' max='100'/>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbMva" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">MVA:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <div class="input-group">
+                                                <input type="number" ng-model="stProprio.Mva" class="form-control" id="Mva" min='0'>
+                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbValorIpiStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">IPI:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="number" ng-model="stProprio.Ipi" class="form-control" id="valorIpiStProprio" min='0'/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                                            <button type="button" class="btn btn-main btn-block" ng-click="calculoST()">Calcular</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">    
+                                        <label for="lbValorStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor ST:</label>
+                                        <div class="col-sm-3 col-xs-3">
+                                            <input type="text" ng-model="stProprio.ValorSt" class="form-control"  id="valorStProprio" disabled>
+                                        </div>
+                                    </div>
+                                    <p></p>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Discriminação Calculo:</div>
+                                            <div class="panel-body">
+                                                <center>
+                                                <h6>(Base ICMS [Desconsiderar IPI])*(Al.Interest.) = (ICMS)</h6>
+                                                <h5>{{stProprio.Base}}*{{stProprio.AliquotaInterest}} = {{stProprio.ValorIcms}}</h5>
+                                                <br>
+                                                <h6>(Base ICMS [Considera IPI])*(1+(MVA/100)) = (Base ST)</h6>
+                                                <h5>{{stProprio.BaseStIpi}}*(1+({{stProprio.Mva}}/100)) = {{stProprio.BaseSt}}</h5>
+                                                <br>
+                                                <h6>(Base ST)*(Al.Interna/100) - (ICMS) = (ST)</h6>
+                                                <h5>{{stProprio.BaseSt}}*({{stProprio.AliquotaInterna}}/100) - {{stProprio.ValorIcms}} = {{stProprio.ValorStDiscriminacao}}</h5>
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-main-sub" ng-click="limparStProprio()">Limpar</button>
+                                            <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- ST Modal Final -->
+</body>

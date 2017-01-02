@@ -1,0 +1,180 @@
+.btn-main {
+    background-color: #0E497F;
+    opacity: .85;
+    color: white;
+    border: 1px solid #011f4b;
+    transition-duration: 0.4s;
+}
+
+.btn-main:hover {
+    background-color: #337ab7;
+    opacity: 1;
+    color: white;
+}
+
+.btn-main:focus{
+
+    color: white;
+}
+
+.btn-main-sub {
+    background-color: rgba(235,252,255,0.5);
+    opacity: 0.85;
+    color: #011f4b;
+    border: 1px solid #011f4b;
+    transition-duration: 0.4s;
+}
+
+.btn-main-sub:hover {
+    background-color: #7794AC;
+    opacity: 1;
+    color: white;
+}
+
+.btn-nmain {
+    background-color: #337ab7;
+    color: white;
+    border: 1px solid #011f4b;
+    transition: 0.25s;
+}
+
+.btn-nmain:hover {
+    background-color: #337ab7;
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.btn-nmain:focus {
+    background-color: #337ab7;
+    color: white;
+}
+
+.navbar{
+    background-color: #337ab7;
+    border-color: white;
+    color: white;
+}
+
+.navbar .navbar-brand{
+    font-family: "Franklin Gothic Medium";
+    color: white;
+}
+
+.navbar .navbar-nav > li > a {
+    color: white;
+    transition-duration: 0.4s;
+}
+
+.navbar .navbar-nav > li > a:hover {
+    color: #337ab7;
+}
+
+.navbar .navbar-nav > .active > a, 
+.navbar .navbar-nav > .active > a:hover, 
+.navbar .navbar-nav > .active > a:focus {
+    color: #337ab7;
+    background-color: white;
+}
+
+.form-control[disabled]{
+
+    cursor: auto;
+    color: #257FDB;
+    font-weight: bold; 
+    border-color: #257FDB;
+    background-color: #F9FFFF;
+}
+
+.has-success .form-control{
+    color: #337ab7;
+    border-color: #337ab7;
+}
+
+.has-success .form-control:focus{
+    border-color: #337ab7;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #337ab7;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #337ab7;
+}
+
+.has-success .input-group-addon {
+    color: #337ab7;
+    background-color: #C1E2F7;
+    border-color: #337ab7;
+}
+
+.has-success .help-block{
+    color: #337ab7;
+}
+
+.help-block{
+    color: #257FDB;
+}
+
+.has-error .help-block{
+    color: #FF6261;
+}
+
+.has-error .form-control{
+    color: #FF6261;
+    border-color: #FF6261;
+}
+
+.has-error .form-control:focus{
+    border-color: #FF6261;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #FF6261;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #FF6261;
+}
+
+.has-error .input-group-addon {
+    color: #FF6261;
+    background-color: #FFB7B4;
+    border-color: #FF6261;
+}
+
+.btn-group-justified{
+    position:relative; 
+    top:30%; 
+    left:0%;    
+}
+
+.page-header{
+    color: #005b96;
+    font-family: "Franklin Gothic Medium";
+    box-shadow: 0 4px 8px 0 rgba(0,91,150,0.15);
+    transition: 0.2s;
+}
+
+.page-header:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,91,150,0.15);
+}
+
+.jumbotron{
+    color: #005b96;
+    font-family: "Franklin Gothic Medium";
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.jumbotron:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover{
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+
+.row{
+    text-align: center;
+}
+
+.footer-main{
+    background-color: #337ab7;
+    border-color: white;
+    font-family: "Franklin Gothic Medium";
+    color: #EBF2F7;
+}
