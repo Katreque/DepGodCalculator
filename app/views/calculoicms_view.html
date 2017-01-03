@@ -13,7 +13,7 @@
 <div class="container">
     <div id="icmsProprioModal" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+            <div class="modal-content col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">ICMS Próprio</h4>
@@ -25,7 +25,7 @@
                                 <label class="help-block" for="lbBaseCalculoProprio">Base de Calculo</label>
                                 <input type="number" ng-model="controlicms.valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>
                             </div>
-                            <span class="help-block" ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)">Valor inválido!</span>
+                            <span class="help-block warning-message" ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)">Valor inválido!</span>
                         </div>
                         <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)}">
                             <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
@@ -35,11 +35,11 @@
                                     <span class="input-group-addon" id="percent-addon">%</span>
                                 </div>
                             </div>
-                            <span class="help-block" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)">Valor inválido!</span>
+                            <span class="help-block warning-message" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)">Valor inválido!</span>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                                <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.resultadoIcmsProprio()" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
+                                <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.resultadoIcmsProprio(controlicms.valoresIcmsProprio.base, controlicms.valoresIcmsProprio.aliquota)" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -85,16 +85,14 @@
                             </div>
                             <div class="modal-body">
                                 <form name="icmsRedForm">
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoBase(valoresIcmsBaseRed.base), 'has-success':validacaoBase(valoresIcmsBaseRed.base)}">
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoBase(controlicms.valoresIcmsBaseRed.base), 'has-success':controlicms.validacaoBase(controlicms.valoresIcmsBaseRed.base)}">
                                         <label for="lbBaseIcmsRed" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
                                         <div class="col-sm-3 col-xs-3">
                                            <input type="number" ng-model="controlicms.valoresIcmsBaseRed.base" class="form-control" name="baseIcmsRed" required>         
                                         </div>
-                                        <span class="help-block" ng-show="icmsRedForm.baseIcmsRed.$touched">
-                                                <span ng-show="!validacaoBase(valoresIcmsBaseRed.base)">Valor inválido!</span>
-                                        </span>  
+                                       <span class="help-block" ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsBaseRed.base)">Valor inválido!</span> 
                                     </div>
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquota), 'has-success':validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquota)}">    
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)}">    
                                         <label for="lbAliquotaIcms" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota ICMS:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -102,11 +100,9 @@
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
                                         </div>
-                                        <span class="help-block" ng-show="icmsRedForm.aliquotaIcms.$touched">
-                                                <span ng-show="!validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquota)">Valor inválido!</span>
-                                        </span> 
+                                        <span class="help-block" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)">Valor inválido!</span>
                                     </div>
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquotaRed), 'has-success':validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquotaRed)}">    
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)}">    
                                         <label for="lbAliquotaIcmsReduzida" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota de Redução:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -114,13 +110,11 @@
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
                                         </div>
-                                        <span class="help-block" ng-show="controlicms.icmsRedForm.aliquotaIcmsReduzida.$touched">
-                                            <span ng-show="!validacaoAliquotaNaoAceitaZero(valoresIcmsBaseRed.aliquotaRed)">Valor inválido!</span>
-                                        </span> 
+                                        <span class="help-block" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)">Valor inválido!</span>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-nmain btn-block" ng-click="resultadoIcmsRed()" ng-disabled="icmsRedForm.$invalid">Calcular</button>
+                                            <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.resultadoIcmsRed(controlicms.valoresIcmsBaseRed.base, controlicms.valoresIcmsBaseRed.aliquota, controlicms.valoresIcmsBaseRed.aliquotaRed)" ng-disabled="icmsRedForm.$invalid">Calcular</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">    
@@ -135,12 +129,12 @@
                                             <div class="panel-body">
                                                 <center>
                                                 <h6>(Base de calculo - (Al de redução/100)) * (Alíquota de ICMS)/100 = (Valor do ICMS Red.)<h6>
-                                                <h5>{{valoresIcmsBaseRed.base}} - ({{valoresIcmsBaseRed.aliquota}}/100) * {{valoresIcmsBaseRed.aliquotaRed}}/100 = {{valoresIcmsBaseRed.valorDiscriminacao}} R$<h5>
+                                                <h5>{{controlicms.valoresIcmsBaseRed.base}} - ({{controlicms.valoresIcmsBaseRed.aliquota}}/100) * {{controlicms.valoresIcmsBaseRed.aliquotaRed}}/100 = {{valoresIcmsBaseRed.valorDiscriminacao}} R$<h5>
                                                 </center>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-main-sub" ng-click="limparRed(icmsRedForm)">Limpar</button>
+                                            <button type="button" class="btn btn-main-sub" ng-click="controlicms.limparRed(icmsRedForm)">Limpar</button>
                                             <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>
@@ -163,25 +157,25 @@
                         </div>
                         <div class="modal-body">
                             <form name="icmsDifalForm">
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoBase(valoresIcmsDifal.ano), 'has-success':validacaoBase(valoresIcmsDifal.ano)}">
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoBase(controlicms.valoresIcmsDifal.ano), 'has-success':controlicms.validacaoBase(controlicms.valoresIcmsDifal.ano)}">
                                         <label for="lbAnoIcmsDifal" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Ano da Nota:</label>
                                         <div class="col-sm-3 col-xs-3">
                                            <input type="number" ng-model="controlicms.valoresIcmsDifal.ano" class="form-control" name="anoIcmsDifal" required>         
                                         </div>
                                         <span class="help-block" ng-show="icmsDifalForm.anoIcmsDifal.$touched">
-                                                <span ng-show="!validacaoBase(valoresIcmsDifal.ano)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsDifal.ano)">Valor inválido!</span>
                                         </span>
                                     </div>                                
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoBase(valoresIcmsDifal.base), 'has-success':validacaoBase(valoresIcmsDifal.base)}">
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoBase(controlicms.valoresIcmsDifal.base), 'has-success':controlicms.validacaoBase(controlicms.valoresIcmsDifal.base)}">
                                         <label for="lbBaseIcmsDifal" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
                                         <div class="col-sm-3 col-xs-3">
                                            <input type="number"  ng-model="controlicms.valoresIcmsDifal.base" class="form-control" name="baseIcmsDifal">       
                                         </div>
                                         <span class="help-block" ng-show="icmsDifalForm.baseIcmsDifal.$touched">
-                                                <span ng-show="!validacaoBase(valoresIcmsDifal.base)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsDifal.base)">Valor inválido!</span>
                                         </span>
                                     </div>
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterna), 'has-success':validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterna)}">    
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterna), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterna)}">    
                                         <label for="lbAliquotaInter" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interna:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -190,10 +184,10 @@
                                             </div>
                                         </div>
                                         <span class="help-block" ng-show="icmsDifalForm.aliquotaIcmsInterna.$touched">
-                                                <span ng-show="!validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterna)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterna)">Valor inválido!</span>
                                         </span>
                                     </div>
-                                    <div class="form-group row" ng-class="{'has-error': !validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterestadual) || !validacaoAliquotaInternaMaiorInterest(valoresIcmsDifal.aliquotaInterna, valoresIcmsDifal.aliquotaInterestadual), 'has-success':validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterestadual)}">    
+                                    <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual) || !controlicms.validacaoAliquotaInternaMaiorInterest(controlicms.valoresIcmsDifal.aliquotaInterna, valoresIcmsDifal.aliquotaInterestadual), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual)}">    
                                         <label for="lbAliquitaInterest" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interes.:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -202,11 +196,11 @@
                                             </div>
                                         </div>
                                         <span class="help-block" ng-show="icmsDifalForm.aliquotaIcmsInterestadual.$touched">
-                                                <span ng-show="!validacaoAliquotaNaoAceitaZero(valoresIcmsDifal.aliquotaInterestadual)">Valor inválido!</span>
-                                                <span ng-show="!validacaoAliquotaInternaMaiorInterest(valoresIcmsDifal.aliquotaInterna, valoresIcmsDifal.aliquotaInterestadual)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoAliquotaInternaMaiorInterest(controlicms.valoresIcmsDifal.aliquotaInterna, controlicms.valoresIcmsDifal.aliquotaInterestadual)">Valor inválido!</span>
                                         </span>
                                     </div>
-                                    <div class="form-group row"  ng-class="{'has-error': !validacaoAliquotaAceitaZero(valoresIcmsDifal.aliquotaFcp), 'has-success':validacaoAliquotaAceitaZero(valoresIcmsDifal.aliquotaFcp)}">    
+                                    <div class="form-group row"  ng-class="{'has-error': !controlicms.validacaoAliquotaAceitaZero(controlicms.valoresIcmsDifal.aliquotaFcp), 'has-success':controlicms.validacaoAliquotaAceitaZero(controlicms.valoresIcmsDifal.aliquotaFcp)}">    
                                         <label for="lbFcp" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">FCP:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
@@ -215,12 +209,12 @@
                                             </div>
                                         </div>
                                         <span class="help-block" ng-show="icmsDifalForm.aliquotaFcp.$touched">
-                                                <span ng-show="!validacaoAliquotaAceitaZero(valoresIcmsDifal.aliquotaFcp)">Valor inválido!</span>
+                                                <span ng-show="!controlicms.validacaoAliquotaAceitaZero(controlicms.valoresIcmsDifal.aliquotaFcp)">Valor inválido!</span>
                                         </span>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-nmain btn-block" ng-click="resultadoIcmsDifal()" ng-disabled="icmsDifalForm.$invalid">Calcular</button>
+                                            <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.resultadoIcmsDifal(controlicms.valoresIcmsDifal.ano, controlicms.valoresIcmsDifal.base, controlicms.valoresIcmsDifal.aliquotaInterna, controlicms.valoresIcmsDifal.aliquotaInterestadual, controlicms.valoresIcmsDifal.aliquotaFcp)" ng-disabled="icmsDifalForm.$invalid">Calcular</button>
                                         </div>
                                     </div>
                                     <div class="form-group row">    
@@ -241,17 +235,17 @@
                                             <div class="panel-body">
                                                 <center>
                                                 <h6>(Base de ICMS) * (Al.Interna - Al.Interestadual)/100 = (Valor Difal)</h6>
-                                                <h5>{{valoresIcmsDifal.base}} R$ * ({{valoresIcmsDifal.aliquotaInterna}}-{{valoresIcmsDifal.aliquotaInterestadual}})/100 = {{valoresIcmsDifal.valorDifal}} R$</h5>
+                                                <h5>{{controlicms.valoresIcmsDifal.base}} R$ * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal}} R$</h5>
                                                 <br>
                                                 <h6>2016 = [Origem:60%/Destino:40%] 2017 = [Origem:40%/Destino:60%]</h6>
                                                 <h6>2018 = [Origem:20%/Destino:80%] 2019 = [Origem:0%/Destino:100%]</h6>
                                                 <br>FCP soma ao Destino</br>
-                                                <h5>{{valoresIcmsDifal.valorDestinoeFcp}} = {{valoresIcmsDifal.valorDestino}} + {{valoresIcmsDifal.valorFcp}} <h5>
+                                                <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp}} = {{controlicms.valoresIcmsDifal.valorDestino}} + {{controlicms.valoresIcmsDifal.valorFcp}} <h5>
                                                 </center>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-main-sub" ng-click="limparDifal(icmsDifalForm)">Limpar</button>
+                                            <button type="button" class="btn btn-main-sub" ng-click="controlicms.limparDifal(controlicms.icmsDifalForm)">Limpar</button>
                                             <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>

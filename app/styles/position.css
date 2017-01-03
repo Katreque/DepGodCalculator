@@ -1,0 +1,10 @@
+.warning-message{
+    margin-top: 35px;
+    margin-bottom: 0px;
+}
+
+.btn-group-justified{
+    position:relative; 
+    top:30%; 
+    left:0%;    
+}

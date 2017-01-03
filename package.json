@@ -5,7 +5,7 @@
   "main": "DEPGod.js",
   "scripts": {
     "start": "aliv",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start"
   },
   "keywords": [],
   "author": "",

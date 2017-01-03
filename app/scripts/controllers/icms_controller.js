@@ -9,20 +9,16 @@ angular.module('DEPGod')
         self.valoresIcmsBaseRed = {};
         self.valoresIcmsDifal = {};
 
-        self.resultadoIcmsProprio = function(){
-            self.valoresIcmsProprio = new IcmsproprioService(self.valoresIcmsProprio.base, self.valoresIcmsProprio.aliquota);
+        self.resultadoIcmsProprio = function(_base, _aliquota){
+            self.valoresIcmsProprio = new IcmsproprioService(_base, _aliquota);
         }
 
-        self.resultadoIcmsRed =  function(){
-
-            IcmsBaseRedService.IcmsBaseRed(self.valoresIcmsBaseRed.base, self.valoresIcmsBaseRed.aliquota, self.valoresIcmsBaseRed.aliquotaRed);
-            self.valoresIcmsBaseRed = valor;
+        self.resultadoIcmsRed =  function(_base, _aliquotaRedNormal, _aliquotaRed){
+            self.valoresIcmsBaseRed = new IcmsbaseRedService(_base, _aliquotaRedNormal, _aliquotaRed);
         }
 
-         self.resultadoIcmsDifal = function(){
-            IcmsDifalService.IcmsDifal(self.valoresIcmsDifal.ano, self.valoresIcmsDifal.base, self.valoresIcmsDifal.aliquotaInterna, self.valoresIcmsDifal.aliquotaInterestadual, self.valoresIcmsDifal.aliquotaFcp);
-            self.valoresIcmsDifal = valor;
-            
+         self.resultadoIcmsDifal = function(_ano, _base, _aliquotaInterna, _aliquotaInterestadual, _aliquotaFcp){
+            self.valoresIcmsDifal = new IcmsdifalService(_ano, _base, _aliquotaInterna, _aliquotaInterestadual, _aliquotaFcp);
         }
 
         self.validacaoBase = function(base){

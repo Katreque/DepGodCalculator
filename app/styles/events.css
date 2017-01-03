@@ -1,0 +1,38 @@
+.btn-main:hover {
+    background-color: #337ab7;
+    opacity: 1;
+    color: white;
+}
+
+.btn-main:focus{
+    color: white;
+}
+
+.btn-main-sub:hover {
+    background-color: #7794AC;
+    opacity: 1;
+    color: white;
+}
+
+.btn-nmain:hover {
+    background-color: #337ab7;
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.btn-nmain:focus {
+    background-color: #337ab7;
+    color: white;
+}
+
+.page-header:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,91,150,0.15);
+}
+
+.jumbotron:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card:hover{
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
