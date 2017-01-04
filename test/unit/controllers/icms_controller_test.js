@@ -36,7 +36,7 @@ describe('controladorICMS', function(){
 
         var _base = 100;
         var _aliquota = 10;
-        var _resultadoEsperado = {base: _base, aliquota: _aliquota, valor: '10.000', valorDiscriminacao: '10.00'};
+        var _resultadoEsperado = {base: _base, aliquota: _aliquota, valor: '10.00', valorDiscriminacao: '10.000'};
         $controller(NomeController, {$scope: _scope});
 
         _scope.controlicms.resultadoIcmsProprio(_base, _aliquota);
@@ -52,7 +52,7 @@ describe('controladorICMS', function(){
         _base = 1000;
         _aliquota = 10;
         _aliquotaRed = 10;
-        _resultadoEsperado = {base: _base, aliquota: _aliquota, aliquotaRed: _aliquotaRed, valor: '90.000', valorDiscriminacao: '90.00'};
+        _resultadoEsperado = {base: _base, aliquota: _aliquota, aliquotaRed: _aliquotaRed, valor: '90.00', valorDiscriminacao: '90.000'};
         $controller(NomeController, {$scope: _scope});
 
         _scope.controlicms.resultadoIcmsRed(_base, _aliquota, _aliquotaRed);
@@ -83,7 +83,7 @@ describe('controladorICMS', function(){
     //Adicionar mais testes posteriormente!
 
     it('Limpa o objeto referente ao ICMS Próprio.', inject(function($controller){
-        var _objetoTeste = {base: _base, aliquota: _aliquota, valor: '10.000', valorDiscriminacao: '10.00'};
+        var _objetoTeste = {base: _base, aliquota: _aliquota, valor: '10.00', valorDiscriminacao: '10.000'};
         $controller(NomeController, {$scope: _scope});
 
         _scope.controlicms.valoresIcmsProprio = _objetoTeste;

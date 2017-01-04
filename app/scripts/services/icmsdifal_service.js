@@ -52,8 +52,8 @@ angular.module('DEPGod')
                 this.valorDifal= parseFloat(this.valorDifal).toFixed(2);
                 this.valorFcp = parseFloat(this.valorFcp).toFixed(2);
                 this.valorDestinoeFcp = parseFloat(destino).toFixed(2);
-                this.valorOrigem = parseFloat(origem).toFixed(3);
-                this.valorDestino = parseFloat(destino-this.valorFcp).toFixed(3);
+                this.valorOrigem = parseFloat(origem).toFixed(2);
+                this.valorDestino = parseFloat(destino-this.valorFcp).toFixed(2);
 
          }   
     }

@@ -18,8 +18,8 @@ angular.module('DEPGod')
             if(!(this.base <= 0 || this.aliquota <= 0 || this.aliquota > 100 || this.aliquotaRed <= 0 || this.aliquotaRed > 100)){
                 
                 var resultado = ((this.base - (this.base*this.aliquotaRed/100))*this.aliquota/100);
-                this.valor = parseFloat(resultado).toFixed(3);
-                this.valorDiscriminacao = parseFloat(resultado).toFixed(2);   
+                this.valor = parseFloat(resultado).toFixed(2);
+                this.valorDiscriminacao = parseFloat(resultado).toFixed(3);   
             }
 
         }

@@ -1,5 +1,5 @@
 <body>
-    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <div class="row vertical-center-row">
             <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#icmsProprioModal">ICMS Próprio</button>
             <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#icmsRedModal">Redução de Base</button>
@@ -13,64 +13,63 @@
 <div class="container">
     <div id="icmsProprioModal" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <div class="modal-content col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">ICMS Próprio</h4>
                 </div>
                 <div class="modal-body">
                     <form name="icmsProprioForm">
-                        <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoBase(controlicms.valoresIcmsProprio.base), 'has-success':controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)}">
-                            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                                <label class="help-block" for="lbBaseCalculoProprio">Base de Calculo</label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group" ng-class="{'has-error': !controlicms.validacaoBase(controlicms.valoresIcmsProprio.base), 'has-success':controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)}">
+                                <label class="help-block" for="lbBaseCalculoProprio">Base Calculo</label>
                                 <input type="number" ng-model="controlicms.valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>
+                                <span class="help-block msg" ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)">Valor inválido!</span>
                             </div>
-                            <span class="help-block warning-message" ng-show="!controlicms.validacaoBase(controlicms.valoresIcmsProprio.base)">Valor inválido!</span>
                         </div>
-                        <div class="form-group row" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)}">
-                            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group" ng-class="{'has-error': !controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota), 'has-success':controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)}">
                                 <label class="help-block" for="tbAliquotaIcmsProprio">Alíquota ICMS</label>
                                 <div class="input-group">
                                     <input type="number" ng-model="controlicms.valoresIcmsProprio.aliquota" class="form-control" name="aliquotaIcmsProprio" required/>
                                     <span class="input-group-addon" id="percent-addon">%</span>
                                 </div>
+                                <span class="help-block msg" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)">Valor inválido!</span>
                             </div>
-                            <span class="help-block warning-message" ng-show="!controlicms.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsProprio.aliquota)">Valor inválido!</span>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
                                 <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.resultadoIcmsProprio(controlicms.valoresIcmsProprio.base, controlicms.valoresIcmsProprio.aliquota)" ng-disabled="icmsProprioForm.$invalid">Calcular</button>
                             </div>
+                            <p class="fa fa-question-circle-o pull-right" title="Discriminação Calculo:" data-toggle="popover" data-trigger="hover" data-placement="right"data-content="#discriminacao"></p>
+                            <label class="help-block" for="tbValorIcmsProprio">Valor ICMS</label>
+                            <pre>{{controlicms.valoresIcmsProprio.valor}}</pre>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                                <label class="help-block" for="tbValorIcmsProprio">Valor ICMS</label>
-                                <input type="text" ng-model="controlicms.valoresIcmsProprio.valor" class="form-control " id="valorIcmsProprio" disabled>
-                            </div>
-                        </div>
-                        <div id="discriminacao" class="collapse">
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="discriminacao" class="collapse">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">Discriminação Calculo:</div>
+                                    <div class="panel-body">
                                     <center>
                                     (Base de calculo) * (Alíquota de ICMS)/100
                                     <br></br>
                                     {{controlicms.valoresIcmsProprio.base}} R$ * {{controlicms.valoresIcmsProprio.aliquota}}/100 = {{controlicms.valoresIcmsProprio.valorDiscriminacao}} R$
                                     </center>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <button type="button" class="btn btn-main-sub" data-toggle="collapse" data-target="#discriminacao">Discriminação</button>
-                    <button type="button" class="btn btn-main-sub" ng-click="controlicms.limparProprio(controlicms.icmsProprioForm)">Limpar</button>
-                    <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
+                <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-main-sub" ng-click="controlicms.limparProprio(controlicms.icmsProprioForm)">Limpar</a>
+                        <a type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
     <!-- ICMS Próprio Modal Final -->
 

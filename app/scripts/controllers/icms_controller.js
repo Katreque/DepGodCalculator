@@ -77,5 +77,9 @@ angular.module('DEPGod')
 
             $location.path('/home');
         }
+
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
     }])
 }())
