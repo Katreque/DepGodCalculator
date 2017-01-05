@@ -2,26 +2,24 @@
     'use strict'
 
 angular.module('DEPGod')
-    .factory("IcmsbaseRedService", function(){
+    .factory("IcmsbaseRedModel", function(){
 
-        var IcmsBaseRed = function(base, aliquota, aliquotaRed){
-            this.base = base;
-            this.aliquota = aliquota;
-            this.aliquotaRed = aliquotaRed;
-            this.valor = null;
-            this.valorDiscriminacao = null;
-            this._calculoRed();
+        var IcmsBaseRed = function(){
+            this.base = undefined;
+            this.aliquota = undefined;
+            this.aliquotaRed = undefined;
+            this.valor = 0;
+            this.valorDiscriminacao = 0;
         }
 
-        IcmsBaseRed.prototype._calculoRed = function(){
+        IcmsBaseRed.prototype.isValid = function(){
+            return (this.base > 0) && (this.aliquota > 0 && this.aliquota < 101) && (this.aliquotaRed > 0 && this.aliquotaRed < 101);
+        }
 
-            if(!(this.base <= 0 || this.aliquota <= 0 || this.aliquota > 100 || this.aliquotaRed <= 0 || this.aliquotaRed > 100)){
-                
+        IcmsBaseRed.prototype.calcular = function(){
                 var resultado = ((this.base - (this.base*this.aliquotaRed/100))*this.aliquota/100);
                 this.valor = parseFloat(resultado).toFixed(2);
                 this.valorDiscriminacao = parseFloat(resultado).toFixed(3);   
-            }
-
         }
 
         return IcmsBaseRed;

@@ -14,7 +14,7 @@ describe('controladorICMS', function(){
         icmsdifalService = $injector.get('IcmsdifalService');
     }))
 
-    it('Verifica se o objeto do ICMS Próprio se inicia vazio!', inject(function($controller){
+    it('Verifica se o objeto do ICMS Próprio se inicia corretamente!', inject(function($controller){
         $controller(NomeController, {$scope: _scope})
 
         expect(_scope.controlicms.valoresIcmsProprio).toEqual({});

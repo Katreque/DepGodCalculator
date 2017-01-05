@@ -2,19 +2,19 @@
     'use strict'
 
 angular.module('DEPGod')
-    .controller('controladorICMS', ['$location', 'IcmsproprioService', 'IcmsbaseRedService', 'IcmsdifalService', function($location, IcmsproprioService, IcmsbaseRedService ,IcmsdifalService){
+    .controller('controladorICMS', ['$location', 'IcmsproprioModel', 'IcmsbaseRedModel', 'IcmsdifalService', function($location, IcmsproprioModel, IcmsbaseRedModel ,IcmsdifalService){
         var self = this;
 
-        self.valoresIcmsProprio = {};
-        self.valoresIcmsBaseRed = {};
-        self.valoresIcmsDifal = {};
+        self.valoresIcmsProprio = new IcmsproprioModel();
+        self.valoresIcmsBaseRed = new IcmsbaseRedModel();
+        self.valoresIcmsDifal = null;
 
-        self.resultadoIcmsProprio = function(_base, _aliquota){
-            self.valoresIcmsProprio = new IcmsproprioService(_base, _aliquota);
+        self.resultadoIcmsProprio = function(){
+            self.valoresIcmsProprio = new IcmsproprioModel();
         }
 
-        self.resultadoIcmsRed =  function(_base, _aliquotaRedNormal, _aliquotaRed){
-            self.valoresIcmsBaseRed = new IcmsbaseRedService(_base, _aliquotaRedNormal, _aliquotaRed);
+        self.resultadoIcmsRed =  function(){
+            self.valoresIcmsBaseRed = new IcmsbaseRedModel();
         }
 
          self.resultadoIcmsDifal = function(_ano, _base, _aliquotaInterna, _aliquotaInterestadual, _aliquotaFcp){
@@ -60,12 +60,12 @@ angular.module('DEPGod')
 
         self.limparProprio = function(){
 
-            self.valoresIcmsProprio = null;    
+            self.valoresIcmsProprio = new IcmsproprioModel();    
         }
 
         self.limparRed = function(){
 
-            self.valoresIcmsBaseRed = null;
+            self.valoresIcmsBaseRed = new IcmsbaseRedModel();
         }
 
         self.limparDifal = function(){
@@ -77,9 +77,5 @@ angular.module('DEPGod')
 
             $location.path('/home');
         }
-
-        $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();   
-        });
     }])
 }())
