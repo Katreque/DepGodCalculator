@@ -1,9 +1,9 @@
 <body>
-    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <div class="row vertical-center-row">
             <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#ipiProprioModal">IPI Próprio</button>
             <br>
-            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="voltar()">Voltar</button>
+            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="controlipi.voltar()">Voltar</button>
         </div>
     </div>
 
@@ -11,37 +11,37 @@
             <div class="container">
                 <div id="ipiProprioModal" class="modal fade" role="dialog" tabindex="-1">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content col-sm-10 col-sm-offset-1">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">IPI Próprio</h4>
                             </div>
                             <div class="modal-body">
                                 <form>
-                                    <div class="form-group row">
-                                        <label for="lbBaseIpiProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
+                                    <div class="form-group">
+                                        <label for="lbBaseIpiProprio">Base de Calculo:</label>
                                         <div class="col-sm-3 col-xs-3">
-                                           <input type="number"  ng-model="ipiProprio.Base" class="form-control" id="baseIpiProprio" min='0'>         
+                                           <input type="number"  ng-model="controlipi.valoresipiProprio.base" class="form-control" id="baseIpiProprio">         
                                         </div>
                                     </div>
-                                    <div class="form-group row">    
-                                        <label for="lbAliquotaIpiProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota IPI:</label>
+                                    <div class="form-group">    
+                                        <label for="lbAliquotaIpiProprio">Alíquota IPI:</label>
                                         <div class="col-sm-3 col-xs-3">
                                             <div class="input-group">
-                                                <input type="number" ng-model="ipiProprio.Aliquota" class="form-control" id="aliquotaIpi" min='0' max='100'/>
+                                                <input type="number" ng-model="controlipi.valoresipiProprio.aliquota" class="form-control" id="aliquotaIpi">
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-main btn-block" ng-click="calculoIpiProprio()">Calcular</button>
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <button type="button" class="btn btn-main btn-block" ng-click="controlipi.valoresipiProprio.calcular()">Calcular</button>
                                         </div>
                                     </div>
-                                    <div class="form-group row">    
+                                    <div class="form-group">    
                                         <label for="lbValorIpiProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor IPI:</label>
                                         <div class="col-sm-3 col-xs-3">
-                                            <input type="text" ng-model="ipiProprio.Valor" class="form-control"  id="valorIpiProprio" disabled>
+                                            <input type="text" ng-model="controlipi.valoresipiProprio.Valor" class="form-control"  id="valorIpiProprio" disabled>
                                         </div>
                                     </div>
                                     <p></p>
@@ -51,12 +51,12 @@
                                                 <center>
                                                 (Base de calculo) * (Alíquota de IPI)/100 = (Valor do IPI) 
                                                 <br></br>
-                                                {{ipiProprio.Base}} R$ * {{ipiProprio.Aliquota}}/100 = {{ipiProprio.ValorDiscriminacao}} R$
+                                                {{controlipi.ipiProprio.base}} R$ * {{controlipi.ipiProprio.aliquota}}/100 = {{controlipi.ipiProprio.valorDiscriminacao}} R$
                                                 </center>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-main-sub" ng-click="limparIpiProprio()">Limpar</button>
+                                            <button type="button" class="btn btn-main-sub" ng-click="controlipi.limparIpiProprio()">Limpar</button>
                                             <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>

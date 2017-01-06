@@ -1,7 +1,7 @@
 'use strict';
  
 angular.module('DEPGod')
-.controller('controladorHome', function($location){
+.controller('controladorHome', ['$location', function($location){
     var self = this;
 
         self.calculoST = function(){
@@ -19,4 +19,4 @@ angular.module('DEPGod')
          self.sobre = function(){
             $location.path('/sobre');
         }
-});
+}]);

@@ -24,6 +24,7 @@ angular.module('DEPGod')
 
         .when('/calculoipi', {
             controller: 'controladorIPI',
+            controllerAs: 'controlipi',
             templateUrl: './app/views/calculoipi_view.html',
         })
 

@@ -22,6 +22,23 @@ angular.module('DEPGod')
                 this.valorDiscriminacao = parseFloat(resultado).toFixed(3);   
         }
 
+        IcmsBaseRed.prototype.validacaoBase = function(){
+            
+            if(this.base <= 0){
+
+                    return false;
+                }
+                    return true;
+        }
+
+        IcmsBaseRed.prototype.validacaoAliquotaNaoAceitaZero = function(aliquota){
+            if(aliquota <= 0 || aliquota > 100){
+
+                    return false;
+                }
+                    return true;
+        }
+
         return IcmsBaseRed;
     })
 }())
