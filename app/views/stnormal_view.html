@@ -1,94 +1,104 @@
 <body>
-    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <div class="row vertical-center-row">
             <button type="button" class="btn btn-main btn-lg btn-block" data-toggle="modal" data-target="#STProprioModal">ST Próprio</button>
             <br>
-            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="voltar()">Voltar</button>
+            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="controlst.voltar()">Voltar</button>
         </div>
     </div>
     <!-- ST Modal Início -->
         <div class="container">
             <div id="STProprioModal" class="modal fade" role="dialog" tabindex="-1">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content col-sm-10 col-sm-offset-1 col-xs-12">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">ST Próprio</h4>   
                         </div>
                         <div class="modal-body">
-                            <form>                               
-                                    <div class="form-group row">
-                                        <label for="lbBaseStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Base de Calculo:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                           <input type="number" ng-model="stProprio.Base" class="form-control" id="baseStProprio" min='1'>         
-                                        </div>
+                            <form name="StProprioForm">
+                                <div class="col-sm-6 col-xs-12">                               
+                                    <div class="form-group" ng-class="{'has-error': !controlst.valoresStProprio.validacaoBase(), 'has-success': controlst.valoresStProprio.validacaoBase()}">
+                                        <label class="help-block" for="lbBaseStProprio">Base Cálculo</label>
+                                        <input type="number" ng-model="controlst.valoresStProprio.base" class="form-control">
+                                        <span class="help-block msg" ng-show="!controlst.valoresStProprio.validacaoBase()">Valor inválido!</span>     
                                     </div>
-                                    <div class="form-group row">    
-                                        <label for="lbAliquotaInternaStPropria" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interna:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                            <div class="input-group">
-                                                <input type="number" ng-model="stProprio.AliquotaInterna" class="form-control" id="aliquotaInternaStPropria" min='1' max='100'/>
-                                                <span class="input-group-addon" id="percent-addon">%</span>
+                                </div>
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error': !controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.ipi), 'has-success':controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.ipi)}">    
+                                        <label class="help-block" for="lbValorIpiStProprio">IPI</label>
+                                        <input type="number" ng-model="controlst.valoresStProprio.ipi" class="form-control" id="valorIpiStProprio"/>
+                                        <span class="help-block msg" ng-show="!controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.ipi)">Valor inválido!</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error': !controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterna), 'has-success': controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterna)}">    
+                                        <label class="help-block" for="lbAliquotaInternaStPropria">Alíq. Interna</label>
+                                        <div class="input-group">
+                                            <input type="number" ng-model="controlst.valoresStProprio.aliquotaInterna" class="form-control"/>
+                                            <span class="input-group-addon" id="percent-addon">%</span>
+                                        </div>
+                                        <span class="help-block msg" ng-show="!controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterna)">Valor inválido!</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error': !controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterestadual) || !controlst.valoresStProprio.validacaoAliquotaInterestadual(), 'has-success': controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterestadual)}">    
+                                        <label class="help-block" for="lbAliquotaInterestStPropria">Alíq. Interestad.</label>
+                                        <div class="input-group">
+                                            <input type="number" ng-model="controlst.valoresStProprio.aliquotaInterestadual" class="form-control"/>
+                                            <span class="input-group-addon" id="percent-addon">%</span>
+                                        </div>
+                                        <span class="help-block msg" ng-show="!controlst.valoresStProprio.validacaoAliquotaNaoAceitaZero(controlst.valoresStProprio.aliquotaInterestadual) || !controlst.valoresStProprio.validacaoAliquotaInterestadual()">Valor inválido!</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error': !controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.mva), 'has-success': controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.mva)}">    
+                                        <label class="help-block" for="lbMva">Alíq. MVA</label>
+                                        <div class="input-group">
+                                            <input type="number" ng-model="controlst.valoresStProprio.mva" class="form-control">
+                                            <span class="input-group-addon" id="percent-addon">%</span>
+                                        </div>
+                                        <span class="help-block msg" ng-show="!controlst.valoresStProprio.validacaoAliquotaAceitaZero(controlst.valoresStProprio.mva)">Valor inválido!</span>
+                                    </div>
+                                </div>                    
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-nmain btn-block" ng-click="controlst.valoresStProprio.calcular()" ng-disabled="!controlst.valoresStProprio.isValid()">Calcular</button>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">    
+                                        <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoSt" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                                        <label for="lbValorStProprio">Valor ST</label>
+                                        <pre ng-bind="controlst.valoresStProprio.valorSt | currency"></pre>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div id="discriminacaoSt" class="collapse">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">Discriminação Calculo:
+                                                <button type="button" class="close" data-toggle="collapse" data-target="#discriminacaoSt">&times;</button>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">    
-                                        <label for="lbAliquotaInterestStPropria" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Alíquota Interes.:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                            <div class="input-group">
-                                                <input type="number" ng-model="stProprio.AliquotaInterest" class="form-control" id="aliquotaInterestStPropria" min='1' max='100'/>
-                                                <span class="input-group-addon" id="percent-addon">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">    
-                                        <label for="lbMva" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">MVA:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                            <div class="input-group">
-                                                <input type="number" ng-model="stProprio.Mva" class="form-control" id="Mva" min='0'>
-                                                <span class="input-group-addon" id="percent-addon">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">    
-                                        <label for="lbValorIpiStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">IPI:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                            <input type="number" ng-model="stProprio.Ipi" class="form-control" id="valorIpiStProprio" min='0'/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-                                            <button type="button" class="btn btn-main btn-block" ng-click="calculoST()">Calcular</button>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">    
-                                        <label for="lbValorStProprio" class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">Valor ST:</label>
-                                        <div class="col-sm-3 col-xs-3">
-                                            <input type="text" ng-model="stProprio.ValorSt" class="form-control"  id="valorStProprio" disabled>
-                                        </div>
-                                    </div>
-                                    <p></p>
-                                    <div class="panel panel-primary">
-                                        <div class="panel-heading">Discriminação Calculo:</div>
                                             <div class="panel-body">
                                                 <center>
                                                 <h6>(Base ICMS [Desconsiderar IPI])*(Al.Interest.) = (ICMS)</h6>
-                                                <h5>{{stProprio.Base}}*{{stProprio.AliquotaInterest}} = {{stProprio.ValorIcms}}</h5>
-                                                <br>
+                                                <h5>{{controlst.valoresStProprio.base}}*{{controlst.valoresStProprio.aliquotaInterest}} = {{controlst.valoresStProprio.valorIcms}}</h5>                                                
                                                 <h6>(Base ICMS [Considera IPI])*(1+(MVA/100)) = (Base ST)</h6>
-                                                <h5>{{stProprio.BaseStIpi}}*(1+({{stProprio.Mva}}/100)) = {{stProprio.BaseSt}}</h5>
-                                                <br>
+                                                <h5>{{controlst.valoresStProprio.baseStIpi}}*(1+({{controlst.valoresStProprio.mva}}/100)) = {{controlst.valoresStProprio.baseSt}}</h5>
                                                 <h6>(Base ST)*(Al.Interna/100) - (ICMS) = (ST)</h6>
-                                                <h5>{{stProprio.BaseSt}}*({{stProprio.AliquotaInterna}}/100) - {{stProprio.ValorIcms}} = {{stProprio.ValorStDiscriminacao}}</h5>
+                                                <h5>{{controlst.valoresStProprio.baseSt}}*({{controlst.valoresStProprio.aliquotaInterna}}/100) - {{controlst.valoresStProprio.valorIcms}} = {{controlst.valoresStProprio.valorDiscriminacao}}</h5>
                                                 </center>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-main-sub" ng-click="limparStProprio()">Limpar</button>
-                                            <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
-                                        </div>
                                     </div>
+                                </div>
                             </form>
+                        </div>
+                        <div class="col-xs-12 col-xs-offset-0">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-main-sub" ng-click="controlst.limparSt()">Limpar</button>
+                                <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

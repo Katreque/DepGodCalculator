@@ -83,7 +83,7 @@ angular.module('DEPGod')
          }
 
          IcmsDifal.prototype.validacaoAliquotaInternaMaiorInterest =  function(){
-             if(this.aliquotaInterna < this.aliquotaInterestadual){
+             if(this.aliquotaInterna <= this.aliquotaInterestadual){
                 return false;
             }
             return true;

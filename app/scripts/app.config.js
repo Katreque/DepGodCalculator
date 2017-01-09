@@ -13,6 +13,7 @@ angular.module('DEPGod')
 
         .when('/calculost', {
             controller: 'controladorST',
+            controllerAs: 'controlst',
             templateUrl: './app/views/stnormal_view.html',
         })
 

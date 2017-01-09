@@ -15,8 +15,23 @@ angular.module('DEPGod')
     }
 
     IpiProprio.prototype.calcular = function(){
-        this.valor = parseFloat(this.base*this.aliquota/100).toFixed(2);
-        this.valorDiscriminacao = parseFloat(this.valor).toFixed(3);
+        var resultado = this.base*this.aliquota/100;
+        this.valor = parseFloat(resultado).toFixed(2);
+        this.valorDiscriminacao = parseFloat(resultado).toFixed(3);
+    }
+
+    IpiProprio.prototype.validacaoBase = function(){
+        if(this.base < 0){
+            return false;
+        }
+        return true;
+    }
+
+    IpiProprio.prototype.validacaoAliquotaNaoAceitaZero = function(){
+    if(this.aliquota <= 0 || this.aliquota > 101){
+            return false;
+        }
+        return true;
     }
         return IpiProprio;
     })

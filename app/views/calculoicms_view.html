@@ -88,14 +88,14 @@
                                 <form name="icmsRedForm">
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoBase(), 'has-success':controlicms.valoresIcmsBaseRed.validacaoBase()}">
-                                           <label class="help-block" for="lbBaseIcmsRed">Base de Calculo:</label>
+                                           <label class="help-block" for="lbBaseIcmsRed">Base de Calculo</label>
                                            <input type="number" ng-model="controlicms.valoresIcmsBaseRed.base" class="form-control" name="baseIcmsRed" required>         
                                            <span class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoBase()">Valor inválido!</span> 
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota), 'has-success':controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)}">    
-                                            <label class="help-block" for="lbAliquotaIcms">Alíquota ICMS:</label>
+                                            <label class="help-block" for="lbAliquotaIcms">Alíquota ICMS</label>
                                             <div class="input-group">
                                                 <input type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquota" class="form-control" name="aliquotaIcms" required>
                                                 <span class="input-group-addon" id="percent-addon">%</span>
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed), 'has-success':controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)}">    
-                                            <label class="help-block" for="lbAliquotaIcmsReduzida">Redução:</label>
+                                            <label class="help-block" for="lbAliquotaIcmsReduzida">Redução</label>
                                             <div class="input-group">
                                                 <input type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquotaRed" class="form-control" name="aliquotaIcmsReduzida" required>
                                                 <span class="input-group-addon" id="percent-addon">%</span>
@@ -124,7 +124,7 @@
                                     <div class="col-xs-12">
                                         <div id="discriminacaoRed" class="collapse">
                                             <div class="panel panel-primary">
-                                                <div class="panel-heading">Discriminação Calculo:
+                                                <div class="panel-heading">Discriminação Calculo
                                                     <button type="button" class="close" data-toggle="collapse" data-target="#discriminacaoRed">&times;</button>
                                                 </div>
                                                 <div class="panel-body">
@@ -225,7 +225,7 @@
                                     <div class="col-xs-12">
                                         <div id="discriminacaoDifal" class="collapse">
                                             <div class="panel panel-primary">
-                                                <div class="panel-heading">Discriminação Calculo:
+                                                <div class="panel-heading">Discriminação Calculo
                                                     <button type="button" class="close" data-toggle="collapse" data-target="#discriminacaoDifal">&times;</button>
                                                 </div>
                                                 <div class="panel-body">
