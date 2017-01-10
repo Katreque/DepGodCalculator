@@ -48,7 +48,7 @@
                         <div class="col-xs-12">
                             <div id="discriminacao" class="collapse">
                                 <div class="panel panel-primary">
-                                    <div class="panel-heading">Discriminação Calculo:
+                                    <div class="panel-heading">Discriminação Calculo
                                         <button type="button" class="close" data-toggle="collapse" data-target="#discriminacao">&times;</button>
                                     </div>
                                     <div class="panel-body">
@@ -118,7 +118,7 @@
                                             <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsBaseRed.calcular()" ng-disabled="!controlicms.valoresIcmsBaseRed.isValid()">Calcular</button>
                                         </div> 
                                         <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoRed" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
-                                        <label class="help-block" for="lbValorIcmsRed">Valor ICMS:</label>
+                                        <label class="help-block" for="lbValorIcmsRed">Valor ICMS</label>
                                         <pre ng-bind="controlicms.valoresIcmsBaseRed.valor | currency"></pre>
                                     </div>
                                     <div class="col-xs-12">
@@ -230,14 +230,13 @@
                                                 </div>
                                                 <div class="panel-body">
                                                     <center>
-                                                        <h6>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
-                                                        <h5>{{controlicms.valoresIcmsDifal.base}} R$ * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal}} R$</h5>
-                                                        <br>
                                                         <h6>2016 = [Origem:60%/Destino:40%]</h6>
                                                         <h6>2017 = [Origem:40%/Destino:60%]</h6>
                                                         <h6>2018 = [Origem:20%/Destino:80%]</h6>
                                                         <h6>2019 = [Origem:0%/Destino:100%]</h6>
-                                                        <br>FCP soma ao Destino</br>
+                                                        <h5>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
+                                                        <h5>{{controlicms.valoresIcmsDifal.base}} R$ * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal}} R$</h5>                 
+                                                        <h5>FCP somado ao Destino</h5>
                                                         <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp}} = {{controlicms.valoresIcmsDifal.valorDestino}} + {{controlicms.valoresIcmsDifal.valorFcp}}</h5>
                                                     </center>
                                                 </div>

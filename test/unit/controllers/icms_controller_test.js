@@ -9,37 +9,12 @@ describe('controladorICMS', function(){
         _rootscope = $injector.get('$rootScope');
         _scope = _rootscope.$new();
         _location = $injector.get('$location');
-        icmsproprioService = $injector.get('IcmsproprioService');
-        icmsbaseredService = $injector.get('IcmsbaseRedService');
-        icmsdifalService = $injector.get('IcmsdifalService');
     }))
 
-    it('Verifica se o objeto do ICMS Próprio se inicia corretamente!', inject(function($controller){
+    it('Verifica se o construtor do ICMS Próprio se inicia com os valores prédefinidos corretamente!', inject(function($controller){
+        var _resultadoEsperado = {base: undefined, aliquota: undefined, valor: 0, valorDiscriminacao: 0};
+
         $controller(NomeController, {$scope: _scope})
-
-        expect(_scope.controlicms.valoresIcmsProprio).toEqual({});
-    }))
-
-    it('Verifica se o objeto do ICMS Red se inicia vazio!', inject(function($controller){
-        $controller(NomeController, {$scope: _scope})
-
-        expect(_scope.controlicms.valoresIcmsBaseRed).toEqual({});
-    }))
-
-    it('Verifica se o objeto do ICMS Difal se inicia vazio!', inject(function($controller){
-        $controller(NomeController, {$scope: _scope})
-
-        expect(_scope.controlicms.valoresIcmsDifal).toEqual({});
-    }))
-
-    it('Retorna os valores esperados com a entrada pré-definida no cálculo do ICMS Próprio e preencha o objeto correspondente da maneira correta.', inject(function($controller){
-
-        var _base = 100;
-        var _aliquota = 10;
-        var _resultadoEsperado = {base: _base, aliquota: _aliquota, valor: '10.00', valorDiscriminacao: '10.000'};
-        $controller(NomeController, {$scope: _scope});
-
-        _scope.controlicms.resultadoIcmsProprio(_base, _aliquota);
         _rootscope.$digest();
 
         expect(_scope.controlicms.valoresIcmsProprio.base).toEqual(_resultadoEsperado.base);
@@ -48,14 +23,10 @@ describe('controladorICMS', function(){
         expect(_scope.controlicms.valoresIcmsProprio.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
     }))
 
-    it('Retorna os valores esperados com a entrada pré-definida no cálculo do ICMS Red. e preencha o objeto correspondente da maneira correta.', inject(function($controller){
-        _base = 1000;
-        _aliquota = 10;
-        _aliquotaRed = 10;
-        _resultadoEsperado = {base: _base, aliquota: _aliquota, aliquotaRed: _aliquotaRed, valor: '90.00', valorDiscriminacao: '90.000'};
-        $controller(NomeController, {$scope: _scope});
+    it('Verifica se o construtor do ICMS Red se inicia com os valores prédefinidos corretamente!', inject(function($controller){
+        var _resultadoEsperado = {base: undefined, aliquota: undefined, aliquota: undefined, valor: 0, valorDiscriminacao: 0};
 
-        _scope.controlicms.resultadoIcmsRed(_base, _aliquota, _aliquotaRed);
+        $controller(NomeController, {$scope: _scope})
         _rootscope.$digest();
 
         expect(_scope.controlicms.valoresIcmsBaseRed.base).toEqual(_resultadoEsperado.base);
@@ -65,31 +36,83 @@ describe('controladorICMS', function(){
         expect(_scope.controlicms.valoresIcmsBaseRed.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
     }))
 
-    it('Retorna os valores esperados com a entrada pré-definida no cálculo do ICMS Difal e preencha o objeto correspondente da maneira correta.', inject(function($controller){
-        _ano = 2016;
-        _base = 100;
-        _aliquotaInterna = 18;
-        _aliquotaInterestadual = 12;
-        _aliquotaFcp = 0;
-        _resultadoEsperado = {ano: _ano, base: _base, aliquotaInterna: _aliquotaInterna, aliquotaInterestadual: _aliquotaInterestadual, aliquotaFcp: _aliquotaFcp, valorDifal : '60.00', valorFcp: null, valorOrigem: '36.000', valorDestino: '24.000', valorDestinoeFcp: '24.00'}
-        $controller(NomeController, {$scope: _scope});
+    it('Verifica se o construtor do ICMS Difal se inicia com os valores prédefinidos corretamente!', inject(function($controller){
+        var _resultadoEsperado = {ano: undefined, base: undefined, aliquotaInterna: undefined, aliquotaInterestadual: undefined, aliquotaFcp: undefined, valorDifal: undefined, valorFcp: undefined, valorOrigem: 0, valorDestino: 0, valorDestinoeFcp: 0};
 
-        _scope.controlicms.resultadoIcmsDifal(_ano, _base, _aliquotaInterna, _aliquotaInterestadual, _aliquotaFcp)
+        $controller(NomeController, {$scope: _scope})
         _rootscope.$digest();
 
         expect(_scope.controlicms.valoresIcmsDifal.ano).toEqual(_resultadoEsperado.ano);
+        expect(_scope.controlicms.valoresIcmsDifal.base).toEqual(_resultadoEsperado.base);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaInterna).toEqual(_resultadoEsperado.aliquotaInterna);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaInterestadual).toEqual(_resultadoEsperado.aliquotaInterestadual);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaFcp).toEqual(_resultadoEsperado.aliquotaFcp);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDifal).toEqual(_resultadoEsperado.valorDifal);
+        expect(_scope.controlicms.valoresIcmsDifal.valorFcp).toEqual(_resultadoEsperado.valorFcp);
+        expect(_scope.controlicms.valoresIcmsDifal.valorOrigem).toEqual(_resultadoEsperado.valorOrigem);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDestino).toEqual(_resultadoEsperado.valorDestino);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDestinoeFcp).toEqual(_resultadoEsperado.valorDestinoeFcp);
     }))
 
-    //Adicionar mais testes posteriormente!
+    it('Preenche o construtor ICMS Próprio e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', inject(function($controller){
+        var _valoresIniciais = {base: 50, aliquota: 10, valor: 15, valorDiscriminacao: 15};
+        var _resultadoEsperado = {base: undefined, aliquota: undefined, valor: 0, valorDiscriminacao: 0};
 
-    it('Limpa o objeto referente ao ICMS Próprio.', inject(function($controller){
-        var _objetoTeste = {base: _base, aliquota: _aliquota, valor: '10.00', valorDiscriminacao: '10.000'};
-        $controller(NomeController, {$scope: _scope});
-
-        _scope.controlicms.valoresIcmsProprio = _objetoTeste;
+        $controller(NomeController, {$scope: _scope})
+        _scope.controlicms.valoresIcmsProprio = _valoresIniciais;
         _scope.controlicms.limparProprio();
         _rootscope.$digest();
 
-        expect(_scope.controlicms.valoresIcmsProprio).toEqual(null);
+        expect(_scope.controlicms.valoresIcmsBaseRed.base).toEqual(_resultadoEsperado.base);
+        expect(_scope.controlicms.valoresIcmsBaseRed.aliquota).toEqual(_resultadoEsperado.aliquota);
+        expect(_scope.controlicms.valoresIcmsBaseRed.aliquotaRed).toEqual(_resultadoEsperado.aliquotaRed);
+        expect(_scope.controlicms.valoresIcmsBaseRed.valor).toEqual(_resultadoEsperado.valor);
+        expect(_scope.controlicms.valoresIcmsBaseRed.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
     }))
+
+    it('Preenche o construtor ICMS Red e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', inject(function($controller){
+        var _valoresIniciais = {base: 15, aliquota: 15, aliquotaRed: 15, valor: 15, valorDiscriminacao: 15};
+        var _resultadoEsperado = {base: undefined, aliquota: undefined, aliquotaRed: undefined, valor: 0, valorDiscriminacao: 0};
+
+        $controller(NomeController, {$scope: _scope})
+        _scope.controlicms.valoresIcmsBaseRed = _valoresIniciais;
+        _scope.controlicms.limparRed();
+        _rootscope.$digest();
+
+        expect(_scope.controlicms.valoresIcmsBaseRed.base).toEqual(_resultadoEsperado.base);
+        expect(_scope.controlicms.valoresIcmsBaseRed.aliquota).toEqual(_resultadoEsperado.aliquota);
+        expect(_scope.controlicms.valoresIcmsBaseRed.aliquotaRed).toEqual(_resultadoEsperado.aliquota);
+        expect(_scope.controlicms.valoresIcmsBaseRed.valor).toEqual(_resultadoEsperado.valor);
+        expect(_scope.controlicms.valoresIcmsBaseRed.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
+    }))
+
+    it('Preenche o construtor ICMS Difal e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', inject(function($controller){
+        var _valoresIniciais = {ano: 52, base: 50, aliquotaInterna: 50, aliquotaInterestadual: 50, aliquotaFcp: 50, valorDifal: 50, valorFcp: 50, valorOrigem: 50, valorDestino: 50, valorDestinoeFcp: 50};
+        var _resultadoEsperado = {ano: undefined, base: undefined, aliquotaInterna: undefined, aliquotaInterestadual: undefined, aliquotaFcp: undefined, valorDifal: undefined, valorFcp: undefined, valorOrigem: 0, valorDestino: 0, valorDestinoeFcp: 0};
+
+        $controller(NomeController, {$scope: _scope})
+        _scope.controlicms.valoresIcmsDifal = _valoresIniciais;
+        _scope.controlicms.limparDifal();
+        _rootscope.$digest();
+
+        expect(_scope.controlicms.valoresIcmsDifal.ano).toEqual(_resultadoEsperado.ano);
+        expect(_scope.controlicms.valoresIcmsDifal.base).toEqual(_resultadoEsperado.base);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaInterna).toEqual(_resultadoEsperado.aliquotaInterna);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaInterestadual).toEqual(_resultadoEsperado.aliquotaInterestadual);
+        expect(_scope.controlicms.valoresIcmsDifal.aliquotaFcp).toEqual(_resultadoEsperado.aliquotaFcp);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDifal).toEqual(_resultadoEsperado.valorDifal);
+        expect(_scope.controlicms.valoresIcmsDifal.valorFcp).toEqual(_resultadoEsperado.valorFcp);
+        expect(_scope.controlicms.valoresIcmsDifal.valorOrigem).toEqual(_resultadoEsperado.valorOrigem);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDestino).toEqual(_resultadoEsperado.valorDestino);
+        expect(_scope.controlicms.valoresIcmsDifal.valorDestinoeFcp).toEqual(_resultadoEsperado.valorDestinoeFcp);
+    }))
+
+    it('Verifica se o botão voltar está funcionando corretamente.', inject(function($controller){
+        $controller(NomeController, {$scope: _scope})
+        spyOn(_location, 'path')
+        _scope.controlicms.voltar();
+
+        expect(_location.path).toHaveBeenCalledWith('/home')
+    }))
+
 })

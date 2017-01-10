@@ -10,14 +10,14 @@ angular.module('DEPGod')
             this.valorDiscriminacao = 0;
         }
 
+        IcmsProprio.prototype.isValid = function(){
+            return (this.base > 0) && (this.aliquota > 0 && this.aliquota < 101);
+        }
+
         IcmsProprio.prototype.calcular = function(){
             var resultado = this.base*this.aliquota/100;
             this.valor = parseFloat(resultado).toFixed(2);
             this.valorDiscriminacao = parseFloat(resultado).toFixed(3);       
-        }
-
-        IcmsProprio.prototype.isValid = function(){
-            return (this.base > 0) && (this.aliquota > 0 && this.aliquota < 101);
         }
 
         IcmsProprio.prototype.validacaoBase = function(){
