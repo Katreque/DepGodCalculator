@@ -34,26 +34,42 @@ describe('IcmsbaseRedModel', function(){
             _construtor.aliquota = 100;
             _construtor.aliquotaRed = 100;
             expect(_construtor.isValid()).toBe(true);
+
+            _construtor.base = 100;
+            _construtor.aliquota = 10;
+            _construtor.aliquotaRed = 10;
+            expect(_construtor.isValid()).toBe(true);
         })
 
         it('valores acima de 100 para aliquota. Deve retornar false!', function(){
             var _construtor = new IcmsbaseRedModel();
 
+            _construtor.base = 100;
             _construtor.aliquota = 101;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = 100;
+            _construtor.aliquota = 10;
             _construtor.aliquotaRed = 101;
             expect(_construtor.isValid()).toBe(false);
         })
 
         it('Valor neutro. Deve retornar false!', function(){
             var _construtor = new IcmsbaseRedModel();
+
             _construtor.base = 0;
+            _construtor.aliquota = 10;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = 100;
             _construtor.aliquota = 0;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = 100;
+            _construtor.aliquota = 10;
             _construtor.aliquotaRed = 0;
             expect(_construtor.isValid()).toBe(false);
         })
@@ -62,11 +78,17 @@ describe('IcmsbaseRedModel', function(){
             var _construtor = new IcmsbaseRedModel();
 
             _construtor.base = -1;
+            _construtor.aliquota = 10;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = 100;
             _construtor.aliquota = -1;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = 100;
+            _construtor.aliquota = 10;
             _construtor.aliquotaRed = -1;
             expect(_construtor.isValid()).toBe(false);
         })
@@ -75,11 +97,17 @@ describe('IcmsbaseRedModel', function(){
             var _construtor = new IcmsbaseRedModel();
 
             _construtor.base = "";
+            _construtor.aliquota = 10;
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = -1;
             _construtor.aliquota = "";
+            _construtor.aliquotaRed = 10;
             expect(_construtor.isValid()).toBe(false);
 
+            _construtor.base = -1;
+            _construtor.aliquota = 10;
             _construtor.aliquotaRed = "";
             expect(_construtor.isValid()).toBe(false);
         })

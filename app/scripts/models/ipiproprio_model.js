@@ -21,14 +21,14 @@ angular.module('DEPGod')
     }
 
     IpiProprio.prototype.validacaoBase = function(){
-        if(this.base < 0){
+        if(this.base <= 0){
             return false;
         }
         return true;
     }
 
     IpiProprio.prototype.validacaoAliquotaNaoAceitaZero = function(){
-    if(this.aliquota <= 0 || this.aliquota > 101){
+    if(this.aliquota <= 0 || this.aliquota > 100){
             return false;
         }
         return true;

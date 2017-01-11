@@ -17,7 +17,7 @@ angular.module('DEPGod')
         }
 
     StProprio.prototype.isValid = function(){
-        return (this.base > 0) && (this.aliquotaInterna > 0 && this.aliquotaInterna < 101) && (this.aliquotaInterestadual > 0 && this.aliquotaInterestadual < 101) && (this.mva >= 0 && this.mva < 101) && (this.ipi >= 0 && this.ipi < 101) && (this.aliquotaInterna > this.aliquotaInterestadual);
+        return (this.base > 0) && (this.aliquotaInterna > 0 && this.aliquotaInterna < 101) && (this.aliquotaInterestadual > 0 && this.aliquotaInterestadual < 101) && (this.mva >= 0 && this.mva < 101) && (this.ipi >= 0) && (this.aliquotaInterna > this.aliquotaInterestadual);
     }
 
     StProprio.prototype.calcular = function(){

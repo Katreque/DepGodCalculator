@@ -199,7 +199,7 @@
                                     <div class="form-group"  ng-class="{'has-error': !controlicms.valoresIcmsDifal.validacaoAliquotaAceitaZero(), 'has-success':controlicms.valoresIcmsDifal.validacaoAliquotaAceitaZero()}">    
                                         <label class="help-block" for="lbFcp">Alíq. FCP</label>
                                         <div class="input-group">
-                                            <input type="number" ng-model="controlicms.valoresIcmsDifal.aliquotaFcp" class="form-control" name="aliquotaFcp" required>
+                                            <input type="number" ng-model="controlicms.valoresIcmsDifal.aliquotaFcp" class="form-control" name="aliquotaFcp">
                                             <span class="input-group-addon" id="percent-addon">%</span>
                                         </div>
                                        <span class="help-block msg" ng-show="!controlicms.valoresIcmsDifal.validacaoAliquotaAceitaZero()">Valor inválido!</span>
@@ -234,9 +234,10 @@
                                                         <h6>2017 = [Origem:40%/Destino:60%]</h6>
                                                         <h6>2018 = [Origem:20%/Destino:80%]</h6>
                                                         <h6>2019 = [Origem:0%/Destino:100%]</h6>
-                                                        <h5>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
+                                                        <h6>-</h6>
+                                                        <h6>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
                                                         <h5>{{controlicms.valoresIcmsDifal.base}} R$ * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal}} R$</h5>                 
-                                                        <h5>FCP somado ao Destino</h5>
+                                                        <h6>FCP somado ao Destino</h5>
                                                         <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp}} = {{controlicms.valoresIcmsDifal.valorDestino}} + {{controlicms.valoresIcmsDifal.valorFcp}}</h5>
                                                     </center>
                                                 </div>
