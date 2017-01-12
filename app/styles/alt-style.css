@@ -1,0 +1,69 @@
+body {
+    font-size: 14px;
+    font-family: "Open Sans",sans-serif;
+    background-color: #fafbfc
+}
+
+.alt-fundo-branco,form {
+    background-color: #fff
+}
+
+.alt-texto-color-white {
+    color: #fff
+}
+
+.alt-botao-acao-tabela {
+    font-size: 20px;
+    padding: 0 5px
+}
+
+.alt-sombra-secundaria {
+    box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24)
+}
+
+.alt-sombra-primaria {
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)
+}
+
+input.alt-input-invalido,input.ng-invalid.alt-validavel-sem-dirty,input.ng-invalid.ng-dirty,select.alt-input-invalido,select.ng-invalid.alt-validavel-sem-dirty,select.ng-invalid.ng-dirty,textarea.alt-input-invalido,textarea.ng-invalid.alt-validavel-sem-dirty,textarea.ng-invalid.ng-dirty {
+    border: 1px solid #d43f3a;
+    box-shadow: 0 0 1px #d43f3a
+}
+
+.alt-fonte-pequena {
+    font-size: 12px
+}
+
+.alt-titulo-view {
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+    color: #777
+}
+
+.alt-nao-selecionavel {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.alt-hand {
+    cursor: pointer
+}
+
+.alt-titulo-importante {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc
+}
+
+.alt-sombra-branca {
+    box-shadow: 0 0 3px #fff
+}
+
+.alt-table-com-borda {
+    border: 1px solid #ddd
+}
+
+select {
+    border-color: #ccc
+}

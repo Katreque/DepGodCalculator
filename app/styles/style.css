@@ -22,18 +22,12 @@
 }
 
 .navbar{
-    background-color: #337ab7;
-    border-color: white;
-    color: white;
-}
-
-.navbar .navbar-brand{
-    font-family: 'Roboto', sans-serif;
-    color: white;
+    background-color: #4682B4;
+    border-color: #4682B4;
+    color: whitesmoke;
 }
 
 .navbar .navbar-nav > li > a {
-    color: white;
     transition-duration: 0.4s;
 }
 
@@ -45,7 +39,6 @@
 .navbar .navbar-nav > .active > a:hover, 
 .navbar .navbar-nav > .active > a:focus {
     color: #337ab7;
-    background-color: white;
 }
 
 .form-control[disabled]{

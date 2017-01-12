@@ -1,0 +1,12 @@
+#alt-rodape {
+    padding: 15px 25px;
+    overflow: hidden;
+    background-color: rgba(43,120,158,.86);
+    color: #fff;
+    margin-left: 0;
+    border-top: 2px solid #558B2F
+}
+
+#alt-rodape a {
+    color: #fff
+}

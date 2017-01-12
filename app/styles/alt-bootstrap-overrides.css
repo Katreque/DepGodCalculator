@@ -1,0 +1,220 @@
+.modal-title,.nav-tabs>li.active>a,.nav-tabs>li>a {
+    color: #333
+}
+
+.btn:active,.btn:focus,select.ng-invalid.ng-dirty {
+    outline: 0
+}
+
+.modal-body p:last-of-type,.navbar,.table,blockquote {
+    margin-bottom: 0
+}
+
+.form-control,.input-group-addon,.input-group-btn:last-child>.btn,.input-group-lg>.form-control,.input-group-lg>.input-group-addon,.input-group>.form-control,.list-group .list-group-item,.main-card,.modal-content,.panel {
+    border-radius: 0
+}
+
+.tooltip {
+    font-size: 13px
+}
+
+.btn {
+    border-radius: 2px
+}
+
+.btn,.btn:disabled {
+    box-shadow: 1px 1px 0 #ddd
+}
+
+.btn.btn-link,.form-control,.modal-content {
+    box-shadow: none
+}
+
+.modal-content {
+    border: none
+}
+
+.modal-body {
+    font-size: 14px
+}
+
+.modal-header .close {
+    font-size: 24px
+}
+
+.form-control {
+    font-size: 14px
+}
+
+.nav-tabs>li>a {
+    border-radius: 0;
+    padding: 10px 20px
+}
+
+.modal-header {
+    padding: 10px 15px
+}
+
+.bold {
+    font-weight: 700
+}
+
+.label-danger,.label-info,.label-success {
+    background-color: transparent;
+    font-size: 90%;
+    font-weight: 400
+}
+
+.label-danger {
+    border: 1px solid #D9534E;
+    color: #D9534E
+}
+
+.label-info {
+    border: 1px solid #71BBD2;
+    color: #619BAD
+}
+
+.label-success {
+    border: 1px solid #00AB00;
+    color: #00AB00
+}
+
+.table>tbody>tr {
+    word-break: break-word
+}
+
+.table>tfoot>tr>td,.table>thead>tr>th {
+    color: #777;
+    font-size: 12px
+}
+
+.table>thead>tr>th {
+    border-bottom: none;
+    font-weight: 400
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
+    color: #000;
+    font-size: 13px;
+    line-height: 2.3
+}
+
+.table .label {
+    display: block;
+    margin-top: 5px;
+    padding: 5px
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #f1f2f3
+}
+
+.btn.btn-primary {
+    background-color: #558B2F;
+    border: 1px solid #7CB342
+}
+
+.btn.btn-primary:active,.btn.btn-primary:focus,.btn.btn-primary:hover {
+    outline: 0;
+    border: 1px solid green
+}
+
+.btn.btn-primary:hover {
+    background-color: #2E7D32
+}
+
+.table>tbody>tr>td,.table>tfoot>tr>td,.table>thead>tr>th {
+    padding: 2px 12px 3px 10px
+}
+
+.table>tfoot>tr>td,.table>thead>tr>th {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.btn.btn-primary:active {
+    background-color: #33691E
+}
+
+.navbar {
+    border-radius: 0;
+    border: none
+}
+
+.navbar .navbar-toggle {
+    border: none;
+    margin-right: 0
+}
+
+.navbar-collapse {
+    margin-left: -999px;
+    transition: margin-left .4s ease-in-out
+}
+
+.navbar-collapse.collapsing,.navbar-collapse.in {
+    margin-top: 6px;
+    margin-left: 0;
+    background-color: #fff;
+    max-width: 350px;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    position: relative;
+    z-index: 1
+}
+
+.navbar.navbar-default {
+    height: 55px
+}
+
+.nav.navbar-nav {
+    font-size: 15px
+}
+
+.dropdown-menu {
+    min-width: 250px
+}
+
+.btn.dropdown-toggle+.dropdown-menu {
+    min-width: auto
+}
+
+.navbar-brand {
+    padding: 13px 0
+}
+
+textarea {
+    max-width: 100%;
+    resize: none;
+    padding: .5em
+}
+
+label {
+    font-weight: 400
+}
+
+.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover {
+    background-color: transparent
+}
+
+blockquote small:before {
+    content: ""
+}
+
+@media (min-width: 768px) {
+    .navbar-collapse.collapsing,.navbar-collapse.in {
+        position:static;
+        margin-top: 0;
+        background-color: transparent;
+        box-shadow: none;
+        max-width: 100%
+    }
+
+    .navbar-collapse.in {
+        margin-left: 0
+    }
+
+    .navbar-brand {
+        padding: 13px
+    }
+}

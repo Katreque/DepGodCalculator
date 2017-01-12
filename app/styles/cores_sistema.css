@@ -1,0 +1,107 @@
+#alt-cabecalho .navbar {
+  background-color: #4682B4;
+}
+
+#alt-cabecalho .navbar .navbar-brand {
+  color: whitesmoke;
+}
+
+#alt-cabecalho .navbar .navbar-nav a {
+  color: #333;
+}
+
+#alt-cabecalho .navbar-default .navbar-nav > .active > a,
+#alt-cabecalho .navbar-default .navbar-nav > .active > a:hover,
+#alt-cabecalho .navbar-default .navbar-nav > .active > a:focus {
+  background-color: #85A5C0;
+}
+
+#alt-cabecalho .navbar-default .navbar-toggle .icon-bar {
+  background-color: whitesmoke;
+}
+
+#alt-cabecalho .navbar-collapse.collapsing, 
+#alt-cabecalho .navbar-collapse.in {
+  background-color: #fff;
+}
+
+#alt-cabecalho .nav li > a {
+  color: #333;
+}
+
+#alt-cabecalho .nav li.active > a {
+  color: #fff;
+}
+
+#alt-cabecalho .alt-opcoes-usuario-cabecalho {
+  background-color: transparent;
+  color: whitesmoke;
+}
+
+#alt-cabecalho .alt-badge-sem-contagem-opcoes-usuario {
+  background-color: #a94442;
+  box-shadow: 0 0 1px whitesmoke;
+}
+
+#alt-rodape {
+  background-color: #85A5C0;
+  border-top-color: #4682B4;
+}
+
+#alt-rodape a {
+  color:whitesmoke;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  border-bottom-color: #4682B4;
+}
+
+.modal-header.alt-cor-principal {
+  background-color: #4682B4;
+}
+
+.alt-cor-principal {
+  color:whitesmoke;
+  background-color: #4682B4;
+}
+
+.btn.btn-primary {
+  background-color: #4682B4;
+  border:1px solid #85A5C0;
+}
+
+.btn.btn-primary:hover {
+  background-color: #427BAB;
+}
+
+.btn.btn-primary:active {
+  background-color: #4B8BC1;
+}
+
+.btn.btn-primary:active,
+.btn.btn-primary:focus,
+.btn.btn-primary:hover {
+  border:1px solid #85A5C0;
+}
+
+.alt-titulo-view {
+  color: steelblue;
+  border-bottom-color: rgba(133, 165, 192, 0.55);;
+}
+
+.alt-produto-cabecalho:hover {
+  background-color: rgba(70, 130, 180, 0.15);
+}
+
+@media(min-width: 768px) {
+  #alt-cabecalho .navbar .navbar-nav a {
+    color: whitesmoke;
+  }
+
+  #alt-cabecalho .navbar-collapse.collapsing, 
+  #alt-cabecalho .navbar-collapse.in {
+    background-color: #4682B4;
+  }
+}

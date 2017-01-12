@@ -9,58 +9,54 @@
         <link rel="stylesheet" href="./app/styles/style.css">
         <link rel="stylesheet" href="./app/styles/position.css">
         <link rel="stylesheet" href="./app/styles/events.css">
-        <link rel="stylesheet" href="./app/styles/media_queries.css">
+        <link rel="stylesheet" href="./app/styles/alt-cabecalho.css">
+        <link rel="stylesheet" href="./app/styles/alt-modal.css">
+        <link rel="stylesheet" href="./app/styles/alt-rodape.css">
+        <link rel="stylesheet" href="./app/styles/alt-style.css">
+        <link rel="stylesheet" href="./app/styles/alt-bootstrap-overrides.css">
+        <link rel="stylesheet" href="./app/styles/cores_sistema.css">
+        <link rel="stylesheet" href="./app/styles/alt-position.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <title>DEPGod Calculator</title>
     </head>
     <body>
-        <nav class="navbar navbar">
-            <div class="container-fluid">
+        <header id="alt-cabecalho" class="header">
+            <nav class="navbar navbar-default alt-sombra-primaria" >
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span> 
+                    <button type="button" class="navbar-toggle pull-left" alt-toggle-menu="#js-menu-cabecalho">
+                        <span class="sr-only">...</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/home">DEPGod Calculator</a>
                 </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/home">Home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a ng-controller="controladorHome" ng-click="sobre()">Sobre</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="page-header">
-        <center><h1>Porque com o DEP tudo se resolve!</h1></center>
-        </div>
-        <div ng-view></div>
-    <footer>
-        <div class="container">
-            <div class="footer-main text-center rodape navbar-fixed-bottom">
-                <h5>DEPGod Calculator 1.0 - Todos os direitos reservados ao Souza.sup.erp, Seu Amiguinho!</h5>
-            </div>
+            </nav>
+        </header>
+        <main class="container alt-espacamento-cabecalho">
+            <div ng-view></div>
+        </main>
+    <footer id="alt-rodape" class="transition">
+        <div class="alt-direitos-reservados pull-left hidden-xs">
+            <span>DEPGod Calculator 1.0 - Todos os direitos reservados ao Souza.sup.erp, Seu Amiguinho!</span>
         </div>
     </footer>
-        <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./bower_components/angular-i18n/angular-locale_pt-br.js"></script>
-        <script type="text/javascript" src="./scripts/app.js"></script>
-        <script type="text/javascript" src="./scripts/app.constant.js"></script>
-        <script type="text/javascript" src="./scripts/app.config.js"></script>        
-        <script type="text/javascript" src="./scripts/controllers/home_controller.js"></script>
-        <script type="text/javascript" src="./scripts/controllers/icms_controller.js"></script>
-        <script type="text/javascript" src="./scripts/controllers/ipi_controller.js"></script>
-        <script type="text/javascript" src="./scripts/controllers/st_controller.js"></script>
-        <script type="text/javascript" src="./scripts/models/icmsDifal_model.js"></script>
-        <script type="text/javascript" src="./scripts/models/icmsProprio_model.js"></script>
-        <script type="text/javascript" src="./scripts/models/icmsRed_model.js"></script>
-        <script type="text/javascript" src="./scripts/models/ipiproprio_model.js"></script>
-        <script type="text/javascript" src="./scripts/models/stproprio_model.js"></script>
+        <script type="text/javascript" src="./bower_components/angular/angular.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/angular-i18n/angular-locale_pt-br.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/app.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/app.constant.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/app.config.js?rev=@@hash"></script>        
+        <script type="text/javascript" src="./scripts/controllers/home_controller.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/controllers/icms_controller.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/controllers/ipi_controller.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/controllers/st_controller.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/models/icmsdifal_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/models/icmsproprio_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/models/icmsred_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/models/ipiproprio_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/models/stproprio_model.js?rev=@@hash"></script>
     </body>
 </html>

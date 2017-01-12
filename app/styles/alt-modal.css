@@ -1,0 +1,67 @@
+.modal {
+    word-wrap: break-word
+}
+
+.modal-body .alt-espacamento-bottom {
+    margin-bottom: 10px
+}
+
+.modal-body .alt-grande-espacamento-bottom {
+    margin-bottom: 30px
+}
+
+.modal-body .alt-espacamento-top {
+    margin-top: 10px
+}
+
+.modal-body .alt-grande-espacamento-top {
+    margin-top: 30px
+}
+
+.modal-body .nav-tabs>li.active>a,.modal-body .nav-tabs>li.active>a:focus,.modal-body .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fcfdfe;
+    border: none;
+    border-bottom: 3px solid #558B2F
+}
+
+.modal-header.alt-cor-principal .modal-title,.modal-header.alt-modal-danger .modal-title {
+    color: #fff
+}
+
+.modal-header .modal-title {
+    font-size: 20px
+}
+
+.modal-body .nav-tabs li>a {
+    margin-right: 20px
+}
+
+.modal-header.alt-modal-danger {
+    background-color: #a94442
+}
+
+.modal-header.alt-cor-principal .close,.modal-header.alt-modal-danger .close {
+    color: #fff;
+    opacity: .8
+}
+
+.modal-body .table {
+    border: 1px solid #ddd
+}
+
+.modal-body .table>tbody>tr>td,.modal-body .table>tfoot>tr>td,.modal-body .table>thead>tr>th {
+    padding: 2px 12px 3px 10px
+}
+
+.modal-body .table>tfoot>tr>td,.modal-body .table>thead>tr>th {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+@media (min-width: 768px) {
+    .alt-modal-medio {
+        width:750px
+    }
+}
