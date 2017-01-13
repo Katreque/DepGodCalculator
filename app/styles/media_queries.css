@@ -1,4 +1,4 @@
-@media screen and (min-width: 770px){
+@media screen and (min-width: 768px){
     .close{
         margin-top:0px;
         font-size:21px;
@@ -6,6 +6,12 @@
     }
 }
 
-@media (min-width: 400) and (max-width: 768){
+@media (min-width: 768px){
+    .modal-pequeno{
+        max-width: 400px !important;
+    }
 
+    .modal-grande{
+        max-width: 500px !important;
+    }
 }

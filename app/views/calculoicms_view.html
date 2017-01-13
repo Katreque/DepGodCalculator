@@ -2,26 +2,26 @@
     <div class="alt-titulo-view-container">
         <p class="alt-titulo-view">ICMS</p>
     </div>
-    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+    <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 alt-espacamento-top">
         <div class="row vertical-center-row">
             <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsProprioModal">ICMS Próprio</button>
             <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsRedModal">Redução de Base</button>
             <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsDifalModal">DIFAL</button>
             <br>
-            <button type="button" class="btn btn-main-sub btn-lg btn-block" ng-click="controlicms.voltar()">Voltar</button>
+            <button type="button" class="btn btn btn-default btn-lg btn-block" ng-click="controlicms.voltar()">Voltar</button>
         </div>
     </div>
 
     <!-- ICMS Próprio Modal Início -->
 <div class="container">
     <div id="icmsProprioModal" class="modal fade" role="dialog" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="modal-dialog modal-pequeno">
+            <div class="modal-content">
                 <div class="modal-header alt-cor-principal">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">ICMS Próprio</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body alt-overflow-hidden">
                     <form name="icmsProprioForm">
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsProprio.validacaoBase(), 'has-success':controlicms.valoresIcmsProprio.validacaoBase()}">
@@ -66,11 +66,10 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-xs-12 col-xs-offset-0">
-                    <div class="modal-footer">
-                        <a type="button" class="btn btn-main-sub" ng-click="controlicms.limparProprio()">Limpar</a>
-                        <a type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</a>
-                    </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-default" ng-click="controlicms.limparProprio()">Limpar</a>
+                    <a type="button" class="btn btn-default" data-dismiss="modal">Fechar</a>
+                </div>
                 </div>
             </div>
         </div>
@@ -81,13 +80,13 @@
     <!-- Red. Base ICMS Modal Início -->
             <div class="container">
                 <div id="icmsRedModal" class="modal fade" role="dialog" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content col-sm-10 col-sm-offset-1 col-xs-12">
-                            <div class="modal-header">
+                    <div class="modal-dialog modal-grande">
+                        <div class="modal-content">
+                            <div class="modal-header alt-cor-principal">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">ICMS com base Reduzida</h4>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body alt-overflow-hidden">
                                 <form name="icmsRedForm">
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoBase(), 'has-success':controlicms.valoresIcmsBaseRed.validacaoBase()}">
@@ -141,11 +140,10 @@
                                     </div>                                
                                 </form>
                             </div>
-                            <div class="col-xs-12 col-xs-offset-0">
-                                <div class="modal-footer">
-                                    <a type="button" class="btn btn-main-sub" ng-click="controlicms.limparRed()">Limpar</a>
-                                    <a type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</a>
-                                </div>
+                            <div class="modal-footer">
+                                <a type="button" class="btn btn btn-default" ng-click="controlicms.limparRed()">Limpar</a>
+                                <a type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</a>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -156,13 +154,13 @@
     <!-- ICMS DIFAL Modal Início -->
         <div class="container">
             <div id="icmsDifalModal" class="modal fade" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content col-sm-10 col-sm-offset-1 col-xs-12">
-                        <div class="modal-header">
+                <div class="modal-dialog modal-grande">
+                    <div class="modal-content">
+                        <div class="modal-header alt-cor-principal">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">ICMS Difal</h4>   
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body alt-overflow-hidden">
                             <form name="icmsDifalForm">
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsDifal.validacaoBaseAno(controlicms.valoresIcmsDifal.ano), 'has-success':controlicms.valoresIcmsDifal.validacaoBaseAno(controlicms.valoresIcmsDifal.ano)}">
@@ -188,7 +186,7 @@
                                         <span class="help-block msg" ng-show="!controlicms.valoresIcmsDifal.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterna)">Valor inválido!</span>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-xs-12">
+                                <div class="col-sm-4 col-xs-12">
                                     <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsDifal.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual) || !controlicms.valoresIcmsDifal.validacaoAliquotaInternaMaiorInterest(), 'has-success':controlicms.valoresIcmsDifal.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual)}">    
                                         <label class="help-block" for="lbAliquitaInterest">Alíq. Interestad.</label>
                                             <div class="input-group">
@@ -198,7 +196,7 @@
                                         <span class="help-block msg" ng-show="!controlicms.valoresIcmsDifal.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsDifal.aliquotaInterestadual) || !controlicms.valoresIcmsDifal.validacaoAliquotaInternaMaiorInterest()">Valor inválido!</span>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-xs-12">
+                                <div class="col-sm-4 col-xs-12">
                                     <div class="form-group"  ng-class="{'has-error': !controlicms.valoresIcmsDifal.validacaoAliquotaAceitaZero(), 'has-success':controlicms.valoresIcmsDifal.validacaoAliquotaAceitaZero()}">    
                                         <label class="help-block" for="lbFcp">Alíq. FCP</label>
                                         <div class="input-group">
@@ -212,13 +210,13 @@
                                     <div class="form-group">
                                         <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsDifal.calcular()" ng-disabled="!controlicms.valoresIcmsDifal.isValid()">Calcular</button>
                                     </div>
-                                    <div class="col-sm-6 col-xs-12">   
+                                    <div class="col-sm-6 col-xs-12 alt-sem-padding-left">   
                                         <div class="form-group"> 
                                             <label class="help-block" for="tbValorOrigem">Valor Origem</label>                                        
                                             <pre ng-bind="controlicms.valoresIcmsDifal.valorOrigem | currency"></pre>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-xs-12">  
+                                    <div class="col-sm-6 col-xs-12 alt-sem-padding-right">  
                                         <div class="form-group"> 
                                             <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoDifal" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
                                             <label class="help-block" for="tbValorDestino">Valor Destino</label>
@@ -247,13 +245,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-12 col-xs-offset-0">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-main-sub" ng-click="controlicms.limparDifal()">Limpar</button>
-                                    <button type="button" class="btn btn-main-sub" data-dismiss="modal">Fechar</button>
                                 </div>
+                            </form>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn btn-default" ng-click="controlicms.limparDifal()">Limpar</button>
+                                <button type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>    
                     </div>

@@ -29,9 +29,7 @@ gulp.task('dep', () =>{
 gulp.task('test', (done) => {
     return new karma.Server({
         configFile: __dirname + '/karma.conf.js',
-        singleRun: true,
-        browsers: ['Chrome'],
-        frameworks: ['jasmine']
+        browsers: ['Chrome', 'Firefox'],
     }, function(exitCode){
         done();
     }).start();
@@ -54,12 +52,6 @@ gulp.task('html', () => {
            .pipe(htmlmin({collapseWhitespace: true,
                           removeComments: true}))
            .pipe(rev())
-           .on('error', (err) => {
-               console.log(err)
-           })
-           .on('end', () => {
-               console.log('wut')
-           })
            .pipe(gulp.dest('dist'))
 })
 

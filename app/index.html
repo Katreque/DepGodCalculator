@@ -6,40 +6,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="./app/styles/style.css">
         <link rel="stylesheet" href="./app/styles/position.css">
         <link rel="stylesheet" href="./app/styles/events.css">
         <link rel="stylesheet" href="./app/styles/alt-cabecalho.css">
         <link rel="stylesheet" href="./app/styles/alt-modal.css">
         <link rel="stylesheet" href="./app/styles/alt-rodape.css">
         <link rel="stylesheet" href="./app/styles/alt-style.css">
+        <link rel="stylesheet" href="./app/styles/style.css">
         <link rel="stylesheet" href="./app/styles/alt-bootstrap-overrides.css">
         <link rel="stylesheet" href="./app/styles/cores_sistema.css">
         <link rel="stylesheet" href="./app/styles/alt-position.css">
+        <link rel="stylesheet" href="./app/styles/alt-informacoes-usuario-cabecalho.css">
+        <link rel="stylesheet" href="./app/styles/alt-opcoes-usuario-cabecalho.css">
+        <link rel="stylesheet" href="./app/styles/alt-imagem.css">
+        <link rel="stylesheet" href="./app/styles/media_queries.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <title>DEPGod Calculator</title>
     </head>
     <body>
         <header id="alt-cabecalho" class="header">
-            <nav class="navbar navbar-default alt-sombra-primaria" >
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle pull-left" alt-toggle-menu="#js-menu-cabecalho">
-                        <span class="sr-only">...</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/home">DEPGod Calculator</a>
+            <div class="navbar navbar-default alt-sombra-primaria">
+                <div>
+                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left">
+                        <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-cabecalho alt-hand" data-toggle="dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                        <div class="dropdown-menu">
+                            <div id="alt-informacoes-usuario-dropdown">
+                                <div class="col-xs-4 hidden-xs row">
+                                    <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                                </div>
+                                <div class="col-xs-12 visible-xs text-center">
+                                    <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                                </div>
+                                <hr class="visible-xs col-xs-12 alt-hr-separador-info">
+                                <div class="col-xs-8 hidden-xs">
+                                    <p>Carinha Que Mora Logo Ali</p>
+                                    <small class="text-muted">CarinhaQueMoraLogoAli@gmail.com</small>
+                                </div>
+                                <div class="col-xs-12 visible-xs text-center">
+                                    <p>Carinha Que Mora Logo Ali</p>
+                                    <small class="text-muted">CarinhaQueMoraLogoAli@gmail.com</small>
+                                </div>
+                                <hr class="visible-xs col-xs-12 alt-hr-separador-info">
+                                <hr class="hidden-xs col-xs-12 alt-hr-separador-info">
+                                <a href="/login.html" class="btn btn-default pull-right hidden-xs">Sair</a>
+                                <button type="button" class="btn btn-default pull-left hidden-xs">Feelin' lucky?</button>
+                                <button type="button" class="btn btn-default pull-right btn-block alt-espacamento-bottom visible-xs">Feelin' lucky?</button>                            
+                                <a href="/login.html" class="btn btn-default btn-block visible-xs alt-clear-both">Sair</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alt-opcoes-usuario-container dropdown pull-right">
+                        <div class="alt-opcoes-usuario-cabecalho alt-hand" data-toggle="dropdown">
+                            <span class="alt-opcoes-usuario-cabecalho">
+                                <i class="fa fa-fw fa-cubes alt-icone-opcoes-usuario-cabecalho"></i>
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="navbar-header">
+                        <a class="navbar-brand hidden-xs" href="/home">DEPGod Calculator</a>
+                        <a class="navbar-brand alt-espacamento-left visible-xs" href="/home">DEPGod Calculator</a>
+                    </div>  
                 </div>
-            </nav>
+            </div>
         </header>
         <main class="container alt-espacamento-cabecalho">
             <div ng-view></div>
         </main>
     <footer id="alt-rodape" class="transition">
         <div class="alt-direitos-reservados pull-left hidden-xs">
-            <span>DEPGod Calculator 1.0 - Todos os direitos reservados ao Souza.sup.erp, Seu Amiguinho!</span>
+            <span>DEPGod Calculator 1.0 - Todos os direitos reservados ao Souza.sup.erp</span>
         </div>
+        <div class="alt-redirecionamentos-rodape hidden-xs">
+            <a class="pull-right alt-espacamento-left" href="http://alterdata.com.br" target="_blank">
+                <img src="./app/images/logo_branco.png">
+            </a>
+        </div>
+        <div class="alt-links-aux-alterdata pull-right hidden-xs">
+          <a href="http://www.alterdata.com.br/contato" target="_blank">
+            <span>Contato</span>
+          </a>
+          <span class="alt-separador-redirecionamentos-rodape">|</span>
+          <a href="http://cliente.alterdata.com.br/LoginCentral.aspx" target="_blank">
+            <span>Suporte</span>
+          </a> 
+        </div>
+        <a class="text-center visible-xs alt-hand" href="http://alterdata.com.br" target="_blank">
+            <img src="./app/images/logo_branco.png">
+        </a>
     </footer>
         <script type="text/javascript" src="./bower_components/angular/angular.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js?rev=@@hash"></script>
