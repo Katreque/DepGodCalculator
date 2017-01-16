@@ -17,6 +17,9 @@
     "angular": "^1.6.1",
     "angular-route": "^1.6.1",
     "angular-mocks": "^1.6.1",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "alt-ambiente-url": "^0.0.2",
+    "alt-passaporte-listagem-produtos": "^0.0.7",
+    "alt-passaporte-informacoes-autorizacao": "^0.0.4"
   }
 }

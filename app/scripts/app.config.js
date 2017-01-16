@@ -10,7 +10,7 @@ angular.module('DEPGod')
             controllerAs: 'controladorhome',
             templateUrl: './app/views/home_view.html',
         })
-
+        
         .when('/calculost', {
             controller: 'controladorST',
             controllerAs: 'controlst',
@@ -38,5 +38,9 @@ angular.module('DEPGod')
 
 .config(['$locationProvider', function($locationProvider){
         $locationProvider.html5Mode(true);
+    }])
+
+.config(['AltPassaporteUrlBaseListagemProdutosProvider', function(AltPassaporteUrlBaseListagemProdutosProvider){
+        AltPassaporteUrlBaseListagemProdutosProvider.url = altAmbienteUrl.getEndpoint("https://passaporte2__ambiente__.alterdata.com.br");
     }])
 }())

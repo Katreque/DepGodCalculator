@@ -1,7 +1,8 @@
-'use strict';
+(function(){
+    'use strict';
  
 angular.module('DEPGod')
-.controller('controladorHome', ['$location', function($location){
+.controller('controladorHome', ['$location', 'AltPassaporteListagemProdutosService', function($location, AltPassaporteListagemProdutosService){
     var self = this;
 
         self.calculoST = function(){
@@ -19,4 +20,5 @@ angular.module('DEPGod')
          self.sobre = function(){
             $location.path('/sobre');
         }
-}]);
+    }])
+}())

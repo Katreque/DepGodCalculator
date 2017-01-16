@@ -18,6 +18,9 @@ module.exports = function(config) {
       './app/bower_components/angular/angular.js',
       './app/bower_components/angular-mocks/angular-mocks.js',
       './app/bower_components/angular-route/angular-route.js',
+      './app/bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js',
+      './app/bower_components/alt-passaporte-listagem-produtos/dist/alt-passaporte-listagem-produtos.min.js',
+      './app/bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js',      
       './app/scripts/app.js',
       './app/scripts/**/*.js',
       './test/unit/**/*_test.js'
@@ -69,7 +72,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

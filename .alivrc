@@ -1,4 +1,6 @@
 {
     "quiet": true,
-    "pathIndex": "/app/"
+    "pathIndex": "/app/",
+    "host": "calculadora-dev.alterdata.com.br",
+    "secure": true
 }

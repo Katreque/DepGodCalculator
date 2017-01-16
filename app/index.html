@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="./app/styles/alt-position.css">
         <link rel="stylesheet" href="./app/styles/alt-informacoes-usuario-cabecalho.css">
         <link rel="stylesheet" href="./app/styles/alt-opcoes-usuario-cabecalho.css">
+        <link rel="stylesheet" href="./app/styles/alt-produtos-usuario-cabecalho.css">
         <link rel="stylesheet" href="./app/styles/alt-imagem.css">
         <link rel="stylesheet" href="./app/styles/media_queries.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -61,6 +62,16 @@
                                 <i class="fa fa-fw fa-cubes alt-icone-opcoes-usuario-cabecalho"></i>
                             </span>
                         </div>
+                        <div class="dropdown-menu" ng-controller="controladorCabecalho as controlcabec">
+                            <div class="alt-opcoes-usuario-dropdown listagem-produtos-cabecalho">
+                                <div id="produtos-cabecalho-container" class="alt-produtos-usuario-cabecalho-container">
+                                    <a class="col-xs-12 col-sm-6 col-lg-4 text-center alt-hand alt-produto-cabecalho" ng-repeat="produto in controlcabec.produtosHabilitados.habilitados track by $index" target="_blank" href="{{produto.urlAutenticacao}}">
+                                        <img class="alt-imagem-pequena" src="{{produto.urlLogo}}">
+                                        <p class="text-muted">{{produto.nome}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div> 
                     <div class="navbar-header">
                         <a class="navbar-brand hidden-xs" href="/home">DEPGod Calculator</a>
@@ -99,6 +110,9 @@
         <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/angular-i18n/angular-locale_pt-br.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-passaporte-listagem-produtos/dist/alt-passaporte-listagem-produtos.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.constant.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.config.js?rev=@@hash"></script>        
@@ -106,6 +120,7 @@
         <script type="text/javascript" src="./scripts/controllers/icms_controller.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/controllers/ipi_controller.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/controllers/st_controller.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/controllers/cabecalho_controller.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/icmsdifal_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/icmsproprio_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/icmsred_model.js?rev=@@hash"></script>

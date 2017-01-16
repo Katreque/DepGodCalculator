@@ -1,0 +1,17 @@
+.alt-listagem-produtos-dropdown-menu.dropdown-menu {
+    padding: 0
+}
+
+.alt-produtos-usuario-cabecalho-container {
+    max-height: 300px;
+    overflow-y: auto
+}
+
+.alt-produto-cabecalho {
+    padding: 10px;
+    height: 100px
+}
+
+a.alt-produto-cabecalho {
+    text-decoration: none
+}
