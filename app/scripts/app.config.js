@@ -43,4 +43,8 @@ angular.module('DEPGod')
 .config(['AltPassaporteUrlBaseListagemProdutosProvider', function(AltPassaporteUrlBaseListagemProdutosProvider){
         AltPassaporteUrlBaseListagemProdutosProvider.url = altAmbienteUrl.getEndpoint("https://passaporte2__ambiente__.alterdata.com.br");
     }])
+
+.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+    }]);
 }())

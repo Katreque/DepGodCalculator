@@ -20,7 +20,9 @@ module.exports = function(config) {
       './app/bower_components/angular-route/angular-route.js',
       './app/bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js',
       './app/bower_components/alt-passaporte-listagem-produtos/dist/alt-passaporte-listagem-produtos.min.js',
-      './app/bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js',      
+      './app/bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js',
+      './app/bower_components/alt-passaporte-usuario-logado/dist/alt-passaporte-usuario-logado.min.js',
+      './app/bower_components/ng-xtorage/ng-xtorage.min.js',    
       './app/scripts/app.js',
       './app/scripts/**/*.js',
       './test/unit/**/*_test.js'

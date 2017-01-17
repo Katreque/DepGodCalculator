@@ -4,6 +4,7 @@
 angular.module('DEPGod', [
     'ngRoute',
     'alt.passaporte-informacoes-autorizacao',
-    'alt.passaporte-listagem-produtos'
+    'alt.passaporte-listagem-produtos',
+    'alt.passaporte-usuario-logado'
     ])
 }())

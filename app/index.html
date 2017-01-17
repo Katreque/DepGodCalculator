@@ -28,24 +28,24 @@
         <header id="alt-cabecalho" class="header">
             <div class="navbar navbar-default alt-sombra-primaria">
                 <div>
-                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left">
-                        <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-cabecalho alt-hand" data-toggle="dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left" ng-controller="controladorCabecalho as controlcabec">
+                        <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-cabecalho alt-hand" data-toggle="dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
                         <div class="dropdown-menu">
                             <div id="alt-informacoes-usuario-dropdown">
                                 <div class="col-xs-4 hidden-xs row">
-                                    <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                                    <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
                                 </div>
                                 <div class="col-xs-12 visible-xs text-center">
-                                    <img ng-src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400" alt="imagem" class="alt-imagem-usuario-dropdown" src="https://avatars1.githubusercontent.com/u/11504942?v=3&s=400">
+                                    <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
                                 </div>
                                 <hr class="visible-xs col-xs-12 alt-hr-separador-info">
                                 <div class="col-xs-8 hidden-xs">
-                                    <p>Carinha Que Mora Logo Ali</p>
-                                    <small class="text-muted">CarinhaQueMoraLogoAli@gmail.com</small>
+                                    <p>{{controlcabec.informacoesUsuario.nomeUsuario}}</p>
+                                    <small class="text-muted">{{controlcabec.informacoesUsuario.emailUsuario}}</small>
                                 </div>
                                 <div class="col-xs-12 visible-xs text-center">
-                                    <p>Carinha Que Mora Logo Ali</p>
-                                    <small class="text-muted">CarinhaQueMoraLogoAli@gmail.com</small>
+                                    <p>{{controlcabec.informacoesUsuario.nomeUsuario}}</p>
+                                    <small class="text-muted">{{controlcabec.informacoesUsuario.emailUsuario}}</small>
                                 </div>
                                 <hr class="visible-xs col-xs-12 alt-hr-separador-info">
                                 <hr class="hidden-xs col-xs-12 alt-hr-separador-info">
@@ -113,6 +113,8 @@
         <script type="text/javascript" src="./bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-passaporte-listagem-produtos/dist/alt-passaporte-listagem-produtos.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-passaporte-usuario-logado/dist/alt-passaporte-usuario-logado.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/ng-xtorage/ng-xtorage.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.constant.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.config.js?rev=@@hash"></script>        

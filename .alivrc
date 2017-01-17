@@ -2,5 +2,6 @@
     "quiet": true,
     "pathIndex": "/app/",
     "host": "calculadora-dev.alterdata.com.br",
-    "secure": true
+    "secure": true,
+    "noBrowser": true
 }
