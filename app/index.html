@@ -49,10 +49,10 @@
                                 </div>
                                 <hr class="visible-xs col-xs-12 alt-hr-separador-info">
                                 <hr class="hidden-xs col-xs-12 alt-hr-separador-info">
-                                <a href="/login.html" class="btn btn-default pull-right hidden-xs">Sair</a>
+                                <a ng-href="{{controlcabec.logoutLink}}" class="btn btn-default pull-right hidden-xs">Sair</a>
                                 <button type="button" class="btn btn-default pull-left hidden-xs">Feelin' lucky?</button>
                                 <button type="button" class="btn btn-default pull-right btn-block alt-espacamento-bottom visible-xs">Feelin' lucky?</button>                            
-                                <a href="/login.html" class="btn btn-default btn-block visible-xs alt-clear-both">Sair</a>
+                                <a ng-href="{{controlcabec.logoutLink}}" class="btn btn-default btn-block visible-xs alt-clear-both">Sair</a>
                             </div>
                         </div>
                     </div>
@@ -128,5 +128,6 @@
         <script type="text/javascript" src="./scripts/models/icmsred_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/ipiproprio_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/stproprio_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/interceptors/sessaoUsuario_interceptor.js?rev=@@hash"></script>
     </body>
 </html>

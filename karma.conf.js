@@ -24,6 +24,8 @@ module.exports = function(config) {
       './app/bower_components/alt-passaporte-usuario-logado/dist/alt-passaporte-usuario-logado.min.js',
       './app/bower_components/ng-xtorage/ng-xtorage.min.js',    
       './app/scripts/app.js',
+      './app/scripts/app.config.js',
+      './app/scripts/app.constant.js',
       './app/scripts/**/*.js',
       './test/unit/**/*_test.js'
     ],
