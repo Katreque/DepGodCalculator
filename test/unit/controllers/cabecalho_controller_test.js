@@ -12,6 +12,7 @@ describe('controladorCabecalho', function(){
         _window = $injector.get('$window');
         AltPassaporteListagemProdutosService = $injector.get('AltPassaporteListagemProdutosService');
         AltPassaporteUsuarioLogadoManager = $injector.get('AltPassaporteUsuarioLogadoManager');
+        AltAlertaFlutuanteService = $injector.get('AltAlertaFlutuanteService');
         PASSAPORTE_LOGOUT = $injector.get('PASSAPORTE_LOGOUT');
 
         spyOn(_log, 'error').and.callFake(angular.noop)
@@ -73,37 +74,18 @@ describe('controladorCabecalho', function(){
         expect(_scope.controlcabec.logoutLink).toBe(_resultadoEsperado);
     }))
 
-    it('Verifica o retorno do método getProdutosHabilitados quando o usuário não foi autenticado.', inject(function($controller){
-        var _resultadoEsperado = "Usuário não autenticado.";
-        var _status = {status: -1};
-
-        spyOn(AltPassaporteListagemProdutosService, 'getProdutosHabilitados').and.callFake(function(){
-            return _q.reject(_status)
-        })
-
-        spyOn(_window, 'alert').and.callThrough();
-
-        $controller(_NomeController, {$scope: _scope})
-        AltPassaporteListagemProdutosService.getProdutosHabilitados();
-        _rootScope.$digest();
-
-        expect(_log.error).toHaveBeenCalledWith(_resultadoEsperado);
-    }))
-
     it('Verifica o retorno do método getProdutosHabilitados quando ocorre algo de errado e repassa uma mensagem default.', inject(function($controller){
-        var _resultadoEsperado = "Ocorreu algum erro inesperado ao carregar seus produtos habilitados.";
-        var _status = {status: -2};
 
         spyOn(AltPassaporteListagemProdutosService, 'getProdutosHabilitados').and.callFake(function(){
-            return _q.reject(_status)
+            return _q.reject()
         })
 
-        spyOn(_window, 'alert').and.callThrough();
+        spyOn(AltAlertaFlutuanteService, 'exibe').and.callFake(angular.noop);
 
         $controller(_NomeController, {$scope: _scope})
         AltPassaporteListagemProdutosService.getProdutosHabilitados();
         _rootScope.$digest();
 
-        expect(_log.error).toHaveBeenCalledWith(_resultadoEsperado);
+        expect(AltAlertaFlutuanteService.exibe).toHaveBeenCalled();
     }))
 })

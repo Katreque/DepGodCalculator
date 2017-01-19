@@ -24,7 +24,6 @@
 .navbar{
     background-color: #4682B4;
     border-color: #4682B4;
-    color: whitesmoke;
 }
 
 .navbar .navbar-nav > li > a {
@@ -135,7 +134,7 @@ input.ng-invalid.ng-dirty{
     color: #EBF2F7;
 }
 
-p{
+.modal p{
     color: #333;
 }
 
@@ -155,7 +154,7 @@ pre{
     cursor: pointer;
 }
 
-.close{
+.modal .close{
     margin-top:-3px;
     font-size:25px;
     font-weight: 900;

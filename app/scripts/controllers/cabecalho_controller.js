@@ -2,7 +2,7 @@
     'use strict';
 
 angular.module('DEPGod')
-    .controller('controladorCabecalho', ['$log', 'AltPassaporteListagemProdutosService', 'AltPassaporteUsuarioLogadoManager', 'PASSAPORTE_LOGOUT', function($log, AltPassaporteListagemProdutosService, AltPassaporteUsuarioLogadoManager, PASSAPORTE_LOGOUT){
+    .controller('controladorCabecalho', ['$log', 'AltPassaporteListagemProdutosService', 'AltPassaporteUsuarioLogadoManager', 'PASSAPORTE_LOGOUT', 'MSG_ERRO_PRODUTO', 'AltAlertaFlutuanteService', function($log, AltPassaporteListagemProdutosService, AltPassaporteUsuarioLogadoManager, PASSAPORTE_LOGOUT, AltAlertaFlutuanteService, MSG_ERRO_PRODUTO){
     var self = this;
 
     self.produtosHabilitados = {};
@@ -10,17 +10,15 @@ angular.module('DEPGod')
     self.logoutLink = PASSAPORTE_LOGOUT;
 
         self.informacoesUsuario = AltPassaporteUsuarioLogadoManager.retorna();
-
+        
         AltPassaporteListagemProdutosService.getProdutosHabilitados()
         .then((res) => {
             return self.produtosHabilitados = res;
         })
         .catch((err) => {
-            if(err.status === -1){
-                return $log.error("Usuário não autenticado.");
-            }
-
-            return $log.error("Ocorreu algum erro inesperado ao carregar seus produtos habilitados.");
+            AltAlertaFlutuanteService.exibe({
+                msg: MSG_ERRO_PRODUTO
+            })
         })    
     }])
 }())

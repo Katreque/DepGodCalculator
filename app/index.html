@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="./bower_components/alt-alerta-flutuante/dist/alt-alerta-flutuante.min.css" />
         <link rel="stylesheet" href="./app/styles/position.css">
         <link rel="stylesheet" href="./app/styles/events.css">
         <link rel="stylesheet" href="./app/styles/alt-cabecalho.css">
@@ -25,10 +26,12 @@
         <title>DEPGod Calculator</title>
     </head>
     <body>
-        <header id="alt-cabecalho" class="header">
+        <div alt-alerta-flutuante></div>
+
+        <header id="alt-cabecalho" class="header" ng-controller="controladorCabecalho as controlcabec">
             <div class="navbar navbar-default alt-sombra-primaria">
                 <div>
-                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left" ng-controller="controladorCabecalho as controlcabec">
+                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left">
                         <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-cabecalho alt-hand" data-toggle="dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
                         <div class="dropdown-menu">
                             <div id="alt-informacoes-usuario-dropdown">
@@ -62,7 +65,7 @@
                                 <i class="fa fa-fw fa-cubes alt-icone-opcoes-usuario-cabecalho"></i>
                             </span>
                         </div>
-                        <div class="dropdown-menu" ng-controller="controladorCabecalho as controlcabec">
+                        <div class="dropdown-menu">
                             <div class="alt-opcoes-usuario-dropdown listagem-produtos-cabecalho">
                                 <div id="produtos-cabecalho-container" class="alt-produtos-usuario-cabecalho-container">
                                     <a class="col-xs-12 col-sm-6 col-lg-4 text-center alt-hand alt-produto-cabecalho" ng-repeat="produto in controlcabec.produtosHabilitados.habilitados track by $index" target="_blank" href="{{produto.urlAutenticacao}}">
@@ -79,7 +82,7 @@
                     </div>  
                 </div>
             </div>
-        </header>
+        </header>        
         <main class="container alt-espacamento-cabecalho">
             <div ng-view></div>
         </main>
@@ -110,6 +113,7 @@
         <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/angular-i18n/angular-locale_pt-br.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-alerta-flutuante/dist/alt-alerta-flutuante.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-passaporte-informacoes-autorizacao/dist/alt-passaporte-informacoes-autorizacao.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-passaporte-listagem-produtos/dist/alt-passaporte-listagem-produtos.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js?rev=@@hash"></script>
