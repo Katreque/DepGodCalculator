@@ -2,7 +2,7 @@
     'use strict';
 
 angular.module('DEPGod')
-    .controller('controladorCabecalho', ['$log', 'AltPassaporteListagemProdutosService', 'AltPassaporteUsuarioLogadoManager', 'PASSAPORTE_LOGOUT', 'MSG_ERRO_PRODUTO', 'AltAlertaFlutuanteService', function($log, AltPassaporteListagemProdutosService, AltPassaporteUsuarioLogadoManager, PASSAPORTE_LOGOUT, AltAlertaFlutuanteService, MSG_ERRO_PRODUTO){
+    .controller('controladorCabecalho', ['$log', 'AltPassaporteListagemProdutosService', 'AltPassaporteUsuarioLogadoManager', 'PASSAPORTE_LOGOUT', 'MSG_ERRO_PRODUTO', 'AltAlertaFlutuanteService', function($log, AltPassaporteListagemProdutosService, AltPassaporteUsuarioLogadoManager, PASSAPORTE_LOGOUT, MSG_ERRO_PRODUTO, AltAlertaFlutuanteService){
     var self = this;
 
     self.produtosHabilitados = {};
