@@ -5,7 +5,8 @@
   "main": "DEPGod.js",
   "scripts": {
     "start": "aliv",
-    "test": "karma start"
+    "test": "karma start",
+    "p": "protractor conf.js"
   },
   "keywords": [],
   "author": "",
