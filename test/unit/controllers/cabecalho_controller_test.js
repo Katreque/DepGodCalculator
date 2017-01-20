@@ -20,7 +20,6 @@ describe('controladorCabecalho', function(){
 
     it('Verifica se o objeto produtosHabilitados inicia vazio!', inject(function($controller){
         $controller(_NomeController, {$scope: _scope})
-        _rootScope.$digest();
 
         expect(_scope.controlcabec.produtosHabilitados).toEqual({});
     }))
@@ -62,7 +61,6 @@ describe('controladorCabecalho', function(){
 
         $controller(_NomeController, {$scope: _scope})
         AltPassaporteUsuarioLogadoManager.retorna();
-        _rootScope.$digest();
 
         expect(_scope.controlcabec.informacoesUsuario).toBe(_resultadoEsperado);
     }))
