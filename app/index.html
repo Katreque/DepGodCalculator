@@ -70,7 +70,7 @@
                                 <div id="produtos-cabecalho-container" class="alt-produtos-usuario-cabecalho-container">
                                     <a class="col-xs-12 col-sm-6 col-lg-4 text-center alt-hand alt-produto-cabecalho" ng-repeat="produto in controlcabec.produtosHabilitados.habilitados track by $index" target="_blank" href="{{produto.urlAutenticacao}}">
                                         <img class="alt-imagem-pequena" src="{{produto.urlLogo}}">
-                                        <p class="text-muted">{{produto.nome}}</p>
+                                        <p id="listagemProdutos" class="text-muted">{{produto.nome}}</p>
                                     </a>
                                 </div>
                             </div>

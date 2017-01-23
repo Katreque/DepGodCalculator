@@ -1,23 +1,12 @@
 describe('Home', function(){
     var _home = 'home';
 
-    beforeEach(function(){
-        browser.get(browser.params.BASE_PASSAPORTE_AUTH + _home);
-        browser.driver.get(browser.params.BASE_PASSAPORTE_AUTH + _home);
-        browser.driver.manage().addCookie({
-                                            name: "passaporte-chave-DEV",
-                                            value: browser.params.chaveDev
-                                          })
-
-        browser.driver.manage().addCookie({
-                                            name: "passaporte-token-DEV",
-                                            value: browser.params.tokenDev
-                                          })
-                })
+    var helper = require('./helper.js');
+    helper.cookies();
                 
     it('Verifica se o header da Home está correto.', function(){
         var _resultadoEsperado;
-        _resultadoEsperado = element(by.id('tituloHome')).getAttribute('textContent');
+        _resultadoEsperado = element(by.id('tituloHome')).getText();
 
         expect(_resultadoEsperado).toEqual('Home');
     })
@@ -25,18 +14,18 @@ describe('Home', function(){
     it('Verifica se o botão ICMS está levando para a página correta.', function(){
 
         element(by.id('botaoIcms')).click();
-        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_PASSAPORTE_AUTH + 'calculoicms');
+        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_CALC_URL + 'calculoicms');
     })
 
     it('Verifica se o botão ST está levando para a página correta.', function(){
 
         element(by.id('botaoSt')).click();
-        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_PASSAPORTE_AUTH + 'calculost');
+        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_CALC_URL + 'calculost');
     })
 
     it('Verifica se o botão IPI está levando para a página correta.', function(){
 
         element(by.id('botaoIpi')).click();
-        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_PASSAPORTE_AUTH + 'calculoipi');
+        expect(browser.getCurrentUrl()).toEqual(browser.params.BASE_CALC_URL + 'calculoipi');
     })
 })
