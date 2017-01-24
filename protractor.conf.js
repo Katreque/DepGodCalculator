@@ -5,7 +5,8 @@ exports.config = {
 
     suites:{
         home: './test/e2e/home_spec.js',
-        cabecalho: './test/e2e/cabecalho_spec.js'
+        cabecalho: './test/e2e/cabecalho_spec.js',
+        icmsProprio: './test/e2e/icmsProprio_spec.js',
     },
     
     params: {

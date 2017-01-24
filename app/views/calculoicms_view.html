@@ -1,14 +1,14 @@
 <body>
     <div class="alt-titulo-view-container">
-        <p class="alt-titulo-view">ICMS</p>
+        <p id="tituloIcms" class="alt-titulo-view">ICMS</p>
     </div>
     <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 alt-espacamento-top">
         <div class="row vertical-center-row">
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsProprioModal">ICMS Próprio</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsRedModal">Redução de Base</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsDifalModal">DIFAL</button>
+            <button type="button" id="btnProprio" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsProprioModal">ICMS Próprio</button>
+            <button type="button" id="btnRed" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsRedModal">Redução de Base</button>
+            <button type="button" id="btnDifal" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#icmsDifalModal">DIFAL</button>
             <br>
-            <button type="button" class="btn btn btn-default btn-lg btn-block" ng-click="controlicms.voltar()">Voltar</button>
+            <button type="button" id="btnVoltar" class="btn btn btn-default btn-lg btn-block" ng-click="controlicms.voltar()">Voltar</button>
         </div>
     </div>
 
@@ -26,8 +26,8 @@
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsProprio.validacaoBase(), 'has-success':controlicms.valoresIcmsProprio.validacaoBase()}">
                                 <label class="help-block" for="lbBaseCalculoProprio">Base Calculo</label>
-                                <input type="number" ng-model="controlicms.valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>
-                                <span class="help-block msg" ng-show="!controlicms.valoresIcmsProprio.validacaoBase()">Valor inválido!</span>
+                                <input id="baseIcmsProprio" type="number" ng-model="controlicms.valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>
+                                <span id="spanBaseIcmsProprio" class="help-block msg" ng-show="!controlicms.valoresIcmsProprio.validacaoBase()">Valor inválido!</span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">

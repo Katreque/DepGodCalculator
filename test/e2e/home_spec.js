@@ -1,9 +1,12 @@
 describe('Home', function(){
     var _home = 'home';
 
-    var helper = require('./helper.js');
-    helper.cookies();
-                
+    require('./helper.js').cookies();
+
+    beforeEach(function(){
+        browser.get(browser.params.BASE_CALC_URL + _home);
+    })
+    
     it('Verifica se o header da Home está correto.', function(){
         var _resultadoEsperado;
         _resultadoEsperado = element(by.id('tituloHome')).getText();
