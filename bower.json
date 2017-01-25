@@ -26,5 +26,8 @@
   },
   "resolutions": {
     "angular": "~1.4.8"
+  },
+  "devDependencies": {
+    "angular-i18n": "^1.6.1"
   }
 }
