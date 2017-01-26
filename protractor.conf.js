@@ -8,7 +8,7 @@ exports.config = {
         cabecalho: './test/e2e/cabecalho_spec.js',
         icmsProprio: './test/e2e/icmsProprio_spec.js',
     },
-    
+
     params: {
         BASE_CALC_URL: 'https://calculadora-dev.alterdata.com.br:1307/',
         chaveDev: "nDCa3Oyl42VDXGNs8gVdvN7kVW4Gtqsp90GCQMYwpoMk41TVYTkFwgr_QVfo-OBZ8WKt8HPM5tMUTymsQPfm4_6qHk7UikhzK0zzK9wALPkTut8LgxnTSxhrJzMdTO1MMtH38hGJ7fJ6wx2Pfn3VgGz9bwoI0gBrhFIuqUyU7gjzTECoKLQjK3kpxrUzXGvlBR48_Yc-bMlUMyrRMsxyDOc6HaRzqzRPh3EtgPGnk-Hsk54DI8z2B0P_ephCoVRTFwDd2pObBnBl_a6z_KMJDKKndVY5iW8-NEbd3abtJGdUdechGuU4fqrfdhFjjNSa_AJTXl_CJHklTYmTiQXDpA",

@@ -3,7 +3,7 @@ describe('Cabecalho', function(){
     require('./helper.js').cookies();
 
     beforeEach(function(){
-      browser.get(browser.params.BASE_CALC_URL);  
+      browser.get(browser.params.BASE_CALC_URL);
     })
 
     it('Verifica se o nome dentro do navbar do Header está aparecendo!', function(){
@@ -42,7 +42,7 @@ describe('Cabecalho', function(){
     })
 
     it('Verifica se ao clicar no botão de sair, é redirecionado para a página de login do Passaporte.', function(){
-        element(by.id('imagemPerfilPassaporte')).click();        
+        element(by.id('imagemPerfilPassaporte')).click();
         element(by.id('btnSair')).click();
 
         expect(browser.getCurrentUrl()).toEqual('https://passaporte2-dev.alterdata.com.br/');

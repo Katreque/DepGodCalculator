@@ -18,21 +18,21 @@
         <div class="modal-dialog modal-pequeno">
             <div class="modal-content">
                 <div class="modal-header alt-cor-principal">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">ICMS Próprio</h4>
+                    <button id="xIcmsProprio" type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="nomeModalIcmsProprio" class="modal-title">ICMS Próprio</h4>
                 </div>
                 <div class="modal-body alt-overflow-hidden">
                     <form name="icmsProprioForm">
-                        <div class="col-sm-6 col-xs-12">
+                      <div class="col-sm-6 col-xs-12">
                             <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsProprio.validacaoBase(), 'has-success':controlicms.valoresIcmsProprio.validacaoBase()}">
-                                <label class="help-block" for="lbBaseCalculoProprio">Base Calculo</label>
+                                <label id="labelBaseIcmsProprio" class="help-block" for="lbBaseCalculoProprio">Base Cálculo</label>
                                 <input id="baseIcmsProprio" type="number" ng-model="controlicms.valoresIcmsProprio.base" name="baseIcmsProprio" class="form-control" required/>
                                 <span id="spanBaseIcmsProprio" class="help-block msg" ng-show="!controlicms.valoresIcmsProprio.validacaoBase()">Valor inválido!</span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsProprio.validacaoAliquotaNaoAceitaZero(), 'has-success':controlicms.valoresIcmsProprio.validacaoAliquotaNaoAceitaZero()}">
-                                <label class="help-block" for="tbAliquotaIcmsProprio">Alíquota ICMS</label>
+                                <label id="labelAliqIcmsProprio" class="help-block" for="tbAliquotaIcmsProprio">Alíquota ICMS</label>
                                 <div class="input-group">
                                     <input id="aliqIcmsProprio" type="number" ng-model="controlicms.valoresIcmsProprio.aliquota" class="form-control" name="aliquotaIcmsProprio" required/>
                                     <span class="input-group-addon" id="percent-addon">%</span>
@@ -44,21 +44,21 @@
                             <div class="form-group">
                               <button id="btnIcmsProprio" type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsProprio.calcular()" ng-disabled="!controlicms.valoresIcmsProprio.isValid()">Calcular</button>
                             </div>
-                            <a title="Discriminação" data-toggle="collapse" data-target="#discriminacao" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
-                            <label class="help-block" for="tbValorIcmsProprio">Valor ICMS</label>
+                            <a id="discrimIcmsProprio" title="Discriminação" data-toggle="collapse" data-target="#discriminacao" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                            <label id="labelValorIcmsProprio" class="help-block" for="tbValorIcmsProprio">Valor ICMS</label>
                             <pre id="resultIcmsProprio" ng-bind="controlicms.valoresIcmsProprio.valor | currency"></pre>
                         </div>
                         <div class="col-xs-12">
                             <div id="discriminacao" class="collapse">
                                 <div class="panel panel-primary">
-                                    <div class="panel-heading">Discriminação Calculo
-                                        <button type="button" class="close" data-toggle="collapse" data-target="#discriminacao">&times;</button>
+                                    <div id="tituloPanelDiscrim" class="panel-heading">Discriminação Cálculo
+                                      <button id="xDiscrimIcmsProprio" type="button" class="close" data-toggle="collapse" data-target="#discriminacao">&times;</button>
                                     </div>
                                     <div class="panel-body">
                                     <center>
                                     (Base de calculo) * (Alíquota de ICMS)/100
                                     <br></br>
-                                    {{controlicms.valoresIcmsProprio.base}} R$ * {{controlicms.valoresIcmsProprio.aliquota}}/100 = {{controlicms.valoresIcmsProprio.valorDiscriminacao}} R$
+                                    {{controlicms.valoresIcmsProprio.base | currency: 'R$':3}} * {{controlicms.valoresIcmsProprio.aliquota}}/100 = {{controlicms.valoresIcmsProprio.valorDiscriminacao | currency: 'R$':3}}
                                     </center>
                                     </div>
                                 </div>
@@ -67,8 +67,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-default" ng-click="controlicms.limparProprio()">Limpar</a>
-                    <a type="button" class="btn btn-default" data-dismiss="modal">Fechar</a>
+                    <a id="btnLimparIcmsProprio" type="button" class="btn btn-default" ng-click="controlicms.limparProprio()">Limpar</a>
+                    <a id="btnFecharModalIcmsProprio" type="button" class="btn btn-default" data-dismiss="modal">Fechar</a>
                 </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                                                 <div class="panel-body">
                                                     <center>
                                                     <h6>(Base de calculo - (Al de redução/100)) * (Alíquota de ICMS)/100 = (Valor do ICMS Red.)<h6>
-                                                    <h5>{{controlicms.valoresIcmsBaseRed.base}} - ({{controlicms.valoresIcmsBaseRed.aliquota}}/100) * {{controlicms.valoresIcmsBaseRed.aliquotaRed}}/100 = {{controlicms.valoresIcmsBaseRed.valorDiscriminacao}} R$<h5>
+                                                    <h5>{{controlicms.valoresIcmsBaseRed.base | currency: 'R$':3}} - ({{controlicms.valoresIcmsBaseRed.aliquota}}/100) * {{controlicms.valoresIcmsBaseRed.aliquotaRed}}/100 = {{controlicms.valoresIcmsBaseRed.valorDiscriminacao | currency: 'R$':3}}<h5>
                                                     </center>
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@
                                                         <h6>2019 = [Origem:0%/Destino:100%]</h6>
                                                         <h6>-</h6>
                                                         <h6>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
-                                                        <h5>{{controlicms.valoresIcmsDifal.base}} R$ * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal}} R$</h5>
+                                                        <h5>{{controlicms.valoresIcmsDifal.base | currency: 'R$':3}} * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal | currency: 'R$':3}}</h5>
                                                         <h6>FCP somado ao Destino</h5>
                                                         <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp}} = {{controlicms.valoresIcmsDifal.valorDestino}} + {{controlicms.valoresIcmsDifal.valorFcp}}</h5>
                                                     </center>
