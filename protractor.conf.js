@@ -8,6 +8,7 @@ exports.config = {
         cabecalho: './test/e2e/cabecalho_spec.js',
         icmsProprio: './test/e2e/icmsProprio_spec.js',
         icmsRed: './test/e2e/icmsRed_spec.js',
+        icmsDifal: './test/e2e/icmsDifal_spec.js',
     },
 
     params: {
