@@ -6,7 +6,7 @@ describe('ICMS', function(){
         element(by.id('btnProprio')).click();
     })
 
-    describe('Testes Relacionados a mensagem de validação!', function(){
+    describe('Testes Relacionados a comportamentos do modal', function(){
         it('Verifica se o nome do modal é correspondente com o seu cálculo.', function(){
           browser.sleep(1000);
           expect($('.modal-header').$('.modal-title').getText()).toEqual("ICMS Próprio");
@@ -26,14 +26,16 @@ describe('ICMS', function(){
            expect(element(by.id('icmsProprioModal')).isDisplayed()).toBe(false);
          })
 
-         /*it('Verifica se ao clicar fora do modal, o mesmo irá se fechar', function(){
+         it('Verifica se ao clicar fora do modal, o mesmo irá se fechar', function(){
            browser.sleep(1000);
-           $('.modal-backdrop').click();
+           browser.actions().mouseMove(element(by.id('idContato'))).click().perform();
            browser.sleep(1000);
            expect(element(by.id('icmsProprioModal')).isDisplayed()).toBe(false);
-           })*/
+         })
+    })
 
-          it('Informa um valor no campo Base Cálculo e verifica se irá ser exibido a mensagem correta correspondente.', function(){
+    describe('Testes Relacionados a validação dos inputs e buttons dentro do modal', function(){
+          it('Informa um valor no campo Base Cálculo e verifica se irá ser exibido a mensagem de valor inválido.', function(){
             browser.sleep(1000);
             element(by.id('baseIcmsProprio')).sendKeys(101);
             expect(element(by.id('spanBaseIcmsProprio')).isDisplayed()).toBe(false);
@@ -48,7 +50,7 @@ describe('ICMS', function(){
             expect(element(by.id('spanBaseIcmsProprio')).isDisplayed()).toBe(true);
          })
 
-        it('Informa um valor no campo alíquota ICMS e verifica se irá ser exibido a mensagem correta correspondente.', function(){
+        it('Informa um valor no campo alíquota ICMS e verifica se irá ser exibido a mensagem de valor inválido.', function(){
             browser.sleep(1000);
             element(by.id('aliqIcmsProprio')).sendKeys(101);
             expect(element(by.id('spanAliqIcmsProprio')).isDisplayed()).toBe(true);
@@ -64,7 +66,7 @@ describe('ICMS', function(){
 
             element(by.id('aliqIcmsProprio')).clear().sendKeys(-1);
             expect(element(by.id('spanAliqIcmsProprio')).isDisplayed()).toBe(true);
-         })
+        })
 
          it('Verifica se o botão de calcular estará habilitado ou não dependendo das condições do modal passadas.', function(){
            browser.sleep(1000);
@@ -85,8 +87,10 @@ describe('ICMS', function(){
            browser.sleep(1000);
            expect(element(by.id('resultIcmsProprio')).getText()).toEqual("R$0,00");
          })
+    })
 
-         it('Verifica se ao colocar um input válido, o valor apresentado será o correto.', function(){
+    describe('Testes relacionados a validação dos cálculos feitos.', function(){
+         it('Realiza um cálculo com base 100 e alíquota 10 e verifica se o resultado exibido será o correto.', function(){
            browser.sleep(1000);
            element(by.id('baseIcmsProprio')).sendKeys(100);
            element(by.id('aliqIcmsProprio')).clear().sendKeys(10);
@@ -94,7 +98,9 @@ describe('ICMS', function(){
            var _resultado = element(by.id('resultIcmsProprio')).getText();
            expect(_resultado).toEqual("R$10,00");
          })
+    })
 
+    describe('Testes relacionados ao panel de descriminação do cálculo.', function(){
          it('Verifica se ao clicar no ícone de pergunta, o panel com a discriminação do cálculo irá ser mostrado.', function(){
            browser.sleep(1000);
            element(by.id('discrimIcmsProprio')).click();
@@ -112,14 +118,14 @@ describe('ICMS', function(){
            browser.sleep(1000);
            expect(element(by.binding('controlicms.valoresIcmsProprio.base')).getText()).toContain("R$100,000");
            expect(element(by.binding('controlicms.valoresIcmsProprio.aliquota')).getText()).toContain("10");
-           expect(element(by.binding('controlicms.valoresIcmsProprio.valorDiscriminacao')).getText()).toContain("R$100,000");
+           expect(element(by.binding('controlicms.valoresIcmsProprio.valorDiscriminacao')).getText()).toContain("R$10,000");
          })
 
          it('Verifica se a forma de fechar a discriminação do cálculo usando o x ou clicando novamente no ícone de pergunta estão funcionando', function(){
            browser.sleep(1000);
            element(by.id('discrimIcmsProprio')).click();
            browser.sleep(1000);
-           element(by.id('xDiscrimIcmsProprio')).click();
+           $('#icmsProprioModal #discriminacao .close').click();
            browser.sleep(1000);
            expect(element(by.id('discriminacao')).isDisplayed()).toBe(false);
 
@@ -130,7 +136,9 @@ describe('ICMS', function(){
            browser.sleep(1000);
            expect(element(by.id('discriminacao')).isDisplayed()).toBe(false);
          })
+    })
 
+    describe('Testes relacionados aos buttons que ficam no final do modal.', function(){
          it('Verifica se o botão de limpar está funcionando corretamente.', function(){
            browser.sleep(1000);
            element(by.id('baseIcmsProprio')).clear().sendKeys(1);

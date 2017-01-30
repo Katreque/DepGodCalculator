@@ -52,7 +52,7 @@
                             <div id="discriminacao" class="collapse">
                                 <div class="panel panel-primary">
                                     <div id="tituloPanelDiscrim" class="panel-heading">Discriminação Cálculo
-                                      <button id="xDiscrimIcmsProprio" type="button" class="close" data-toggle="collapse" data-target="#discriminacao">&times;</button>
+                                      <button type="button" class="close" data-toggle="collapse" data-target="#discriminacao">&times;</button>
                                     </div>
                                     <div class="panel-body">
                                     <center>
@@ -91,37 +91,37 @@
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoBase(), 'has-success':controlicms.valoresIcmsBaseRed.validacaoBase()}">
                                            <label class="help-block" for="lbBaseIcmsRed">Base de Calculo</label>
-                                           <input type="number" ng-model="controlicms.valoresIcmsBaseRed.base" class="form-control" name="baseIcmsRed" required>
-                                           <span class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoBase()">Valor inválido!</span>
+                                           <input id="baseIcmsRed" type="number" ng-model="controlicms.valoresIcmsBaseRed.base" class="form-control" required>
+                                           <span id="spanBaseIcmsRed" class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoBase()">Valor inválido!</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota), 'has-success':controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)}">
                                             <label class="help-block" for="lbAliquotaIcms">Alíquota ICMS</label>
                                             <div class="input-group">
-                                                <input type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquota" class="form-control" name="aliquotaIcms" required>
+                                                <input id="aliqIcmsRed" type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquota" class="form-control" name="aliquotaIcms" required>
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
-                                            <span class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)">Valor inválido!</span>
+                                            <span id="spanAliqIcmsRed" class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquota)">Valor inválido!</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed), 'has-success':controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)}">
                                             <label class="help-block" for="lbAliquotaIcmsReduzida">Redução</label>
                                             <div class="input-group">
-                                                <input type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquotaRed" class="form-control" name="aliquotaIcmsReduzida" required>
+                                                <input id="aliqRed" type="number" ng-model="controlicms.valoresIcmsBaseRed.aliquotaRed" class="form-control" name="aliquotaIcmsReduzida" required>
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
-                                            <span class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)">Valor inválido!</span>
+                                            <span id="spanAliqRed" class="help-block msg" ng-show="!controlicms.valoresIcmsBaseRed.validacaoAliquotaNaoAceitaZero(controlicms.valoresIcmsBaseRed.aliquotaRed)">Valor inválido!</span>
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsBaseRed.calcular()" ng-disabled="!controlicms.valoresIcmsBaseRed.isValid()">Calcular</button>
+                                            <button id="btnIcmsRed" type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsBaseRed.calcular()" ng-disabled="!controlicms.valoresIcmsBaseRed.isValid()">Calcular</button>
                                         </div>
-                                        <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoRed" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                                        <a id="discrimIcmsRed" title="Discriminação" data-toggle="collapse" data-target="#discriminacaoRed" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
                                         <label class="help-block" for="lbValorIcmsRed">Valor ICMS</label>
-                                        <pre ng-bind="controlicms.valoresIcmsBaseRed.valor | currency"></pre>
+                                        <pre id="resultIcmsRed" ng-bind="controlicms.valoresIcmsBaseRed.valor | currency"></pre>
                                     </div>
                                     <div class="col-xs-12">
                                         <div id="discriminacaoRed" class="collapse">
@@ -141,8 +141,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <a type="button" class="btn btn btn-default" ng-click="controlicms.limparRed()">Limpar</a>
-                                <a type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</a>
+                                <a id="btnLimparIcmsRed" type="button" class="btn btn btn-default" ng-click="controlicms.limparRed()">Limpar</a>
+                                <a id="btnFecharModalIcmsRed" type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</a>
                             </div>
                             </div>
                         </div>
