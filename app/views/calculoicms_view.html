@@ -208,19 +208,19 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsDifal.calcular()" ng-disabled="!controlicms.valoresIcmsDifal.isValid()">Calcular</button>
+                                        <button id="btnIcmsDifal" type="button" class="btn btn-nmain btn-block" ng-click="controlicms.valoresIcmsDifal.calcular()" ng-disabled="!controlicms.valoresIcmsDifal.isValid()">Calcular</button>
                                     </div>
                                     <div class="col-sm-6 col-xs-12 alt-sem-padding-left">
                                         <div class="form-group">
                                             <label class="help-block" for="tbValorOrigem">Valor Origem</label>
-                                            <pre ng-bind="controlicms.valoresIcmsDifal.valorOrigem | currency"></pre>
+                                            <pre id="resultValorOrigem" ng-bind="controlicms.valoresIcmsDifal.valorOrigem | currency"></pre>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12 alt-sem-padding-right">
                                         <div class="form-group">
-                                            <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoDifal" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                                            <a id="discrimIcmsDifal" title="Discriminação" data-toggle="collapse" data-target="#discriminacaoDifal" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
                                             <label class="help-block" for="tbValorDestino">Valor Destino</label>
-                                            <pre ng-bind="controlicms.valoresIcmsDifal.valorDestino | currency"></pre>
+                                            <pre id="resultValorDestino" ng-bind="controlicms.valoresIcmsDifal.valorDestino | currency"></pre>
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
@@ -239,7 +239,7 @@
                                                         <h6>(Base de ICMS) * (Al.Interna - Al.Interestad)/100 = (Valor Difal)</h6>
                                                         <h5>{{controlicms.valoresIcmsDifal.base | currency: 'R$':3}} * ({{controlicms.valoresIcmsDifal.aliquotaInterna}}-{{controlicms.valoresIcmsDifal.aliquotaInterestadual}})/100 = {{controlicms.valoresIcmsDifal.valorDifal | currency: 'R$':3}}</h5>
                                                         <h6>FCP somado ao Destino</h5>
-                                                        <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp}} = {{controlicms.valoresIcmsDifal.valorDestino}} + {{controlicms.valoresIcmsDifal.valorFcp}}</h5>
+                                                        <h5>{{controlicms.valoresIcmsDifal.valorDestinoeFcp | currency: 'R$':3}} = {{controlicms.valoresIcmsDifal.valorDestino | currency: 'R$':3}} + {{controlicms.valoresIcmsDifal.valorFcp | currency: 'R$':3}}</h5>
                                                     </center>
                                                 </div>
                                             </div>
@@ -249,8 +249,8 @@
                             </form>
                         </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn btn-default" ng-click="controlicms.limparDifal()">Limpar</button>
-                                <button type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button id="btnLimparIcmsDifal" type="button" class="btn btn btn-default" ng-click="controlicms.limparDifal()">Limpar</button>
+                                <button id="btnFecharModalIcmsDifal" type="button" class="btn btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
                     </div>

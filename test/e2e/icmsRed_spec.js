@@ -188,7 +188,9 @@
            element(by.id('baseIcmsRed')).clear().sendKeys(1);
            element(by.id('aliqIcmsRed')).clear().sendKeys(1);
            element(by.id('aliqRed')).clear().sendKeys(1);
+
            element(by.id('btnLimparIcmsRed')).click();
+           
            expect(element(by.id('baseIcmsRed')).getText()).toBe('');
            expect(element(by.id('aliqIcmsRed')).getText()).toBe('');
            expect(element(by.id('aliqRed')).getText()).toBe('');
