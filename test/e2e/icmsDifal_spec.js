@@ -1,4 +1,4 @@
-    describe('ICMS', function(){
+    describe('ICMS Difal', function(){
           require('./helper.js').cookies();
 
           beforeEach(function(){

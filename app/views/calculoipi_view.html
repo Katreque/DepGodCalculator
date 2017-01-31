@@ -4,7 +4,7 @@
     </div>
     <div class="container container-table col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 alt-espacamento-top">
         <div class="row vertical-center-row">
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#ipiProprioModal">IPI Próprio</button>
+            <button id="btnIpi" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#ipiProprioModal">IPI Próprio</button>
             <br>
             <button type="button" class="btn btn btn-default btn-lg btn-block" ng-click="controlipi.voltar()">Voltar</button>
         </div>
@@ -24,27 +24,27 @@
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="form-group" ng-class="{'has-error': !controlipi.valoresipiProprio.validacaoBase(), 'has-success': controlipi.valoresipiProprio.validacaoBase()}">
                                             <label class="help-block" for="lbBaseIpiProprio">Base Cálculo</label>
-                                            <input type="number" ng-model="controlipi.valoresipiProprio.base" class="form-control" required />         
-                                            <span class="help-block msg" ng-show="!controlipi.valoresipiProprio.validacaoBase()">Valor inválido!</span>
+                                            <input id="baseIpiProprio" type="number" ng-model="controlipi.valoresipiProprio.base" class="form-control" required />
+                                            <span id="spanBaseIpiProprio" class="help-block msg" ng-show="!controlipi.valoresipiProprio.validacaoBase()">Valor inválido!</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group" ng-class="{'has-error': !controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero(), 'has-success': controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero()}">    
+                                        <div class="form-group" ng-class="{'has-error': !controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero(), 'has-success': controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero()}">
                                             <label class="help-block" for="lbAliquotaIpiProprio">Alíquota IPI</label>
                                             <div class="input-group">
-                                                <input type="number" ng-model="controlipi.valoresipiProprio.aliquota" class="form-control" id="aliquotaIpi" required />
+                                                <input id="aliqIpiProprio" type="number" ng-model="controlipi.valoresipiProprio.aliquota" class="form-control" id="aliquotaIpi" required />
                                                 <span class="input-group-addon" id="percent-addon">%</span>
                                             </div>
-                                            <span class="help-block msg" ng-show="!controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero()">Valor inválido!</span>
-                                        </div>                    
+                                            <span id="spanAliqIpiProprio" class="help-block msg" ng-show="!controlipi.valoresipiProprio.validacaoAliquotaNaoAceitaZero()">Valor inválido!</span>
+                                        </div>
                                     </div>
                                     <div class="col-xs-12">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-nmain btn-block" ng-click="controlipi.valoresipiProprio.calcular()" ng-disabled="!controlipi.valoresipiProprio.isValid()">Calcular</button>
+                                            <button id="btnIpiProprio" type="button" class="btn btn-nmain btn-block" ng-click="controlipi.valoresipiProprio.calcular()" ng-disabled="!controlipi.valoresipiProprio.isValid()">Calcular</button>
                                         </div>
-                                        <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoIpiProprio" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                                        <a id="discrimIpiProprio" title="Discriminação" data-toggle="collapse" data-target="#discriminacaoIpiProprio" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
                                         <label class="help-block" for="lbValorIpiProprio">Valor IPI:</label>
-                                        <pre ng-bind="controlipi.valoresipiProprio.valor | currency"></pre>
+                                        <pre id="resultIpiProprio" ng-bind="controlipi.valoresipiProprio.valor | currency"></pre>
                                     </div>
                                     <div class="col-xs-12">
                                         <div id="discriminacaoIpiProprio" class="collapse">
@@ -54,9 +54,9 @@
                                                 </div>
                                                 <div class="panel-body">
                                                     <center>
-                                                    (Base de calculo) * (Alíquota de IPI)/100 = (Valor do IPI) 
+                                                    (Base de calculo) * (Alíquota de IPI)/100 = (Valor do IPI)
                                                     <br></br>
-                                                    {{controlipi.valoresipiProprio.base}} R$ * {{controlipi.valoresipiProprio.aliquota}}/100 = {{controlipi.valoresipiProprio.valorDiscriminacao}} R$
+                                                    {{controlipi.valoresipiProprio.base | currency: 'R$':3}} R$ * {{controlipi.valoresipiProprio.aliquota | currency: 'R$':3}}/100 = {{controlipi.valoresipiProprio.valorDiscriminacao | currency: 'R$':3}} R$
                                                     </center>
                                                 </div>
                                             </div>
@@ -65,8 +65,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" ng-click="controlipi.limparIpiProprio()">Limpar</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button id="btnLimparIpiProprio" type="button" class="btn btn-default" ng-click="controlipi.limparIpiProprio()">Limpar</button>
+                                <button id="btnFecharModalIpiProprio" type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
                     </div>

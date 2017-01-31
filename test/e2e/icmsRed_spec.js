@@ -1,4 +1,4 @@
-  describe('ICMS', function(){
+  describe('ICMS Red', function(){
       require('./helper.js').cookies();
 
       beforeEach(function(){
@@ -190,7 +190,7 @@
            element(by.id('aliqRed')).clear().sendKeys(1);
 
            element(by.id('btnLimparIcmsRed')).click();
-           
+
            expect(element(by.id('baseIcmsRed')).getText()).toBe('');
            expect(element(by.id('aliqIcmsRed')).getText()).toBe('');
            expect(element(by.id('aliqRed')).getText()).toBe('');
