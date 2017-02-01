@@ -40,6 +40,13 @@ angular.module('DEPGod')
         return true;
     }
 
+    StProprio.prototype.validacaoIpi = function(ipi){
+        if(ipi < 0){
+          return false;
+        }
+        return true;
+    }
+
     StProprio.prototype.validacaoAliquotaNaoAceitaZero = function(aliquota){
         if(aliquota <= 0 || aliquota > 100){
             return false;

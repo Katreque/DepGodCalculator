@@ -9,6 +9,7 @@ exports.config = {
         icmsProprio: './test/e2e/icmsProprio_spec.js',
         icmsRed: './test/e2e/icmsRed_spec.js',
         icmsDifal: './test/e2e/icmsDifal_spec.js',
+        stProprio: './test/e2e/stProprio_spec.js',
         ipiProprio: './test/e2e/ipiProprio_spec.js',
     },
 

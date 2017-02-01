@@ -11,15 +11,15 @@ describe('StProprioModel', function(){
         it('Verifica se o mesmo é criado corretamente', function(){
             var _construtor = new StProprioModel();
             var _resultadoEsperado = {
-                base: undefined, 
-                aliquotaInterna: undefined, 
-                aliquotaInterestadual: undefined, 
-                mva: undefined, 
-                ipi: undefined, 
-                baseSt: undefined, 
-                baseStIpi: undefined, 
-                valorIcms: 0, 
-                valorSt: 0, 
+                base: undefined,
+                aliquotaInterna: undefined,
+                aliquotaInterestadual: undefined,
+                mva: undefined,
+                ipi: undefined,
+                baseSt: undefined,
+                baseStIpi: undefined,
+                valorIcms: 0,
+                valorSt: 0,
                 valorDiscriminacao: 0
             };
 
@@ -46,7 +46,7 @@ describe('StProprioModel', function(){
             _construtor.mva = 25;
             _construtor.ipi = 100;
             expect(_construtor.isValid()).toBe(true);
-            
+
             _construtor.base = 1;
             _construtor.aliquotaInterna = 2;
             _construtor.aliquotaInterestadual = 1;
@@ -78,7 +78,7 @@ describe('StProprioModel', function(){
             _construtor.mva = 25;
             _construtor.ipi = 100;
             expect(_construtor.isValid()).toBe(false);
-            
+
             _construtor.base = 1000;
             _construtor.aliquotaInterna = 18;
             _construtor.aliquotaInterestadual = 12;
@@ -196,7 +196,7 @@ describe('StProprioModel', function(){
 
         it('Aliquota Interna tem que ser maior que a Interestadual. Caso contrário, retorna false!', function(){
             var _construtor = new StProprioModel();
-            
+
             _construtor.base = 1000;
             _construtor.aliquotaInterna = 18;
             _construtor.aliquotaInterestadual = 12;
@@ -331,6 +331,29 @@ describe('StProprioModel', function(){
             _construtor.base = 1;
 
             expect(_construtor.validacaoBase()).toBe(true);
+        })
+
+        it('Passa um valor menor que zero para a validação do Ipi. Deve retornar false!', function(){
+            var _construtor = new StProprioModel();
+            var _ipi = -1;
+
+            expect(_construtor.validacaoIpi(_ipi)).toBe(false);
+        })
+
+        it('Passa um valor igual a zero para a validação do Ipi. Deve retornar true!', function(){
+
+            var _construtor = new StProprioModel();
+            var _ipi = 0;
+
+            expect(_construtor.validacaoIpi(_ipi)).toBe(true);
+
+        })
+
+        it('Passa um valor maior que zero para a validação do Ipi. Deve retornar true!', function(){
+            var _construtor = new StProprioModel();
+            var _ipi = 101;
+
+            expect(_construtor.validacaoIpi(_ipi)).toBe(true);
         })
 
         it('Passa um valor menor que zero para a validação de aliquota. Deve retornar false!', function(){

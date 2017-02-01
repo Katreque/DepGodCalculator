@@ -137,7 +137,7 @@
 
                element(by.id('anoNotaDifal')).clear().sendKeys(1);
                element(by.id('baseIcmsDifal')).clear();
-               element(by.id('aliqInternaDifal')).clear().sendKeys(1);
+               element(by.id('aliqInternaDifal')).clear().sendKeys(2);
                element(by.id('aliqInterestDifal')).clear().sendKeys(1);
                element(by.id('aliqFcpDifal')).clear().sendKeys(1);
                expect(element(by.id('btnIcmsDifal')).isEnabled()).toBe(false);
@@ -151,7 +151,7 @@
 
                element(by.id('anoNotaDifal')).clear().sendKeys(1);
                element(by.id('baseIcmsDifal')).clear().sendKeys(1);
-               element(by.id('aliqInternaDifal')).clear().sendKeys(1);
+               element(by.id('aliqInternaDifal')).clear().sendKeys(2);
                element(by.id('aliqInterestDifal')).clear();
                element(by.id('aliqFcpDifal')).clear().sendKeys(1);
                expect(element(by.id('btnIcmsDifal')).isEnabled()).toBe(false);
@@ -165,7 +165,7 @@
 
                element(by.id('anoNotaDifal')).clear();
                element(by.id('baseIcmsDifal')).clear().sendKeys(1);
-               element(by.id('aliqInternaDifal')).clear().sendKeys(1);
+               element(by.id('aliqInternaDifal')).clear().sendKeys(2);
                element(by.id('aliqInterestDifal')).clear().sendKeys(1);
                element(by.id('aliqFcpDifal')).clear();
                expect(element(by.id('btnIcmsDifal')).isEnabled()).toBe(false);
