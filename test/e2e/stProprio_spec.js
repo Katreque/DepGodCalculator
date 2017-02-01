@@ -105,19 +105,19 @@
               it('Informa um valor no campo alíquota MVA e verifica se irá ser exibido a mensagem de valor inválido.', function(){
                   browser.sleep(1000);
                   element(by.id('aliqMvaStProprio')).sendKeys(101);
-                  expect(element(by.id('spanaliqMvaStProprio')).isDisplayed()).toBe(true);
+                  expect(element(by.id('spanAliqMvaStProprio')).isDisplayed()).toBe(true);
 
                   element(by.id('aliqMvaStProprio')).clear().sendKeys(100);
-                  expect(element(by.id('spanaliqMvaStProprio')).isDisplayed()).toBe(false);
+                  expect(element(by.id('spanAliqMvaStProprio')).isDisplayed()).toBe(false);
 
                   element(by.id('aliqMvaStProprio')).clear().sendKeys(1);
-                  expect(element(by.id('spanaliqMvaStProprio')).isDisplayed()).toBe(false);
+                  expect(element(by.id('spanAliqMvaStProprio')).isDisplayed()).toBe(false);
 
                   element(by.id('aliqMvaStProprio')).clear().sendKeys(0);
-                  expect(element(by.id('spanaliqMvaStProprio')).isDisplayed()).toBe(false);
+                  expect(element(by.id('spanAliqMvaStProprio')).isDisplayed()).toBe(false);
 
                   element(by.id('aliqMvaStProprio')).clear().sendKeys(-1);
-                  expect(element(by.id('spanaliqMvaStProprio')).isDisplayed()).toBe(true);
+                  expect(element(by.id('spanAliqMvaStProprio')).isDisplayed()).toBe(true);
               })
 
               it('Verifica se o botão de calcular estará habilitado ou não dependendo das condições do modal passadas.', function(){
@@ -191,4 +191,90 @@
                  expect(element(by.id('resultStProprio')).getText()).toEqual("R$0,00");
                })
         })
+
+    describe('Testes relacionados a validação dos cálculos feitos.', function(){
+         it('Realiza um cálculo com base 100, alíquota Interna 18, Aliquota Interestadual 12, IPI 100 e MVA de 33. E verifica se o resultado exibido será o correto.', function(){
+           browser.sleep(1000);
+           element(by.id('baseStProprio')).clear().sendKeys(1000);
+           element(by.id('ipiStProprio')).clear().sendKeys(100);
+           element(by.id('aliqInternaStProprio')).clear().sendKeys(18);
+           element(by.id('aliqInterestStProprio')).clear().sendKeys(12);
+           element(by.id('aliqMvaStProprio')).clear().sendKeys(33);
+           element(by.id('btnIcmsStProprio')).click();
+
+           expect(element(by.id('resultStProprio')).getText()).toEqual("R$137,40");
+         })
+    })
+
+    describe('Testes relacionados ao panel de descriminação do cálculo.', function(){
+         it('Verifica se ao clicar no ícone de pergunta, o panel com a discriminação do cálculo irá ser mostrado.', function(){
+           browser.sleep(1000);
+           element(by.id('discrimStProprio')).click();
+           browser.sleep(1000);
+           expect(element(by.id('discriminacaoSt')).isDisplayed()).toBe(true);
+         })
+
+         it('Verifica se o valor que estão nos inputs estão batendo com os valores dentro da discriminação.', function(){
+           browser.sleep(1000);
+           element(by.id('baseStProprio')).clear().sendKeys(1000);
+           element(by.id('ipiStProprio')).clear().sendKeys(100);
+           element(by.id('aliqInternaStProprio')).clear().sendKeys(18);
+           element(by.id('aliqInterestStProprio')).clear().sendKeys(12);
+           element(by.id('aliqMvaStProprio')).clear().sendKeys(33);
+           element(by.id('btnIcmsStProprio')).click();
+           browser.sleep(1000);
+           element(by.id('discrimStProprio')).click();
+           browser.sleep(1000);
+           expect(element(by.binding('controlst.valoresStProprio.base')).getText()).toContain("R$1.000,000");
+           expect(element(by.binding('controlst.valoresStProprio.aliquotaInterna')).getText()).toContain("18");
+           expect(element(by.binding('controlst.valoresStProprio.aliquotaInterest')).getText()).toContain("12");
+           expect(element(by.binding('controlst.valoresStProprio.valorIcms')).getText()).toContain("R$120,000");
+           expect(element(by.binding('controlst.valoresStProprio.baseStIpi')).getText()).toContain("R$1.100,000");
+           expect(element(by.binding('controlst.valoresStProprio.mva')).getText()).toContain("33");
+           expect(element(by.binding('controlst.valoresStProprio.baseSt')).getText()).toContain("R$1.430,000");
+           expect(element(by.binding('controlst.valoresStProprio.valorDiscriminacao')).getText()).toContain("R$137,400");
+         })
+
+         it('Verifica se a forma de fechar a discriminação do cálculo usando o x ou clicando novamente no ícone de pergunta estão funcionando', function(){
+           browser.sleep(1000);
+           element(by.id('discrimStProprio')).click();
+           browser.sleep(1000);
+           $('#STProprioModal #discriminacaoSt .close').click();
+           browser.sleep(1000);
+           expect(element(by.id('discriminacaoSt')).isDisplayed()).toBe(false);
+
+           browser.sleep(1000);
+           element(by.id('discrimStProprio')).click();
+           browser.sleep(1000);
+           element(by.id('discrimStProprio')).click();
+           browser.sleep(1000);
+           expect(element(by.id('discriminacaoSt')).isDisplayed()).toBe(false);
+         })
+    })
+
+    describe('Testes relacionados aos buttons que ficam no final do modal.', function(){
+         it('Verifica se o botão de limpar está funcionando corretamente.', function(){
+           browser.sleep(1000);
+           element(by.id('baseStProprio')).clear().sendKeys(2016);
+           element(by.id('ipiStProprio')).clear().sendKeys(100);
+           element(by.id('aliqInternaStProprio')).clear().sendKeys(18);
+           element(by.id('aliqInterestStProprio')).clear().sendKeys(12);
+           element(by.id('aliqMvaStProprio')).clear().sendKeys(0);
+
+           element(by.id('btnLimparStProprio')).click();
+
+           expect(element(by.id('baseStProprio')).getText()).toBe("");
+           expect(element(by.id('ipiStProprio')).getText()).toBe("");
+           expect(element(by.id('aliqInternaStProprio')).getText()).toBe("");
+           expect(element(by.id('aliqInterestStProprio')).getText()).toBe("");
+           expect(element(by.id('aliqMvaStProprio')).getText()).toBe("");
+         })
+
+         it('Verifica se o botão de fechar que fica no final da janela está funcionando corretamente', function(){
+           browser.sleep(1000);
+           element(by.id('btnFecharModalStProprio')).click();
+           browser.sleep(1000);
+           expect(element(by.id('discriminacaoSt')).isDisplayed()).toBe(false);
+         })
+    })
   })

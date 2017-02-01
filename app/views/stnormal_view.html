@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <a title="Discriminação" data-toggle="collapse" data-target="#discriminacaoSt" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
+                                        <a id="discrimStProprio" title="Discriminação" data-toggle="collapse" data-target="#discriminacaoSt" class="fa fa-question-circle-o pull-right help-discriminacao"></a>
                                         <label class="help-block" for="lbValorStProprio">Valor ST</label>
                                         <pre id="resultStProprio" ng-bind="controlst.valoresStProprio.valorSt | currency"></pre>
                                     </div>
@@ -85,11 +85,11 @@
                                             <div class="panel-body">
                                                 <center>
                                                 <h6>(Base ICMS [Desconsiderar IPI])*(Al.Interest.) = (ICMS)</h6>
-                                                <h5>{{controlst.valoresStProprio.base}}*{{controlst.valoresStProprio.aliquotaInterest}} = {{controlst.valoresStProprio.valorIcms}}</h5>
+                                                <h5>{{controlst.valoresStProprio.base | currency: 'R$':3}}*{{controlst.valoresStProprio.aliquotaInterest}} = {{controlst.valoresStProprio.valorIcms | currency: 'R$':3}}</h5>
                                                 <h6>(Base ICMS [Considera IPI])*(1+(MVA/100)) = (Base ST)</h6>
-                                                <h5>{{controlst.valoresStProprio.baseStIpi}}*(1+({{controlst.valoresStProprio.mva}}/100)) = {{controlst.valoresStProprio.baseSt}}</h5>
+                                                <h5>{{controlst.valoresStProprio.baseStIpi | currency: 'R$':3}}*(1+({{controlst.valoresStProprio.mva}}/100)) = {{controlst.valoresStProprio.baseSt | currency: 'R$':3}}</h5>
                                                 <h6>(Base ST)*(Al.Interna/100) - (ICMS) = (ST)</h6>
-                                                <h5>{{controlst.valoresStProprio.baseSt}}*({{controlst.valoresStProprio.aliquotaInterna}}/100) - {{controlst.valoresStProprio.valorIcms}} = {{controlst.valoresStProprio.valorDiscriminacao}}</h5>
+                                                <h5>{{controlst.valoresStProprio.baseSt | currency: 'R$':3}}*({{controlst.valoresStProprio.aliquotaInterna}}/100) - {{controlst.valoresStProprio.valorIcms | currency: 'R$':3}} = {{controlst.valoresStProprio.valorDiscriminacao | currency: 'R$':3}}</h5>
                                                 </center>
                                             </div>
                                         </div>
@@ -98,8 +98,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" ng-click="controlst.limparSt()">Limpar</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button id="btnLimparStProprio" type="button" class="btn btn-default" ng-click="controlst.limparSt()">Limpar</button>
+                            <button id="btnFecharModalStProprio" type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                         </div>
                     </div>
                 </div>
