@@ -1,16 +1,15 @@
-(function(){   
+(function(){
     'use strict'
 
 angular.module('DEPGod')
-    .controller('controladorICMS', ['$location', 'IcmsproprioModel', 'IcmsbaseRedModel', 'IcmsdifalModel', function($location, IcmsproprioModel, IcmsbaseRedModel, IcmsdifalModel){
+    .controller('controladorICMS', ['$location', 'IcmsproprioModel', 'IcmsbaseRedModel', 'IcmsdifalModel', 'icmsProprioHelper', function($location, IcmsproprioModel, IcmsbaseRedModel, IcmsdifalModel, icmsProprioHelper){
         var self = this;
 
-        self.valoresIcmsProprio = new IcmsproprioModel();
         self.valoresIcmsBaseRed = new IcmsbaseRedModel();
         self.valoresIcmsDifal = new IcmsdifalModel();
 
-        self.limparProprio = function(){
-            self.valoresIcmsProprio = new IcmsproprioModel();    
+        self.criar = function(){
+            icmsProprioHelper.exibe();
         }
 
         self.limparRed = function(){

@@ -11,18 +11,6 @@ describe('controladorICMS', function(){
         _location = $injector.get('$location');
     }))
 
-    it('Verifica se o construtor do ICMS Próprio se inicia com os valores prédefinidos corretamente!', inject(function($controller){
-        var _resultadoEsperado = {base: undefined, aliquota: undefined, valor: 0, valorDiscriminacao: 0};
-
-        $controller(NomeController, {$scope: _scope})
-        _rootscope.$digest();
-
-        expect(_scope.controlicms.valoresIcmsProprio.base).toEqual(_resultadoEsperado.base);
-        expect(_scope.controlicms.valoresIcmsProprio.aliquota).toEqual(_resultadoEsperado.aliquota);
-        expect(_scope.controlicms.valoresIcmsProprio.valor).toEqual(_resultadoEsperado.valor);
-        expect(_scope.controlicms.valoresIcmsProprio.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
-    }))
-
     it('Verifica se o construtor do ICMS Red se inicia com os valores prédefinidos corretamente!', inject(function($controller){
         var _resultadoEsperado = {base: undefined, aliquota: undefined, aliquota: undefined, valor: 0, valorDiscriminacao: 0};
 

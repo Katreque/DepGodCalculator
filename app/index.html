@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="DEPGod">  
+<html ng-app="DEPGod">
     <head>
         <base href="/">
         <meta charset="utf-8" />
@@ -26,88 +26,11 @@
         <title>DEPGod Calculator</title>
     </head>
     <body>
-        <div alt-alerta-flutuante></div>
-
-        <header id="alt-cabecalho" class="header" ng-controller="controladorCabecalho as controlcabec">
-            <div class="navbar navbar-default alt-sombra-primaria">
-                <div>
-                    <div class="alt-informacoes-usuario-container dropdown alt-hand pull-right alt-espacamento-left">
-                        <img id="imagemPerfilPassaporte"ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-cabecalho alt-hand" data-toggle="dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
-                        <div class="dropdown-menu">
-                            <div id="alt-informacoes-usuario-dropdown">
-                                <div class="col-xs-4 hidden-xs row">
-                                    <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
-                                </div>
-                                <div class="col-xs-12 visible-xs text-center">
-                                    <img ng-src="{{controlcabec.informacoesUsuario.avatar}}" alt="imagem" class="alt-imagem-usuario-dropdown" src="{{controlcabec.informacoesUsuario.avatar}}">
-                                </div>
-                                <hr class="visible-xs col-xs-12 alt-hr-separador-info">
-                                <div class="col-xs-8 hidden-xs">
-                                    <p>{{controlcabec.informacoesUsuario.nomeUsuario}}</p>
-                                    <small class="text-muted">{{controlcabec.informacoesUsuario.emailUsuario}}</small>
-                                </div>
-                                <div class="col-xs-12 visible-xs text-center">
-                                    <p>{{controlcabec.informacoesUsuario.nomeUsuario}}</p>
-                                    <small class="text-muted">{{controlcabec.informacoesUsuario.emailUsuario}}</small>
-                                </div>
-                                <hr class="visible-xs col-xs-12 alt-hr-separador-info">
-                                <hr class="hidden-xs col-xs-12 alt-hr-separador-info">
-                                <a id="btnSair" ng-href="{{controlcabec.logoutLink}}" class="btn btn-default pull-right hidden-xs">Sair</a>
-                                <button type="button" class="btn btn-default pull-left hidden-xs">Feelin' lucky?</button>
-                                <button type="button" class="btn btn-default pull-right btn-block alt-espacamento-bottom visible-xs">Feelin' lucky?</button>                            
-                                <a ng-href="{{controlcabec.logoutLink}}" class="btn btn-default btn-block visible-xs alt-clear-both">Sair</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alt-opcoes-usuario-container dropdown pull-right">
-                        <div class="alt-opcoes-usuario-cabecalho alt-hand" data-toggle="dropdown">
-                            <span class="alt-opcoes-usuario-cabecalho">
-                                <i id="btnProdutos" class="fa fa-fw fa-cubes alt-icone-opcoes-usuario-cabecalho"></i>
-                            </span>
-                        </div>
-                        <div class="dropdown-menu">
-                            <div class="alt-opcoes-usuario-dropdown listagem-produtos-cabecalho">
-                                <div id="produtos-cabecalho-container" class="alt-produtos-usuario-cabecalho-container">
-                                    <a class="col-xs-12 col-sm-6 col-lg-4 text-center alt-hand alt-produto-cabecalho" ng-repeat="produto in controlcabec.produtosHabilitados.habilitados track by $index" target="_blank" href="{{produto.urlAutenticacao}}">
-                                        <img class="alt-imagem-pequena" src="{{produto.urlLogo}}">
-                                        <p id="listagemProdutos" class="text-muted">{{produto.nome}}</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="navbar-header">
-                        <a id="nomeCalcHeader" class="navbar-brand hidden-xs" href="/home">DEPGod Calculator</a>
-                        <a id="nomeCalcHeaderxs"class="navbar-brand alt-espacamento-left visible-xs" href="/home">DEPGod Calculator</a>
-                    </div>  
-                </div>
-            </div>
-        </header>        
+      <div ng-include=" './includes/header.html' "></div>
         <main class="container alt-espacamento-cabecalho">
             <div ng-view></div>
         </main>
-    <footer id="alt-rodape" class="transition">
-        <div class="alt-direitos-reservados pull-left hidden-xs">
-            <span id="nomeRodape">DEPGod Calculator 1.0 - Todos os direitos reservados ao Souza.sup.erp</span>
-        </div>
-        <div class="alt-redirecionamentos-rodape hidden-xs">
-            <a id="idAlterdata" class="pull-right alt-espacamento-left" href="http://alterdata.com.br" target="_blank">
-                <img id="logoAlterdata" src="./app/images/logo_branco.png">
-            </a>
-        </div>
-        <div class="alt-links-aux-alterdata pull-right hidden-xs">
-          <a id="idContato" href="http://www.alterdata.com.br/contato" target="_blank">
-            <span id="labelContato">Contato</span>
-          </a>
-          <span class="alt-separador-redirecionamentos-rodape">|</span>
-          <a id="idSuporte" href="http://cliente.alterdata.com.br/LoginCentral.aspx" target="_blank">
-            <span id="labelSuporte">Suporte</span>
-          </a> 
-        </div>
-        <a class="text-center visible-xs alt-hand" href="http://alterdata.com.br" target="_blank">
-            <img src="./app/images/logo_branco.png">
-        </a>
-    </footer>
+      <div ng-include=" './includes/rodape.html' "></div>
         <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/angular/angular.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js?rev=@@hash"></script>
@@ -119,9 +42,10 @@
         <script type="text/javascript" src="./bower_components/alt-ambiente-url/dist/alt-ambiente-url.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/alt-passaporte-usuario-logado/dist/alt-passaporte-usuario-logado.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./bower_components/ng-xtorage/ng-xtorage.min.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./bower_components/alt-modal-service/dist/alt-modal-service.min.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/app.constant.js?rev=@@hash"></script>
-        <script type="text/javascript" src="./scripts/app.config.js?rev=@@hash"></script>        
+        <script type="text/javascript" src="./scripts/app.config.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/controllers/home_controller.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/controllers/icms_controller.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/controllers/ipi_controller.js?rev=@@hash"></script>
@@ -132,6 +56,9 @@
         <script type="text/javascript" src="./scripts/models/icmsred_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/ipiproprio_model.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/models/stproprio_model.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/directives/icmsProprio_directive.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/directives/icmsRed_directive.js?rev=@@hash"></script>
+        <script type="text/javascript" src="./scripts/directives/icmsDifal_directive.js?rev=@@hash"></script>
         <script type="text/javascript" src="./scripts/interceptors/sessaoUsuario_interceptor.js?rev=@@hash"></script>
     </body>
 </html>
