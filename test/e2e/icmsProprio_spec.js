@@ -116,9 +116,9 @@ describe('ICMS Próprio', function(){
            browser.sleep(1000);
            element(by.id('discrimIcmsProprio')).click();
            browser.sleep(1000);
-           expect(element(by.binding('controlicms.valoresIcmsProprio.base')).getText()).toContain("R$100,000");
-           expect(element(by.binding('controlicms.valoresIcmsProprio.aliquota')).getText()).toContain("10");
-           expect(element(by.binding('controlicms.valoresIcmsProprio.valorDiscriminacao')).getText()).toContain("R$10,000");
+           expect(element(by.binding('ctrlIcmsProprio.valoresIcmsProprio.base')).getText()).toContain("R$100,000");
+           expect(element(by.binding('ctrlIcmsProprio.valoresIcmsProprio.aliquota')).getText()).toContain("10");
+           expect(element(by.binding('ctrlIcmsProprio.valoresIcmsProprio.valorDiscriminacao')).getText()).toContain("R$10,000");
          })
 
          it('Verifica se a forma de fechar a discriminação do cálculo usando o x ou clicando novamente no ícone de pergunta estão funcionando', function(){

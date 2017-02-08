@@ -228,16 +228,16 @@
            browser.sleep(1000);
            element(by.id('discrimIcmsDifal')).click();
            browser.sleep(1000);
-           expect(element(by.binding('controlicms.valoresIcmsDifal.base')).getText()).toContain("R$100,000");
-           expect(element(by.binding('controlicms.valoresIcmsDifal.aliquotaInterna')).getText()).toContain("18");
-           expect(element(by.binding('controlicms.valoresIcmsDifal.aliquotaInterestadual')).getText()).toContain("12");
-           expect(element(by.binding('controlicms.valoresIcmsDifal.valorDifal')).getText()).toContain("R$6,000");
-           element.all(by.binding('controlicms.valoresIcmsDifal.valorDestino'))
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.base')).getText()).toContain("R$100,000");
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.aliquotaInterna')).getText()).toContain("18");
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.aliquotaInterestadual')).getText()).toContain("12");
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.valorDifal')).getText()).toContain("R$6,000");
+           element.all(by.binding('ctrlIcmsDifal.valoresIcmsDifal.valorDestino'))
            .then((valor)=>{
              expect(valor[1].getText()).toContain("R$2,400");
            })
-           expect(element(by.binding('controlicms.valoresIcmsDifal.valorDestinoeFcp')).getText()).toContain("R$2,400");
-           expect(element(by.binding('controlicms.valoresIcmsDifal.valorFcp')).getText()).toContain("R$0,000");
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.valorDestinoeFcp')).getText()).toContain("R$2,400");
+           expect(element(by.binding('ctrlIcmsDifal.valoresIcmsDifal.valorFcp')).getText()).toContain("R$0,000");
          })
 
          it('Verifica se a forma de fechar a discriminação do cálculo usando o x ou clicando novamente no ícone de pergunta estão funcionando', function(){

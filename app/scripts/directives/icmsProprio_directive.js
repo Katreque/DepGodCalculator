@@ -73,7 +73,7 @@ angular.module('DEPGod')
       };
     }])
     .directive('icmsProprioModalOpener', [function(){
-      var _controller = [
+      var _controller =  [
         '$rootScope',
         'ABRE_MODAL_ICMS_PROPRIO',
         'AltModalService',
@@ -83,19 +83,18 @@ angular.module('DEPGod')
             AltModalService.open(icmsProprioModal);
           });
 
-        this.valoresIcmsProprio = new IcmsproprioModel();
+          this.valoresIcmsProprio = new IcmsproprioModel();
 
-        this.limparProprio = function(){
+          this.limparProprio = function(){
             this.valoresIcmsProprio = new IcmsproprioModel();
-        }
-
+          }
         }
     ];
 
     var _controllerAs = "ctrlIcmsProprio";
 
     return{
-        scope: false,
+        scope: {},
         restrict: 'A',
         template: TEMPLATE,
         controller: _controller,

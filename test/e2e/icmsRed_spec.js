@@ -159,10 +159,10 @@
            browser.sleep(1000);
            element(by.id('discrimIcmsRed')).click();
            browser.sleep(1000);
-           expect(element(by.binding('controlicms.valoresIcmsBaseRed.base')).getText()).toContain("R$100,000");
-           expect(element(by.binding('controlicms.valoresIcmsBaseRed.aliquota')).getText()).toContain("10");
-           expect(element(by.binding('controlicms.valoresIcmsBaseRed.aliquotaRed')).getText()).toContain("10");
-           expect(element(by.binding('controlicms.valoresIcmsBaseRed.valorDiscriminacao')).getText()).toContain("R$9,000");
+           expect(element(by.binding('ctrlIcmsRed.valoresIcmsBaseRed.base')).getText()).toContain("R$100,000");
+           expect(element(by.binding('ctrlIcmsRed.valoresIcmsBaseRed.aliquota')).getText()).toContain("10");
+           expect(element(by.binding('ctrlIcmsRed.valoresIcmsBaseRed.aliquotaRed')).getText()).toContain("10");
+           expect(element(by.binding('ctrlIcmsRed.valoresIcmsBaseRed.valorDiscriminacao')).getText()).toContain("R$9,000");
          })
 
          it('Verifica se a forma de fechar a discriminação do cálculo usando o x ou clicando novamente no ícone de pergunta estão funcionando', function(){
