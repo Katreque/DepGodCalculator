@@ -8,6 +8,9 @@ describe('icmsDifalDirective', function(){
   beforeEach(inject(function($injector){
     _rootScope = $injector.get('$rootScope');
     _scope = _rootScope.$new();
+    ABRE_MODAL_ICMS_DIFAL = $injector.get('ABRE_MODAL_ICMS_DIFAL');
+    icmsDifalHelper = $injector.get('icmsDifalHelper');
+    AltModalService = $injector.get('AltModalService');
     _compile = $injector.get('$compile');
 
     var _html = '<div icms-difal-modal-opener></div>';
@@ -31,6 +34,19 @@ describe('icmsDifalDirective', function(){
         expect(_element.isolateScope()[ControllerAs].valoresIcmsDifal.valorOrigem).toEqual(_resultadoEsperado.valorOrigem);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsDifal.valorDestino).toEqual(_resultadoEsperado.valorDestino);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsDifal.valorDestinoeFcp).toEqual(_resultadoEsperado.valorDestinoeFcp);
+    })
+
+    it('Verifica se a função de exibir está enviando a mensagem e a mesma sendo captada, abrindo o modal corretamente.', function(){
+        spyOn(_rootScope, '$broadcast').and.callThrough();
+        spyOn(_rootScope, '$on').and.callThrough();
+        spyOn(AltModalService, 'open').and.callFake(angular.noop);
+
+        _rootScope.$digest();
+        icmsDifalHelper.exibe();
+        expect(_rootScope.$broadcast).toHaveBeenCalledWith(ABRE_MODAL_ICMS_DIFAL, undefined);
+
+        _rootScope.$on(ABRE_MODAL_ICMS_DIFAL);
+        expect(AltModalService.open).toHaveBeenCalled();
     })
 
     it('Preenche o construtor ICMS Difal e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', function(){

@@ -88,7 +88,7 @@
         'IcmsbaseRedModel',
         function($rootScope, ABRE_MODAL_ICMS_RED, AltModalService, IcmsbaseRedModel){
           $rootScope.$on(ABRE_MODAL_ICMS_RED, (event, arg) => {
-            AltModalService.open('icmsRedModal');
+            AltModalService.open('#icmsRedModal');
           })
 
         this.valoresIcmsBaseRed = new IcmsbaseRedModel();

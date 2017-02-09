@@ -6,6 +6,8 @@ const htmlmin = require('gulp-htmlmin')
 const runSequence = require('run-sequence')
 const karma = require('karma')
 const rev = require('gulp-rev-append')
+const nginclude = require('gulp-nginclude')
+const babel = require('gulp-babel')
 
 gulp.task('build', () =>{
     runSequence(
@@ -15,7 +17,7 @@ gulp.task('build', () =>{
             'dep',
             'js',
             'css'
-        ], 
+        ],
 
         'html'
     )
@@ -43,7 +45,15 @@ gulp.task('css', () => {
 
 gulp.task('js', () => {
     return gulp.src('app/scripts/**/*.js')
-           .pipe(uglify())
+           .pipe(babel({
+             presets: [
+               "es2015",
+               "babili"
+             ]
+           }))
+           .pipe(uglify().on('error', function(err){
+             console.log(err);
+           }))
            .pipe(gulp.dest('dist/scripts'))
 })
 
@@ -51,6 +61,7 @@ gulp.task('html', () => {
     return gulp.src('app/**/*.html')
            .pipe(htmlmin({collapseWhitespace: true,
                           removeComments: true}))
+           .pipe(nginclude())
            .pipe(rev())
            .pipe(gulp.dest('dist'))
 })

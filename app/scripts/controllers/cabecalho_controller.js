@@ -11,15 +11,15 @@ angular.module('DEPGod')
             self.logoutLink = PASSAPORTE_LOGOUT;
 
             self.informacoesUsuario = AltPassaporteUsuarioLogadoManager.retorna();
-            
+
             AltPassaporteListagemProdutosService.getProdutosHabilitados()
-            .then((res) => {
+            .then(function(res){
                 return self.produtosHabilitados = res;
             })
-            .catch((err) => {
+            .catch(function(err){
                 AltAlertaFlutuanteService.exibe({
                     msg: MSG_ERRO_PRODUTO
                 })
-            })    
+            })
     }])
 }())

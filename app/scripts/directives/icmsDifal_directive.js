@@ -122,7 +122,7 @@
         'IcmsdifalModel',
         function($rootScope, ABRE_MODAL_ICMS_DIFAL, AltModalService, IcmsdifalModel){
           $rootScope.$on(ABRE_MODAL_ICMS_DIFAL, (event, arg) => {
-            AltModalService.open('icmsDifalModal');
+            AltModalService.open('#icmsDifalModal');
           })
 
           this.valoresIcmsDifal = new IcmsdifalModel();

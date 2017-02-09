@@ -1,6 +1,6 @@
 describe('icmsProprioDirective', function(){
 
-  var _scope, _rootScope, _element, icmsProprioModalOpener;
+  var _scope, _rootScope, _element, icmsProprioModalOpener, ABRE_MODAL_ICMS_PROPRIO, icmsProprioHelper, AltModalService;
   var ControllerAs = 'ctrlIcmsProprio';
 
   beforeEach(module('DEPGod'));
@@ -8,6 +8,9 @@ describe('icmsProprioDirective', function(){
   beforeEach(inject(function($injector){
     _rootScope = $injector.get('$rootScope');
     _scope = _rootScope.$new();
+    ABRE_MODAL_ICMS_PROPRIO = $injector.get('ABRE_MODAL_ICMS_PROPRIO');
+    icmsProprioHelper = $injector.get('icmsProprioHelper');
+    AltModalService = $injector.get('AltModalService');
     _compile = $injector.get('$compile');
 
     var _html = '<div icms-proprio-modal-opener></div>';
@@ -25,6 +28,19 @@ describe('icmsProprioDirective', function(){
         expect(_element.isolateScope()[ControllerAs].valoresIcmsProprio.aliquota).toEqual(_resultadoEsperado.aliquota);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsProprio.valor).toEqual(_resultadoEsperado.valor);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsProprio.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
+    })
+
+    it('Verifica se a função de exibir está enviando a mensagem e a mesma sendo captada, abrindo o modal corretamente.', function(){
+        spyOn(_rootScope, '$broadcast').and.callThrough();
+        spyOn(_rootScope, '$on').and.callThrough();
+        spyOn(AltModalService, 'open').and.callFake(angular.noop);
+
+        _rootScope.$digest();
+        icmsProprioHelper.exibe();
+        expect(_rootScope.$broadcast).toHaveBeenCalledWith(ABRE_MODAL_ICMS_PROPRIO, undefined);
+
+        _rootScope.$on(ABRE_MODAL_ICMS_PROPRIO);
+        expect(AltModalService.open).toHaveBeenCalled();
     })
 
     it('Preenche o construtor ICMS Próprio e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', function(){

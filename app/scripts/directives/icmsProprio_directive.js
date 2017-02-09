@@ -80,7 +80,7 @@ angular.module('DEPGod')
         'IcmsproprioModel',
         function($rootScope, ABRE_MODAL_ICMS_PROPRIO, AltModalService, IcmsproprioModel){
           $rootScope.$on(ABRE_MODAL_ICMS_PROPRIO, (event, arg) =>{
-            AltModalService.open(icmsProprioModal);
+            AltModalService.open('#icmsProprioModal');
           });
 
           this.valoresIcmsProprio = new IcmsproprioModel();

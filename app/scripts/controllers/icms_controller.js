@@ -2,7 +2,7 @@
     'use strict'
 
 angular.module('DEPGod')
-    .controller('controladorICMS', ['$location', 'IcmsproprioModel', 'IcmsbaseRedModel', 'IcmsdifalModel', 'icmsProprioHelper', function($location, IcmsproprioModel, IcmsbaseRedModel, IcmsdifalModel, icmsProprioHelper){
+    .controller('controladorICMS', ['$location', 'icmsProprioHelper', function($location, icmsProprioHelper){
         var self = this;
 
         self.criar = function(){

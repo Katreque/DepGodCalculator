@@ -9,6 +9,9 @@ describe('icmsRedDirective', function(){
     _rootScope = $injector.get('$rootScope');
     _scope = _rootScope.$new();
     _compile = $injector.get('$compile');
+    ABRE_MODAL_ICMS_RED = $injector.get('ABRE_MODAL_ICMS_RED');
+    icmsRedHelper = $injector.get('icmsRedHelper');
+    AltModalService = $injector.get('AltModalService');
 
     var _html = '<div icms-red-modal-opener></div>';
 
@@ -26,6 +29,19 @@ describe('icmsRedDirective', function(){
         expect(_element.isolateScope()[ControllerAs].valoresIcmsBaseRed.aliquotaRed).toEqual(_resultadoEsperado.aliquotaRed);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsBaseRed.valor).toEqual(_resultadoEsperado.valor);
         expect(_element.isolateScope()[ControllerAs].valoresIcmsBaseRed.valorDiscriminacao).toEqual(_resultadoEsperado.valorDiscriminacao);
+    })
+
+    it('Verifica se a função de exibir está enviando a mensagem e a mesma sendo captada, abrindo o modal corretamente.', function(){
+        spyOn(_rootScope, '$broadcast').and.callThrough();
+        spyOn(_rootScope, '$on').and.callThrough();
+        spyOn(AltModalService, 'open').and.callFake(angular.noop);
+
+        _rootScope.$digest();
+        icmsRedHelper.exibe();
+        expect(_rootScope.$broadcast).toHaveBeenCalledWith(ABRE_MODAL_ICMS_RED, undefined);
+
+        _rootScope.$on(ABRE_MODAL_ICMS_RED);
+        expect(AltModalService.open).toHaveBeenCalled();
     })
 
     it('Preenche o construtor ICMS Red e verifica se a função de limpar instancia novamente o contrutor com seus valores default!', function(){
