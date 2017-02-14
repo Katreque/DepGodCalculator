@@ -23,6 +23,7 @@
     "gulp-cssmin": "^0.1.7",
     "gulp-htmlmin": "^3.0.0",
     "gulp-nginclude": "^0.4.8",
+    "gulp-protractor": "^3.0.0",
     "gulp-rev-append": "^0.1.7",
     "gulp-uglify": "^2.0.0",
     "jasmine": "^2.5.2",
@@ -31,6 +32,7 @@
     "karma-coverage": "^1.1.1",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
+    "protractor": "^5.1.1",
     "run-sequence": "^1.2.2"
   }
 }

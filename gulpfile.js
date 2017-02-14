@@ -8,10 +8,12 @@ const karma = require('karma')
 const rev = require('gulp-rev-append')
 const nginclude = require('gulp-nginclude')
 const babel = require('gulp-babel')
+const {spawnSync} = require('child_process');
 
 gulp.task('build', () =>{
     runSequence(
         'test',
+        'proc',
         'del',
         [
             'dep',
@@ -31,11 +33,21 @@ gulp.task('dep', () =>{
 gulp.task('test', (done) => {
     return new karma.Server({
         configFile: __dirname + '/karma.conf.js',
-        browsers: ['Chrome', 'Firefox'],
+        browsers: ['Chrome'],
     }, function(exitCode){
         done();
     }).start();
 });
+
+gulp.task('proc', () => {
+  return new Promise((res, rej) => {
+    spawnSync('npm.cmd', ['run', 'p'], {
+      stdio: 'inherit'
+    })
+
+    res()
+  })
+})
 
 gulp.task('css', () => {
     return gulp.src('app/styles/*.css')
